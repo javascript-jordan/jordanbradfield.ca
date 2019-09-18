@@ -1,4 +1,4 @@
-# jordanbradfield - FullStack Develoepr
+# Jordan Bradfield - FullStack Develoepr
 ### Official source code
 
 ---
