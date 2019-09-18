@@ -4,7 +4,10 @@
   "description": "Official source code for jordanbradfield.ca",
   "main": "index.js",
   "scripts": {
+    "build": "npm run buildClient",
+    "buildClient": "npx webpack --mode=production",
     "commit": "./scripts/commit.sh",
+    "serverDev": "nodemon --exec babel-node --inspect src/server/server.js --watch src/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +27,27 @@
   "bugs": {
     "url": "https://github.com/javascript-jordan/jordanbradfield/issues"
   },
-  "homepage": "https://github.com/javascript-jordan/jordanbradfield#readme"
+  "homepage": "https://github.com/javascript-jordan/jordanbradfield#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.4.2",
+    "@material-ui/icons": "^4.4.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/node": "^7.6.1",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.2",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1"
+  }
 }
