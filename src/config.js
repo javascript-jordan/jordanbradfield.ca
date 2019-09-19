@@ -11,5 +11,7 @@ var isProduction = (function(){
 }());
 
 module.exports = {
-    production: isProduction
+    constants: {
+        isProduction: isProduction
+    }
 }
