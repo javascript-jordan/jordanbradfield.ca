@@ -12,7 +12,7 @@
     "dev": "npx concurrently \"npm run clientDev\" \"npm run serverDev\"",
     "serverDev": "nodemon --exec babel-node --inspect src/server/server.js --watch src/server",
     "start": "export NODE_ENV=production && node dist/server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -56,5 +56,8 @@
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
+  },
+  "jest": {
+    "verbose": true
   }
 }
