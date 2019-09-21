@@ -2,18 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 //material theme provider
-import { MuiThemeProvider, Typography } from "@material-ui/core";
+import { MuiThemeProvider } from "@material-ui/core";
+
+//required components
+import ViewComponent from "./components/view/view.component";
+import NavbarComponent from "./components/navbar/navbar.component";
 
 //custom theme object
 import { createTheme } from "./services/themeService";
 
-// Global styles
+//global styles
 import styles from "./scss/index.scss";
-import ViewComponent from "./components/view/view.component";
 
 
 const App = () => (
     <MuiThemeProvider theme={createTheme()}>
+        <NavbarComponent />
         <ViewComponent />
     </MuiThemeProvider>
 );

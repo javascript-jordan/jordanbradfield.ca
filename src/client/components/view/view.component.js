@@ -47,6 +47,7 @@ const ViewComponent = ({ classes }) => {
                 {ROUTES.map((route, index) => {
                     return <Route component={route.component} exact={true} key={`route-${index}`} path={route.path} />
                 })}
+                {/* Fallback to home page */}
                 <Redirect to="/" />
             </Switch>
         </BrowserRouter>

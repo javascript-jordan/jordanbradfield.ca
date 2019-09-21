@@ -4,7 +4,7 @@ export const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"
 
 export const createTheme = () => createMuiTheme({
     palette: {
-        type: "dark",
+        type: "light",
         primary: {
             // light: will be calculated from palette.primary.main,
             main: theme.primary,
@@ -13,13 +13,12 @@ export const createTheme = () => createMuiTheme({
             // contrastText: will be calculated to contrast with palette.primary.main
         },
         secondary: {
-            light: theme.secondaryLight,
             main: theme.secondary,
             // dark: will be calculated from palette.secondary.main,
             contrastText: '#000000'
         },
         text: {
-            primary: "#ffffff"
+            primary: "#000000"
         }
         // error: will use the default color
     },

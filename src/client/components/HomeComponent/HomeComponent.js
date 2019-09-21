@@ -1,5 +1,5 @@
 import React from "react";
-import { withStyles } from "@material-ui/core";
+import { withStyles, Typography } from "@material-ui/core";
 
 const HomeComponentStyles = theme => ({
     root: {
@@ -17,7 +17,7 @@ class HomeComponent extends React.Component {
 
     render(){
         return (
-            <div>Home</div>
+            <Typography color="textPrimary">Hello</Typography>
         )
     }
 }
