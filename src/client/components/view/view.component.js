@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { withStyles } from "@material-ui/styles";
 import config from "../../../config";
-import HomeComponent from "../HomeComponent/HomeComponent";
+import HomeComponent from "../HomeComponent/Home.component";
 
 // const AuthenticatedRoute = ({component: Component, ...additionalProps}) => (
 //     <Route {...additionalProps} render={props => (

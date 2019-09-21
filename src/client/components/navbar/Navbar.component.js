@@ -1,10 +1,11 @@
 import React from "react";
-import { withStyles, Typography } from "@material-ui/core";
+import { withStyles, Typography, AppBar } from "@material-ui/core";
 
 const NavbarComponentStyles = theme => ({
     root: {
-        backgroundColor: theme.palette.primary.main,
-        boxShadow: theme.shadows[8]
+        "& .appbar": {
+            padding: theme.spacing(1)
+        }
     }
 });
 
@@ -18,9 +19,12 @@ class NavbarComponent extends React.Component {
 
     render(){
         let { classes } = this.props;
+
         return (
             <nav className={classes.root}>
-                <Typography>Jordan Bradfield</Typography>
+                <AppBar className={`appbar`} position="relative">
+                    <Typography className={`bold`} variant="h5">Jordan Bradfield</Typography>
+                </AppBar>
             </nav>
         )
     }

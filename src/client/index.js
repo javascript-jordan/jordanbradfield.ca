@@ -6,7 +6,7 @@ import { MuiThemeProvider } from "@material-ui/core";
 
 //required components
 import ViewComponent from "./components/view/view.component";
-import NavbarComponent from "./components/navbar/navbar.component";
+import NavbarComponent from "./components/navbar/Navbar.component";
 
 //custom theme object
 import { createTheme } from "./services/themeService";
