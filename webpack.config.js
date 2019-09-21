@@ -9,6 +9,9 @@ const CLIENT_DIST = join(DIST, "client");
 const SERVER_DIST = join(DIST, "server");
 
 module.exports = {
+    devServer: {
+        historyApiFallback: true
+    },
     entry: join(CLIENT_SRC, "index.js"),
     output: {
         path: CLIENT_DIST,
@@ -22,6 +25,24 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: "babel-loader"
+                }
+            },
+            {
+                test: /\.scss$/,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader", "sass-loader"]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    "file-loader"
+                ]
             }
         ]
     },
@@ -34,6 +55,7 @@ module.exports = {
         })
     ],
     stats: {
-        colors: true
+        colors: true,
+        logging: false
     }
 }

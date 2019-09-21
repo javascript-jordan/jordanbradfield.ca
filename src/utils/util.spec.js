@@ -18,7 +18,7 @@ describe("util.js", () => {
             expect(convertToString()).toBe("");
         });
     });
-    describe("convertToObject", () => {
+    describe("convertToObject()", () => {
         test("it should return a JSON object when passed a stringified object", () => {
             expect(convertToObject("{\"name\":\"Jordan\"}")).toStrictEqual({"name": "Jordan"});
         });
