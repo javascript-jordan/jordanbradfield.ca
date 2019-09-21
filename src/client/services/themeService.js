@@ -1,6 +1,6 @@
 import { createMuiTheme } from "@material-ui/core";
 
-export const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!../sass/theme.scss');
+export const theme = require('sass-extract-loader?{"plugins": ["sass-extract-js"]}!../scss/theme.scss');
 
 export const createTheme = () => createMuiTheme({
     palette: {
