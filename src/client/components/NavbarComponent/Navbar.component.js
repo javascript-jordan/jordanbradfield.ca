@@ -1,15 +1,13 @@
 import React from "react";
 import { withStyles, Typography, AppBar, IconButton } from "@material-ui/core";
-import { Menu } from "@material-ui/icons";
+import { Menu, FormatQuote } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
 import NavbarNavItemsComponent from "./NavbarNavItemsComponent";
+import { route, getRoute } from "../../services/routingService";
+import NavbarQuickLinksComonent from "./NavbarQuickLinksComonent";
 
 const NavbarComponentStyles = theme => ({
     root: {
-        "& .marketing-appbar": {
-            color: "white",
-            padding: theme.spacing(1)
-        },
         "& .navigation-appbar": {
             paddingRight: theme.spacing(10),
             "& .hamburger-menu": {
@@ -50,7 +48,7 @@ const NavbarComponentStyles = theme => ({
                     flex: "1 0 15%"
                 },
             },
-            "& .marketing-appbar": {
+            "& .quick-links-appbar": {
                 display: "none",
                 visibility: "hidden"
             }
@@ -62,12 +60,21 @@ class NavbarComponent extends React.Component {
     constructor(){
         super();
         this.state = {
-
+            active: getRoute()
         }
+        this.cancelRouteChangeEventListener = document.addEventListener("routeChangeEvent", this.onRouteChange.bind(this));
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener("routeChangeEvent", this.onRouteChange.bind(this), false);
     }
 
     onNavItemClick(item){
-        console.log(item);
+        route(item.path);
+    }
+
+    onRouteChange(){
+        this.setState({active: getRoute()});
     }
 
     render(){
@@ -75,9 +82,7 @@ class NavbarComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <AppBar color="primary" className={`marketing-appbar`} position="relative">
-                    <Typography component="i" color="inherit" variant="subtitle2">{strings.navbar.slogan}</Typography>
-                </AppBar>
+                <NavbarQuickLinksComonent className={`quick-links-appbar`} />
                 <nav>
                     <AppBar color="inherit" className={`navigation-appbar flex row align-vertical-center align-horizontal-space-between`} position="relative">
                         <div className={`hamburger-menu`}>
@@ -88,7 +93,7 @@ class NavbarComponent extends React.Component {
                         <div className={`name-section`}>
                             <Typography color="textPrimary" className={``} variant="h5">Jordan Bradfield</Typography>
                         </div>
-                        <NavbarNavItemsComponent onNavItemClick={this.onNavItemClick.bind(this)} />
+                        <NavbarNavItemsComponent active={this.state.active} onNavItemClick={this.onNavItemClick.bind(this)} />
                         <div aria-hidden="true" className={`invisible-spacer`}>
 
                         </div>

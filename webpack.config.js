@@ -1,5 +1,6 @@
 const { join } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const SRC = join(__dirname, "src");
 const DIST = join(__dirname, "dist");
@@ -10,7 +11,8 @@ const SERVER_DIST = join(DIST, "server");
 
 module.exports = {
     devServer: {
-        historyApiFallback: true
+        historyApiFallback: true,
+        hot: true
     },
     entry: join(CLIENT_SRC, "index.js"),
     output: {
@@ -30,7 +32,10 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: "babel-loader",
+                    options: {
+                        presets: ["@babel/preset-env"]  //Preset used for env setup
+                    }
                 }
             },
             {
@@ -57,5 +62,19 @@ module.exports = {
     stats: {
         colors: true,
         logging: false
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                chunkFilter: (chunk) => {
+                    // Exclude uglification for the `vendor` chunk
+                    if (chunk.name === 'vendor') {
+                        return false;
+                    }
+            
+                    return true;
+                }
+            })
+        ]
     }
 }

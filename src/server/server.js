@@ -22,6 +22,8 @@ if(isMaster){
     SERVER.use(cors());
     //apply routes
     SERVER.use("/api", routes);
+    //aware express of the build directory
+    if(constants.isProduction) SERVER.use(express.static(join(__dirname, "public")));
     //apply base route to server application when user lands on domain
     SERVER.use("/", (req, res) => {
         if(constants.isProduction){

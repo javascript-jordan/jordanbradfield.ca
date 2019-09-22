@@ -48,7 +48,7 @@ const NavbarNavItemsComponentStyles = theme => ({
     }
 });
 
-const NavbarNavItemsComponent = ({ classes, onNavItemClick }) => {
+const NavbarNavItemsComponent = ({ active, classes, onNavItemClick }) => {
     return (
         <ul className={`${classes.root} flex row align-vertical-center`} role="menu">
             {strings.navbar.items.map((route, index) => {
@@ -57,7 +57,7 @@ const NavbarNavItemsComponent = ({ classes, onNavItemClick }) => {
                         <Typography className={`text`} component="div" color="textSecondary" variant="button">
                             {route.name}
                         </Typography>
-                        <div className={`active-indicator ${window.location.pathname === route.path ? "active" : ""}`}></div>
+                        <div className={`active-indicator ${active === route.path ? "active" : ""}`}></div>
                     </li>
                 );
             })}

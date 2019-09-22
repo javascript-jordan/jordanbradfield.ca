@@ -22,9 +22,7 @@ class SkillsComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <Paper className={`paper-border-top`}>
-                    <Typography color="textPrimary">Skills</Typography>
-                </Paper>
+                <Typography color="textPrimary">Skills</Typography>
             </div>
         )
     }

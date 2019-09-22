@@ -22,9 +22,7 @@ class ExperienceComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <Paper className={`paper-border-top`}>
-                    <Typography color="textPrimary">Experience</Typography>
-                </Paper>
+                <Typography color="textPrimary">Experience</Typography>
             </div>
         )
     }

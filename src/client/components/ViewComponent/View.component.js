@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { HashRouter, Redirect, Route, Switch } from "react-router-dom";
 import { withStyles } from "@material-ui/styles";
 import config from "../../../config";
 import HomeComponent from "../HomeComponent/Home.component";
@@ -24,15 +24,15 @@ const ViewComponentStyles = theme => ({
 
 const ViewComponent = ({ classes }) => {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Switch>
                 {ROUTES.map((route, index) => {
-                    return <Route component={route.component} exact={true} key={`route-${index}`} path={route.path} />
+                    return <Route render={props => <route.component {...props} />} exact={true} key={`route-${index}`} path={route.path} />
                 })}
                 {/* Fallback to home page */}
                 <Redirect to="/" />
             </Switch>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 

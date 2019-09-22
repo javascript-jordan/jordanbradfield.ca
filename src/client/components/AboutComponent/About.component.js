@@ -22,9 +22,7 @@ class AboutComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <Paper className={`paper-border-top`}>
-                    <Typography color="textPrimary">About</Typography>
-                </Paper>
+                <Typography color="textPrimary">About</Typography>
             </div>
         )
     }

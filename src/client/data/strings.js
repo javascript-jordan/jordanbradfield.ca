@@ -9,6 +9,11 @@ export const en = {
             {name: "Contact", path: "/contact"},
         ],
         menu: "Open Menu",
-        slogan: 'The professional you need with the skills you want'
+        slogan: "The professional you need with the skills you want",
+        links: {
+            github: "Github Repository",
+            linkedin: "Linkedin Profile",
+            twitter: "Twitter Feed"
+        }
     }
 }
