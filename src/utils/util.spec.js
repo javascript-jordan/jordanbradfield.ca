@@ -1,4 +1,6 @@
-import { convertToString, convertToObject } from "./util";
+import { convertToString, convertToObject, xhr } from "./util";
+
+import config from "../config";
 
 describe("util.js", () => {
     describe("convertToString()", () => {
@@ -28,5 +30,28 @@ describe("util.js", () => {
         test("it should return null when passed null", () => {
             expect(convertToObject(null)).toBe(null);
         });
-    })
+    });
+    describe("xhr()", () => {
+        test("it should reject if no configuration object was passed", () => {
+            expect(xhr()).rejects.toStrictEqual({"code": config.errors.INVALID_XHR_CONFIG});
+        });
+        test("it should reject if method configuration parameter is missing", () => {
+            expect(xhr({base: "https://jordanbradfield.ca"})).rejects.toStrictEqual({"code": config.errors.INVALID_XHR_CONFIG});
+        });
+        test("it should reject if base configuration parameter is missing", () => {
+            expect(xhr({path: "/test"})).rejects.toStrictEqual({"code": config.errors.INVALID_XHR_CONFIG});
+        });
+        test("it should reject if path configuration parameter is missing", () => {
+            expect(xhr({method: "post"})).rejects.toStrictEqual({"code": config.errors.INVALID_XHR_CONFIG});
+        });
+        test("it should reject if base is non existant in config", () => {
+            expect(xhr({method: "post", base: "someapibase", path: "/hello"})).rejects.toStrictEqual({"code": config.errors.NON_EXISTANT_API_BASE});
+        });
+        test("it should reject if passed an invalid method", () => {
+            expect(xhr({method: "invalidmethod", base: "someapibase", path: "/hello"})).rejects.toStrictEqual({"code": config.errors.INVALID_REQUEST_METHOD});
+        });
+        test("it should resolve with data when requesting a valid api", async () => {
+            expect(await xhr(config.xhr.endpoints.testing)).toHaveProperty("status", 200);
+        });
+    });
 });

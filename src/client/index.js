@@ -5,8 +5,8 @@ import ReactDOM from "react-dom";
 import { MuiThemeProvider } from "@material-ui/core";
 
 //required components
-import ViewComponent from "./components/view/view.component";
-import NavbarComponent from "./components/navbar/Navbar.component";
+import ViewComponent from "./components/ViewComponent/View.component";
+import NavbarComponent from "./components/NavbarComponent/Navbar.component";
 
 //custom theme object
 import { createTheme } from "./services/themeService";
@@ -18,6 +18,7 @@ import styles from "./scss/index.scss";
 const App = () => (
     <MuiThemeProvider theme={createTheme()}>
         <NavbarComponent />
+        {/* All routed views are rendered here */}
         <ViewComponent />
     </MuiThemeProvider>
 );

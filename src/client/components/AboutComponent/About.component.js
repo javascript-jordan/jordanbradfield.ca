@@ -3,13 +3,13 @@ import { withStyles, Typography, Paper } from "@material-ui/core";
 import { xhr } from "../../../utils/util";
 import config from "../../../config";
 
-const HomeComponentStyles = theme => ({
+const AboutComponentStyles = theme => ({
     root: {
         
     }
 });
 
-class HomeComponent extends React.Component {
+class AboutComponent extends React.Component {
     constructor(){
         super();
         this.state = {
@@ -23,11 +23,11 @@ class HomeComponent extends React.Component {
         return (
             <div className={`${classes.root}`}>
                 <Paper className={`paper-border-top`}>
-                    <Typography color="textPrimary">Home</Typography>
+                    <Typography color="textPrimary">About</Typography>
                 </Paper>
             </div>
         )
     }
 }
 
-export default withStyles(HomeComponentStyles)(HomeComponent);
+export default withStyles(AboutComponentStyles)(AboutComponent);
