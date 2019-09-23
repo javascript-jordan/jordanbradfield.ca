@@ -1,6 +1,25 @@
 @import "./flex.scss";
 @import "./theme.scss";
 
+// global styles
+.bold {
+    font-weight: bolder;
+}
+.background-white {
+    background-color: #ffffff;
+}
+.color-white {
+    color: #ffffff;
+}
+.fade {
+    opacity: 0.7;
+}
+.paper-border-top {
+    border-top: 3px solid $primary;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 html {
     height: 100%;
     width: 100%;
@@ -18,14 +37,5 @@ body {
     & > :last-child {
         padding: $spacing;
         @extend .grow;
-    }
-    // global styles
-    .bold {
-        font-weight: bolder;
-    }
-    .paper-border-top {
-        border-top: 3px solid $primary;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
     }
 }

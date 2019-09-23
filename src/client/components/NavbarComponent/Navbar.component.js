@@ -76,7 +76,7 @@ class NavbarComponent extends React.Component {
     }
 
     onNavItemClick(item){
-        route(item.path);
+        this.setState({drawerOpen: false}, () => route(item.path));
     }
 
     onRouteChange(){
@@ -96,7 +96,11 @@ class NavbarComponent extends React.Component {
                                 <Menu />
                             </IconButton>
                         </div>
-                        <NavbarSideDrawerComponent open={this.state.drawerOpen} onDrawerClose={() => this.setState({ drawerOpen: false })} />
+                        <NavbarSideDrawerComponent 
+                            active={this.state.active} 
+                            open={this.state.drawerOpen}
+                            onDrawerClose={() => this.setState({ drawerOpen: false })}
+                            onNavItemClick={this.onNavItemClick.bind(this)} />
                         <div className={`name-section`}>
                             <Typography color="textPrimary" className={``} variant="h5">Jordan Bradfield</Typography>
                         </div>
