@@ -27,6 +27,7 @@ const NavbarQuickLinksComponentStyles = theme => ({
                 cursor: "pointer",
                 marginRight: theme.spacing(2),
                 transition: "opacity 250ms ease",
+                "-webkit-backface-visibility": "hidden",
                 "&:hover": {
                     opacity: "0.7"
                 }

@@ -2,9 +2,10 @@ import React from "react";
 import { withStyles, Typography, AppBar, IconButton } from "@material-ui/core";
 import { Menu, FormatQuote } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
-import NavbarNavItemsComponent from "./NavbarNavItemsComponent";
 import { route, getRoute } from "../../services/routingService";
-import NavbarQuickLinksComonent from "./NavbarQuickLinksComonent";
+import NavbarNavItemsComponent from "./NavbarNavItems.component";
+import NavbarQuickLinksComonent from "./NavbarQuickLinks.comonent";
+import NavbarSideDrawerComponent from "./NavbarSideDrawer.component";
 
 const NavbarComponentStyles = theme => ({
     root: {
@@ -60,13 +61,18 @@ class NavbarComponent extends React.Component {
     constructor(){
         super();
         this.state = {
-            active: getRoute()
+            active: getRoute(),
+            drawerOpen: false
         }
-        this.cancelRouteChangeEventListener = document.addEventListener("routeChangeEvent", this.onRouteChange.bind(this));
+        document.addEventListener("routeChangeEvent", this.onRouteChange.bind(this));
     }
 
     componentWillUnmount(){
         document.removeEventListener("routeChangeEvent", this.onRouteChange.bind(this), false);
+    }
+
+    onDrawerClose(){
+        this.setState({ drawerOpen: false });
     }
 
     onNavItemClick(item){
@@ -86,10 +92,11 @@ class NavbarComponent extends React.Component {
                 <nav>
                     <AppBar color="inherit" className={`navigation-appbar flex row align-vertical-center align-horizontal-space-between`} position="relative">
                         <div className={`hamburger-menu`}>
-                            <IconButton aria-label={strings.navbar.menu}>
+                            <IconButton onClick={() => this.setState({ drawerOpen: true })} aria-label={strings.navbar.menu}>
                                 <Menu />
                             </IconButton>
                         </div>
+                        <NavbarSideDrawerComponent open={this.state.drawerOpen} onDrawerClose={() => this.setState({ drawerOpen: false })} />
                         <div className={`name-section`}>
                             <Typography color="textPrimary" className={``} variant="h5">Jordan Bradfield</Typography>
                         </div>
