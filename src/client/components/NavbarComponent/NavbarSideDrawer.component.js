@@ -74,10 +74,10 @@ const NavbarSideDrawerComponent = ({ active, classes, open, onDrawerClose, onNav
                     </div>
                     <div className={`name-title flex column`}>
                         <Typography variant="overline" className={`name color-white`}>
-                            Jordan Bradfield
+                            {strings.navbar.title}
                         </Typography>
                         <Typography variant="subtitle1" className={`title fade color-white`}>
-                            Full Stack Developer
+                            {strings.navbar.role}
                         </Typography>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ const NavbarSideDrawerComponent = ({ active, classes, open, onDrawerClose, onNav
                 <List component="nav">
                     {strings.navbar.items.map((navitem, index) => {
                         return (
-                            <React.Fragment>
+                            <React.Fragment key={`drawer-navitem-${index}`}>
                                 <ListItem className={`navitem ${active === navitem.path ? "active" : ""}`} onClick={() => onNavItemClick(navitem)}>
                                     <Typography color="textSecondary">
                                         {navitem.name}

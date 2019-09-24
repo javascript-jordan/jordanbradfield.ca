@@ -1,6 +1,7 @@
 export const en = {
     navbar: {
         title: "Jordan Bradfield",
+        role: "Full Stack Developer",
         items: [
             {name: "Home", path: "/"},
             {name: "Experience", path: "/experience"},
