@@ -20,9 +20,10 @@
     border-top-right-radius: 0;
 }
 
-html {
+html, body {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -35,7 +36,10 @@ body {
     @extend .flex;
     @extend .column;
     & > :last-child {
-        padding: $spacing;
+        overflow: auto;
         @extend .grow;
+        & > :first-child {
+            margin: 8px;
+        }
     }
 }

@@ -24,15 +24,17 @@ const ViewComponentStyles = theme => ({
 
 const ViewComponent = ({ classes }) => {
     return (
-        <HashRouter>
-            <Switch>
-                {ROUTES.map((route, index) => {
-                    return <Route render={props => <route.component {...props} />} exact={true} key={`route-${index}`} path={route.path} />
-                })}
-                {/* Fallback to home page */}
-                <Redirect to="/" />
-            </Switch>
-        </HashRouter>
+        <div id="view">
+            <HashRouter>
+                <Switch>
+                    {ROUTES.map((route, index) => {
+                        return <Route render={props => <route.component {...props} />} exact={true} key={`route-${index}`} path={route.path} />
+                    })}
+                    {/* Fallback to home page */}
+                    <Redirect to="/" />
+                </Switch>
+            </HashRouter>
+        </div>
     );
 }
 
