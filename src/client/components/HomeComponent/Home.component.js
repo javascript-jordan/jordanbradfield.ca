@@ -12,17 +12,31 @@ const HomeComponentStyles = theme => {
             "& .intro-section": {
                 marginTop: sectionMarginTop,
                 "& .verbiage-section": {
-                    flexBasis: "60%"
+                    flexGrow: "1"
                 },
                 "& .picture-section": {
                     flexBasis: "25%",
                     "& img": {
                         opacity: "0",
                         width: "100%",
-                        transition: "opacity 500ms ease",
+                        // transition: "opacity 1s ease",
                         "&.ready": {
                             opacity: "1"
                         }
+                    }
+                }
+            },
+            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
+                "& .intro-section": {
+                    alignItems: "center",
+                    flexDirection: "column"
+                }
+            },
+            [theme.breakpoints.up("lg")]: {
+                "& .intro-section": {
+                    marginTop: theme.spacing(6),
+                    "& .verbiage-section": {
+                        maxWidth: "60%"
                     }
                 }
             }
@@ -41,11 +55,12 @@ class HomeComponent extends React.Component {
     }
 
     componentDidMount(){
+        window.addEventListener("resize", this.resizeImage.bind(this));
     }
 
     onImageLoad(){
         this.resizeImage();
-        this.setState({ imageReady: true });
+        this.setState({ imageReady: true })
     }
 
     resizeImage(){
@@ -57,10 +72,23 @@ class HomeComponent extends React.Component {
             parent = img.parentNode,
             view = document.querySelector("#view"),
             viewHeight = view.clientHeight,
+            viewWidth = view.clientWidth,
             viewClientRect = view.getBoundingClientRect(),
             imgOffsetFromTop = imgClientRect.top - viewClientRect.top;
-        img.style.height = `${viewHeight - imgOffsetFromTop}px`;
-        parent.style.flexBasis = `${(viewHeight - imgOffsetFromTop) / imgHeightToWidthRatio}px`
+        let newImgWidth = (viewHeight - imgOffsetFromTop) / imgHeightToWidthRatio,
+            newImgHeight = viewHeight - imgOffsetFromTop,
+            flexBasisStyleToAdd;
+        if(viewWidth >= config.constants.mobileBreakpoint){
+            //will the image be bigger than 50% width if full height
+            if((viewHeight / imgHeightToWidthRatio) > (viewWidth / 2)){
+                flexBasisStyleToAdd = (viewWidth / 2);
+            }else{
+                flexBasisStyleToAdd = newImgWidth;
+            }
+            parent.style.flexBasis = `${flexBasisStyleToAdd}px`;
+        }else{
+            parent.style.width = "70%";
+        }
     }
 
     render(){
