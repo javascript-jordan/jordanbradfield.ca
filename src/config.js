@@ -16,7 +16,7 @@ module.exports = {
     },
     constants: {
         isProduction: isProduction,
-        mobileBreakpoint: 700
+        mobileBreakpoint: 800
     },
     errors: {
         INVALID_XHR_CONFIG: "INVALID_XHR_CONFIG",

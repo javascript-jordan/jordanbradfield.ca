@@ -1,4 +1,4 @@
-import { convertToString, convertToObject, xhr } from "./util";
+import { convertToString, convertToObject, xhr, extractDateComparrison } from "./util";
 
 import config from "../config";
 
@@ -29,6 +29,15 @@ describe("util.js", () => {
         });
         test("it should return null when passed null", () => {
             expect(convertToObject(null)).toBe(null);
+        });
+    });
+    describe("extractDateComparrison()", () => {
+        let startDate = new Date("2017-09-30"), endDate = new Date("2019-09-29");
+        test("it should return an object", () => {
+            expect(typeof extractDateComparrison(startDate, endDate)).toBe("object");
+        });
+        test("it should return a valid date comparrison object", () => {
+            expect(extractDateComparrison(startDate, endDate).days).toBe(729);
         });
     });
     describe("xhr()", () => {

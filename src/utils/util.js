@@ -21,6 +21,32 @@ export const convertToObject = string => {
     }
 }
 
+export const extractDateComparrison = (startDate, endDate) => {
+    let result = {
+        years: 0,
+        weeks: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+    }
+    //if one of the arguments was not passed then error out
+    if(!startDate || !endDate) throw new Error(`Did not receive two valid arguments. Start: ${startDate} - End: ${endDate}`);
+    //check to see if both objects are dates
+    if(!startDate instanceof Date || !endDate instanceof Date) throw new Error(`Did not receive a date object for one or more parameters. Start: ${startDate} - End: ${endDate}`);
+    //get millisends between
+    let difference = endDate.getTime() - startDate.getTime();
+    //build the object
+    result["seconds"] = difference / 1000;
+    result["minutes"] = result.seconds / 60;
+    result["hours"] = result.minutes / 60;
+    result["days"] = result.hours / 24;
+    result["weeks"] = result.days / 7;
+    result["years"] = result.weeks / 52;
+    //spit out the result
+    return result;
+}
+
 export const xhr = (configuration, queryOrData) => new Promise(async (resolve, reject) => {
     let availableMethods = ["get", "post", "put", "delete", "patch", "head"];
     //check to see if the configuration object is valid

@@ -1,6 +1,7 @@
 import React from "react";
 import { Typography, withStyles } from "@material-ui/core";
 import { strings } from "../../services/stringService";
+import config from "../../../config";
 
 const NavbarNavItemsComponentStyles = theme => ({
     root: {
@@ -41,7 +42,7 @@ const NavbarNavItemsComponentStyles = theme => ({
                 }
             }
         },
-        [theme.breakpoints.down(700)]: {
+        [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
             display: "none",
             visibility: "hidden"
         }

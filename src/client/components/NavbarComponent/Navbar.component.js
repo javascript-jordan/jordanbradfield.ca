@@ -6,6 +6,7 @@ import { route, getRoute } from "../../services/routingService";
 import NavbarNavItemsComponent from "./NavbarNavItems.component";
 import NavbarQuickLinksComonent from "./NavbarQuickLinks.comonent";
 import NavbarSideDrawerComponent from "./NavbarSideDrawer.component";
+import config from "../../../config";
 
 const NavbarComponentStyles = theme => ({
     root: {
@@ -31,7 +32,7 @@ const NavbarComponentStyles = theme => ({
                 }
             }
         },
-        [theme.breakpoints.down(700)]: {
+        [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
             "& .navigation-appbar": {
                 justifyContent: "inherit",
                 padding: theme.spacing(1),
