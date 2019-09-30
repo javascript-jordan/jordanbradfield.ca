@@ -166,16 +166,6 @@ const HomeIntroComponent = ({ classes }) => {
         }
     }
 
-    function Overview(){
-        return (
-            <div className={`overview`}>
-                <Typography color="textSecondary" variant="body1">
-                    {strings.home.intro.overview}
-                </Typography>
-            </div>
-        )
-    }
-
     function ActionButtons(){
         return (
             <div className={`action-buttons flex align-horizontal-center`}>
@@ -189,31 +179,37 @@ const HomeIntroComponent = ({ classes }) => {
         );
     }
 
+    function Overview(){
+        return (
+            <div className={`overview`}>
+                <Typography color="textSecondary" variant="body1">
+                    {strings.home.intro.overview}
+                </Typography>
+            </div>
+        )
+    }
+
+    function Word({ text }){
+        return (
+            <div className={`word flex align-vertical-center`}>
+                <Typography variant="h1">
+                    {text}
+                </Typography>
+                <sup>+</sup>
+            </div>
+        );
+    }
+
     return (
         <div className={`${classes.root} root flex row align-vertical-start align-horizontal-center`}>
             <div className={`verbiage-section`}>
                 <div className={`slogan`}>
                     <div className={`row flex align-horizontal-center`}>
-                        <div className={`word flex align-vertical-center`}>
-                            <Typography variant="h1">
-                                {slogan[0]}
-                            </Typography>
-                            <sup>+</sup>
-                        </div>
-                        <div className={`word flex align-vertical-center`}>
-                            <Typography variant="h1">
-                                {slogan[1]}
-                            </Typography>
-                            <sup>+</sup>
-                        </div>
+                        <Word text={slogan[0]} />
+                        <Word text={slogan[1]} />
                     </div>
                     <div className={`row flex align-horizontal-center`}>
-                        <div className={`word flex align-vertical-center`}>
-                            <Typography variant="h1">
-                                {slogan[2]}
-                            </Typography>
-                            <sup>+</sup>
-                        </div>
+                        <Word text={slogan[2]} />
                     </div>
                 </div>
                 <Overview />
