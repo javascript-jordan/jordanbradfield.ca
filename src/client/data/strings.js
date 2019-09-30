@@ -33,6 +33,7 @@ export const en = {
         links: {
             github: "Github Repository",
             linkedin: "Linkedin Profile",
+            mail: "Email",
             twitter: "Twitter Feed"
         }
     }

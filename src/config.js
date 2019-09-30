@@ -15,8 +15,10 @@ module.exports = {
 
     },
     constants: {
+        email: "jordan.p.bradfield@gmail.com",
         isProduction: isProduction,
-        mobileBreakpoint: 800
+        mobileBreakpoint: 800,
+        name: "Jordan Bradfield"
     },
     errors: {
         INVALID_XHR_CONFIG: "INVALID_XHR_CONFIG",

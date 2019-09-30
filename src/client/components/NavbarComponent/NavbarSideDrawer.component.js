@@ -50,6 +50,7 @@ const NavbarSideDrawerStyles = theme => ({
         "& .navitems": {
             overflowY: "auto",
             "& .navitem": {
+                cursor: "pointer",
                 "&.active": {
                     backgroundColor: "rgba(0,0,0,0.1)"
                 }

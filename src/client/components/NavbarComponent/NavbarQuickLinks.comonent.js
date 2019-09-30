@@ -1,17 +1,12 @@
-import React from "react";
-import { AppBar, Typography, withStyles } from "@material-ui/core";
-import { FormatQuote } from "@material-ui/icons";
+import React, { useEffect, useState } from "react";
+import { AppBar, Typography, withStyles, useMediaQuery, useTheme, IconButton } from "@material-ui/core";
+import { FormatQuote, Mail } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
 import GithubImage from "../../images/navbar/github.png";
 import LinkedinImage from "../../images/navbar/linkedin.png";
 import TwitterImage from "../../images/navbar/twitter.jpg";
-import { getRoute } from "../../services/routingService";
-
-const linkes = [
-    {src: GithubImage, name: strings.navbar.links.github},
-    {src: LinkedinImage, name: strings.navbar.links.linkedin},
-    {src: TwitterImage, name: strings.navbar.links.twitter},
-]
+import config from "../../../config";
+import { isMobile, subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 
 const NavbarQuickLinksComponentStyles = theme => ({
     root: {
@@ -37,16 +32,67 @@ const NavbarQuickLinksComponentStyles = theme => ({
 });
 
 const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
-    return (
-        <AppBar color="primary" className={`${className} ${classes.root} flex row align-vertical-center align-horizontal-space-between`} position="relative">
-            <div className={`slogan-container flex row align-vertical-center`}>
+
+    let [state, setState] = useState({ mobile: isMobile() });
+
+    let links = state.mobile ? [
+        {click: onEmailIconClick, icon: Mail, name: strings.navbar.links.mail}
+    ] : [
+        {src: GithubImage, name: strings.navbar.links.github},
+        {src: LinkedinImage, name: strings.navbar.links.linkedin},
+        {src: TwitterImage, name: strings.navbar.links.twitter},
+    ];
+
+    function onEmailIconClick(){
+        window.open(`mailto:${config.constants.email}`, "_blank");
+    }
+
+    function onWindowSizeChange(){
+        setState({ mobile: isMobile() });
+    }
+
+    useEffect(() => {
+        subscribeToWindowSizeChange(onWindowSizeChange);
+        return () => {
+            unSubscribeToWindowSizeChange(onWindowSizeChange);
+        }
+    }, []);
+
+    function BlockQuote(){
+        return (
+            <>
                 <FormatQuote className={`left-quote`} />
                 <Typography component="i" color="inherit" variant="subtitle2">{strings.navbar.slogan}</Typography>
                 <FormatQuote className={`right-quote`} />
+            </>
+        );
+    }
+
+    function Name(){
+        return (
+            <Typography className={`color-white`} variant="h6">
+                Jordan Bradfield
+            </Typography>
+        );
+    }
+
+    return (
+        <AppBar color="primary" className={`${className} ${classes.root} flex row align-vertical-center align-horizontal-space-between`} position="relative">
+            <div className={`slogan-container flex row align-vertical-center`}>
+                {state.mobile ? <Name /> : <BlockQuote />}
             </div>
             <div className={`links-container flex row align-vertical-center`}>
-                {linkes.map((link, index) => {
-                    return <img alt={link.name} key={`quick-link-${index}`} height="30" width="auto" role="link" src={link.src} />;
+                {links.map((link, index) => {
+                    if(link.icon){
+                        return (
+                            <IconButton onClick={link.click} key={`mobile-icon-${link.name}`}>
+                                <link.icon className={`color-white`} aria-label={link.name} />
+                            </IconButton>
+                        );
+                    }
+                    return (
+                        <img alt={link.name} key={`quick-link-${index}`} height="30" width="auto" role="link" src={link.src} />
+                    );
                 })}
             </div>
         </AppBar>

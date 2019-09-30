@@ -7,6 +7,7 @@ import NavbarNavItemsComponent from "./NavbarNavItems.component";
 import NavbarQuickLinksComonent from "./NavbarQuickLinks.comonent";
 import NavbarSideDrawerComponent from "./NavbarSideDrawer.component";
 import config from "../../../config";
+import { isMobile, subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 
 const NavbarComponentStyles = theme => ({
     root: {
@@ -49,10 +50,6 @@ const NavbarComponentStyles = theme => ({
                     display: "block!important",
                     flex: "1 0 15%"
                 },
-            },
-            "& .quick-links-appbar": {
-                display: "none",
-                visibility: "hidden"
             }
         }
     }
@@ -65,11 +62,25 @@ class NavbarComponent extends React.Component {
             active: getRoute(),
             drawerOpen: false
         }
+        subscribeToWindowSizeChange(this.onWindowSizeChange.bind(this));
         document.addEventListener("routeChangeEvent", this.onRouteChange.bind(this));
     }
 
+    componentDidMount(){
+        this.setState({title: this.getTitle()});
+    }
+
     componentWillUnmount(){
+        unSubscribeToWindowSizeChange(this.onWindowSizeChange.bind(this));
         document.removeEventListener("routeChangeEvent", this.onRouteChange.bind(this), false);
+    }
+
+    getTitle(){
+        let active = getRoute();
+        if(isMobile()){
+            return strings.navbar.items.find(item => item.path === active).name;
+        }
+        return config.constants.name;
     }
 
     onDrawerClose(){
@@ -81,7 +92,11 @@ class NavbarComponent extends React.Component {
     }
 
     onRouteChange(){
-        this.setState({active: getRoute()});
+        this.setState({active: getRoute(), title: this.getTitle()});
+    }
+
+    onWindowSizeChange(){
+        this.setState({ title: this.getTitle() });
     }
 
     render(){
@@ -103,7 +118,7 @@ class NavbarComponent extends React.Component {
                             onDrawerClose={() => this.setState({ drawerOpen: false })}
                             onNavItemClick={this.onNavItemClick.bind(this)} />
                         <div className={`name-section`}>
-                            <Typography color="textPrimary" className={``} variant="h5">Jordan Bradfield</Typography>
+                            <Typography color="textPrimary" variant="h5">{this.state.title}</Typography>
                         </div>
                         <NavbarNavItemsComponent active={this.state.active} onNavItemClick={this.onNavItemClick.bind(this)} />
                         <div aria-hidden="true" className={`invisible-spacer`}>
