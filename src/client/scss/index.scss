@@ -1,6 +1,32 @@
 @import "./flex.scss";
 @import "./theme.scss";
 
+// global styles
+.bold {
+    font-weight: bolder;
+}
+.background-white {
+    background-color: #ffffff;
+}
+.color-white {
+    color: #ffffff;
+}
+.fade {
+    opacity: 0.7;
+}
+.paper-border-top {
+    border-top: 3px solid $primary;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+button.white-button {
+    background-color: #ffffff;
+    color: #000000;
+    &:hover {
+        background-color: rgba(255,255,255,0.1);
+    }
+}
+
 * {
     -webkit-font-smoothing: subpixel-antialiased;
 }
@@ -25,31 +51,6 @@ body {
         @extend .grow;
         & > :first-child {
             margin: 8px;
-            // global styles
-            .bold {
-                font-weight: bolder;
-            }
-            .background-white {
-                background-color: #ffffff;
-            }
-            .color-white {
-                color: #ffffff;
-            }
-            .fade {
-                opacity: 0.7;
-            }
-            .paper-border-top {
-                border-top: 3px solid $primary;
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
-            }
-            .white-button {
-                background-color: #ffffff;
-                color: #000000;
-                &:hover {
-                    background-color: rgba(255,255,255,0.1);
-                }
-            }
         }
     }
 }
