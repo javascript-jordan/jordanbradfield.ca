@@ -3,8 +3,9 @@ import { withStyles } from "@material-ui/styles";
 import { Typography, Button } from "@material-ui/core";
 import { strings } from "../../services/stringService";
 import config from "../../../config";
-import JordanTransparent from "../../images/home/jordan-transparent.png";
+import JordanTransparentLow from "../../images/home/jordan-transparent-low.png";
 import { route } from "../../services/routingService";
+import { lazyLoadImage } from "../../services/imageLazyLoadService";
 
 const HomeIntroComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
@@ -118,7 +119,11 @@ const HomeIntroComponent = ({ classes }) => {
     let [state, setState] = React.useState({imageReady: false, mobile: window.innerWidth <= config.constants.mobileBreakpoint}),
         imageRef = React.createRef(null);
 
-    let slogan = strings.home.intro.slogan;
+    let slogan = strings.home.intro.slogan,
+        imageSrcArray = [
+            config.photos.home.jordanTransparentMedium,
+            config.photos.home.jordanTransparentHigh
+        ];
 
     React.useEffect(() => {
         window.addEventListener("resize", onWindowSizeChange);
@@ -127,9 +132,17 @@ const HomeIntroComponent = ({ classes }) => {
         }
     }, []);
 
+    function getImage(){
+        return document.querySelector(".picture-section").querySelector("img");
+    }
+
     function onImageLoad(){
-        resizeImage();
-        setState({ imageReady: true });
+        if(!state.imageReady){
+            console.log("loading")
+            resizeImage();
+            lazyLoadImage(imageSrcArray, getImage());
+            setState({ imageReady: true });
+        }
     }
 
     function onWindowSizeChange(){
@@ -140,7 +153,7 @@ const HomeIntroComponent = ({ classes }) => {
     }
 
     function resizeImage(){
-        let img = document.querySelector(".picture-section").querySelector("img"),
+        let img = getImage(),
             imgHeight = img.clientHeight,
             imgWidth = img.clientWidth,
             imgHeightToWidthRatio = imgHeight / imgWidth,
@@ -216,7 +229,7 @@ const HomeIntroComponent = ({ classes }) => {
                 <ActionButtons />
             </div>
             <div className={`picture-section`}>
-                <img className={state.imageReady ? "ready" : ""} ref={imageRef} onLoad={onImageLoad} src={JordanTransparent} height="auto" />
+                <img className={state.imageReady ? "ready" : ""} ref={imageRef} onLoad={onImageLoad} src={JordanTransparentLow} height="auto" />
             </div>
         </div>
     );

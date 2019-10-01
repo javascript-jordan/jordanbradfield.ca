@@ -32,7 +32,7 @@ class HomeComponent extends React.Component {
             <div className={`${classes.root}`}>
                 <HomeIntroComponent />
             </div>
-        )
+        );
     }
 }
 
