@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, createRef, useRef } from "react";
 import { AppBar, Typography, withStyles, useMediaQuery, useTheme, IconButton } from "@material-ui/core";
 import { FormatQuote, Mail } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
@@ -12,6 +12,14 @@ const NavbarQuickLinksComponentStyles = theme => ({
     root: {
         color: "white",
         padding: theme.spacing(1),
+        maxHeight: "200",
+        transition: "all 0.2s ease",
+        transitionDelay: 0,
+        "&.hidden": {
+            maxHeight: 0,
+            overflow: "hidden",
+            padding: 0
+        },
         "& .slogan-container": {
             "& .left-quote": {
                 transform: "rotate(180deg)"
@@ -33,7 +41,7 @@ const NavbarQuickLinksComponentStyles = theme => ({
 
 const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
 
-    let [state, setState] = useState({ mobile: isMobile() });
+    let [state, setState] = useState({ mobile: isMobile(), hidden: false });
 
     let links = state.mobile ? [
         {click: onEmailIconClick, icon: Mail, name: strings.navbar.links.mail}
@@ -43,8 +51,34 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
         {src: TwitterImage, name: strings.navbar.links.twitter},
     ];
 
+    let self = useRef(null);
+
+    let view = null;
+
+    useEffect(() => {
+        //get active view
+        view = document.querySelector("#view");
+        //listen for scroll to hide this navbar
+        view.addEventListener("scroll", onScroll);
+        return () => {
+            view.removeEventListener("scroll", onScroll);
+        }
+    }, []);
+
     function onEmailIconClick(){
         window.open(`mailto:${config.constants.email}`, "_blank");
+    }
+
+    function onScroll(){
+        if(self.current.clientHeight < (view.scrollHeight - view.clientHeight)){
+            let oldState = {...state};
+            if(view.scrollTop > 0){
+                oldState.hidden = true;
+            }else{
+                oldState.hidden = false;
+            }
+            setState(oldState);
+        }
     }
 
     function onWindowSizeChange(){
@@ -77,7 +111,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
     }
 
     return (
-        <AppBar color="primary" className={`${className} ${classes.root} flex row align-vertical-center align-horizontal-space-between`} position="relative">
+        <AppBar ref={self} color="primary" className={`${className} ${classes.root} ${state.hidden ? "hidden" : ""} flex row align-vertical-center align-horizontal-space-between`} position="relative">
             <div className={`slogan-container flex row align-vertical-center`}>
                 {state.mobile ? <Name /> : <BlockQuote />}
             </div>
