@@ -4,8 +4,10 @@ import { Typography, Button } from "@material-ui/core";
 import { strings } from "../../services/stringService";
 import config from "../../../config";
 import JordanTransparentLow from "../../images/home/jordan-transparent-low.png";
+import JordanHeadshot from "../../images/home/jordan-headshot-low.png";
 import { route } from "../../services/routingService";
 import { lazyLoadImage } from "../../services/imageLazyLoadService";
+import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 
 const HomeIntroComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
@@ -46,11 +48,26 @@ const HomeIntroComponentStyles = theme => {
             "& .picture-section": {
                 flexBasis: "25%",
                 "& img": {
-                    opacity: "0",
-                    width: "100%",
-                    // transition: "opacity 1s ease",
-                    "&.ready": {
-                        opacity: "1"
+                    width: "100%"
+                },
+                "&.desktop-img": {
+                    display: "block",
+                    "& img": {
+                        opacity: "0"
+                    }
+                },
+                "&.mobile-img": {
+                    display: "none",
+                    margin: "auto",
+                    marginTop: sectionMarginTop,
+                    backgroundColor: "#ffffff",
+                    borderRadius: "50%",
+                    boxShadow: theme.shadows[8],
+                    padding: theme.spacing(2),
+                    overflow: "hidden",
+                    "& img": {
+                        backgroundColor: "#e0e0e0",
+                        borderRadius: "50%"
                     }
                 }
             },
@@ -85,7 +102,14 @@ const HomeIntroComponentStyles = theme => {
                         maxWidth: "100%"
                     },
                     "& .picture-section": {
-                        marginTop: sectionMarginTop / 2
+                        marginTop: sectionMarginTop / 2,
+                        width: '50%',
+                        "&.desktop-img": {
+                            display: "none"
+                        },
+                        "&.mobile-img": {
+                            display: "block"
+                        }
                     }
                 }
             },
@@ -104,11 +128,6 @@ const HomeIntroComponentStyles = theme => {
                 "&.root .verbiage-section": {
                     maxWidth: "60%"
                 }
-            },
-            [theme.breakpoints.between("sm", "md")]: {
-                "& .picture-section": {
-                    width: "50%!important"
-                }
             }
         }
     }
@@ -116,44 +135,45 @@ const HomeIntroComponentStyles = theme => {
 
 const HomeIntroComponent = ({ classes }) => {
 
-    let [state, setState] = React.useState({imageReady: false, mobile: window.innerWidth <= config.constants.mobileBreakpoint}),
-        imageRef = React.createRef(null);
+    let desktopImageRef = React.useRef(),
+        mobileImageRef = React.useRef();
 
     let slogan = strings.home.intro.slogan,
-        imageSrcArray = [
+        desktopImageSrcArray = [
             config.photos.home.jordanTransparentMedium,
             config.photos.home.jordanTransparentHigh
+        ], 
+        mobileImageSrcArray = [
+            config.photos.home.jordanHeadshotHigh
         ];
 
     React.useEffect(() => {
-        window.addEventListener("resize", onWindowSizeChange);
+        subscribeToWindowSizeChange(onWindowSizeChange);
+        //start loading higher quality images
+        lazyLoadImage(desktopImageSrcArray, getImage("desktop"));
+        lazyLoadImage(mobileImageSrcArray, getImage("mobile"));
         return () => {
-            window.removeEventListener("resize", onWindowSizeChange);
+            unSubscribeToWindowSizeChange(onWindowSizeChange);
         }
     }, []);
 
-    function getImage(){
-        return document.querySelector(".picture-section").querySelector("img");
+    function getImage(type){
+        return {
+            desktop: desktopImageRef,
+            mobile: mobileImageRef
+        }[type].current;
     }
 
     function onImageLoad(){
-        if(!state.imageReady){
-            console.log("loading")
-            resizeImage();
-            lazyLoadImage(imageSrcArray, getImage());
-            setState({ imageReady: true });
-        }
+        resizeDesktopImage();
     }
 
     function onWindowSizeChange(){
-        resizeImage();
-        if(window.innerWidth <= config.constants.mobileBreakpoint){
-            setState({ imageReady: true, mobile: true });
-        }
+        resizeDesktopImage();
     }
 
-    function resizeImage(){
-        let img = getImage(),
+    function resizeDesktopImage(){
+        let img = getImage("desktop"),
             imgHeight = img.clientHeight,
             imgWidth = img.clientWidth,
             imgHeightToWidthRatio = imgHeight / imgWidth,
@@ -177,6 +197,7 @@ const HomeIntroComponent = ({ classes }) => {
         }else{
             requestAnimationFrame(() => parent.style.width = "70%");
         }
+        img.style.opacity = "1";
     }
 
     function ActionButtons(){
@@ -202,6 +223,20 @@ const HomeIntroComponent = ({ classes }) => {
         )
     }
 
+    function Picture({ className, type, src, onLoad }){
+        var imageProps = {
+            src,
+            onLoad: onLoad || (()=>null),
+            ref: {mobile: mobileImageRef, desktop: desktopImageRef}[type]
+        }
+        console.log(imageProps)
+        return (
+            <div className={`${className} picture-section`}>
+                <img {...imageProps} height="auto" />
+            </div>
+        );
+    }
+
     function Word({ text }){
         return (
             <div className={`word flex align-vertical-center`}>
@@ -225,12 +260,13 @@ const HomeIntroComponent = ({ classes }) => {
                         <Word text={slogan[2]} />
                     </div>
                 </div>
+                {/* Only on mobile */}
+                <Picture className={`mobile-img`} type="mobile" src={JordanHeadshot} />
                 <Overview />
                 <ActionButtons />
             </div>
-            <div className={`picture-section`}>
-                <img className={state.imageReady ? "ready" : ""} ref={imageRef} onLoad={onImageLoad} src={JordanTransparentLow} height="auto" />
-            </div>
+            {/* Only on desktop */}
+            <Picture className={`desktop-img`} type="desktop" src={JordanTransparentLow} onLoad={onImageLoad} />
         </div>
     );
 }
