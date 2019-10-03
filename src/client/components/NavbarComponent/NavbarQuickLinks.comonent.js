@@ -60,8 +60,12 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
         view = document.querySelector("#view");
         //listen for scroll to hide this navbar
         view.addEventListener("scroll", onScroll);
+        //bind to window size change
+        subscribeToWindowSizeChange(onWindowSizeChange);
         return () => {
             view.removeEventListener("scroll", onScroll);
+            //ditch size change listener
+            unSubscribeToWindowSizeChange(onWindowSizeChange);
         }
     }, []);
 
@@ -71,26 +75,13 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
 
     function onScroll(){
         if(self.current.clientHeight < (view.scrollHeight - view.clientHeight)){
-            let oldState = {...state};
-            if(view.scrollTop > 0){
-                oldState.hidden = true;
-            }else{
-                oldState.hidden = false;
-            }
-            setState(oldState);
+            setState(state => ({...state, hidden: view.scrollTop > 0}));
         }
     }
 
     function onWindowSizeChange(){
-        setState({ mobile: isMobile() });
+        setState(state => ({...state, mobile: isMobile()}));
     }
-
-    useEffect(() => {
-        subscribeToWindowSizeChange(onWindowSizeChange);
-        return () => {
-            unSubscribeToWindowSizeChange(onWindowSizeChange);
-        }
-    }, []);
 
     function BlockQuote(){
         return (
