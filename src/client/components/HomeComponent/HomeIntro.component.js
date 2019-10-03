@@ -26,7 +26,6 @@ const HomeIntroComponentStyles = theme => {
                         flexWrap: "wrap",
                         "& .word": {
                             color: "#323232",
-                            marginRight: theme.spacing(2),
                             marginBottom: "-5px",
                             textTransform: "capitalize",
                             "& sup": {
@@ -40,6 +39,9 @@ const HomeIntroComponentStyles = theme => {
                                 "& sup": {
                                     animation: "$spin 300ms ease forwards"
                                 }
+                            },
+                            "&:not(:last-child)": {
+                                marginRight: theme.spacing(2)
                             }
                         }
                     }
