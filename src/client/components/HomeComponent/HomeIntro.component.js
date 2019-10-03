@@ -121,6 +121,9 @@ const HomeIntroComponentStyles = theme => {
                     "& sup": {
                         fontSize: "1.5rem"
                     }
+                },
+                "&.root .picture-section.mobile-img": {
+                    width: "75%"
                 }
             },
             [theme.breakpoints.up("lg")]: {
