@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles, Typography, Paper } from "@material-ui/core";
-import { xhr } from "../../../utils/util";
 import config from "../../../config";
+import ExperienceTimelineComponent from "./ExperienceTimeline.component";
 
 const ExperienceComponentStyles = theme => ({
     root: {
@@ -22,7 +22,7 @@ class ExperienceComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <Typography color="textPrimary">Experience</Typography>
+                <ExperienceTimelineComponent />
             </div>
         )
     }

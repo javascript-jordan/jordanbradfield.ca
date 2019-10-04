@@ -2,6 +2,11 @@ import { extractDateComparrison } from "../../utils/util";
 import constants from "./constants";
 
 export const en = {
+    experience: {
+        timeline: {
+            title: `${Math.floor(extractDateComparrison(constants.dates.INDUSTRY_START_DATE, new Date()).years)} years experience`
+        }
+    },
     home: {
         intro: {
             slogan: {
