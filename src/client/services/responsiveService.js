@@ -7,5 +7,5 @@ export const subscribeToWindowSizeChange = callback => {
 }
 
 export const unSubscribeToWindowSizeChange = callback => {
-    window.addEventListener("resize", callback);
+    window.removeEventListener("resize", callback);
 }
