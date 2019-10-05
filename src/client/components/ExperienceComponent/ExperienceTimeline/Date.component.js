@@ -1,10 +1,11 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
-import { strings } from "../../services/stringService";
+import { strings } from "../../../services/stringService";
+import config from "../../../../config";
 
-const ExperienceTimelineDateComponentStyles = theme => {
-    let padding = `${theme.spacing(0.5)} ${theme.spacing(1)}`;
+const DateComponentStyles = theme => {
+    let padding = theme.spacing(1);
     return {
         root: {
             boxShadow: theme.shadows[4],
@@ -15,22 +16,29 @@ const ExperienceTimelineDateComponentStyles = theme => {
                     padding,
                     fontWeight: 600,
                     textTransform: "uppercase"
-                },
-                "& .company-name": {
-                    padding,
-                    wordBreak: "break-word"
                 }
+            },
+            "& .company-name": {
+                padding: `${theme.spacing(1.5)} ${padding}`,
+                wordBreak: "break-word"
+            },
+            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
+                flexBasis: "auto"
             }
         }
     }
 }
 
-const ExperienceTimelineDateComponent = ({ classes, className, startDate, endDate, companyName }) => {
+const DateComponent = ({ classes, className, role}) => {
+    let companyName = role.company,
+        startDate = new Date(role.start).getFullYear(),
+        endDate = role.end ? new Date(role.end).getFullYear() : strings.experience.timeline.current;
+
     return (
         <div className={`${classes.root} ${className || ""} background-white`}>
             <div className={`dates`}>
                 <Typography className={`date center color-white`} variant="subtitle2">
-                    {startDate.getFullYear()}&nbsp;-&nbsp;{endDate ? endDate.getFullYear() : strings.experience.timeline.current}
+                    {startDate}&nbsp;-&nbsp;{endDate}
                 </Typography>
             </div>
             <div className={`company-name center`}>
@@ -42,4 +50,4 @@ const ExperienceTimelineDateComponent = ({ classes, className, startDate, endDat
     );
 }
 
-export default withStyles(ExperienceTimelineDateComponentStyles)(ExperienceTimelineDateComponent);
+export default withStyles(DateComponentStyles)(DateComponent);

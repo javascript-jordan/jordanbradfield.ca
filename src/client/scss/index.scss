@@ -17,10 +17,10 @@
 .fade {
     opacity: 0.7;
 }
-.paper-border-top {
-    border-top: 3px solid $primary;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+.page-title {
+    font-weight: bolder!important;
+    font-size: 140%!important;
+    text-transform: uppercase;
 }
 button.white-button {
     background-color: #ffffff;

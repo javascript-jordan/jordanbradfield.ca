@@ -1,7 +1,7 @@
 import React from "react";
 import { withStyles, Typography, Paper } from "@material-ui/core";
 import config from "../../../config";
-import ExperienceTimelineComponent from "./ExperienceTimeline.component";
+import ExperienceTimelineComponent from "./ExperienceTimeline/ExperienceTimeline.component";
 
 const ExperienceComponentStyles = theme => ({
     root: {
