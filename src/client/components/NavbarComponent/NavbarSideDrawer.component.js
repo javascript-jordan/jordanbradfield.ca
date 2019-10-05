@@ -4,6 +4,7 @@ import { Close } from "@material-ui/icons";
 import { withStyles } from "@material-ui/styles";
 import { strings } from "../../services/stringService";
 import JordanHeadshot from "../../images/navbar/jordan-headshot.png";
+import ImageBackdropComponent from "../Widgets/ImageBackdrop.component";
 
 const NavbarSideDrawerStyles = theme => ({
     root: {
@@ -17,15 +18,7 @@ const NavbarSideDrawerStyles = theme => ({
             "& .overview": {
                 marginTop: theme.spacing(0.5),
                 "& .image": {
-                    borderRadius: "50%",
-                    boxShadow: theme.shadows[8],
-                    padding: theme.spacing(1),
-                    marginRight: theme.spacing(2),
-                    overflow: "hidden",
-                    "& img": {
-                        backgroundColor: "#e0e0e0",
-                        borderRadius: "50%"
-                    }
+                    marginRight: theme.spacing(2)
                 },
                 "& .name-title": {
                     marginTop: theme.spacing(0.5),
@@ -70,8 +63,10 @@ const NavbarSideDrawerComponent = ({ active, classes, open, onDrawerClose, onNav
                     </IconButton>
                 </div>
                 <div className={`overview flex row align-vertical-start`}>
-                    <div className={`image background-white`}>
-                        <img src={JordanHeadshot} height="60" width="auto" />
+                    <div className={`image`}>
+                        <ImageBackdropComponent padding={1}>
+                            <img src={JordanHeadshot} height="60" width="auto" />
+                        </ImageBackdropComponent>
                     </div>
                     <div className={`name-title flex column`}>
                         <Typography variant="overline" className={`name color-white`}>

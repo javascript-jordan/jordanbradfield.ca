@@ -24,7 +24,10 @@ const ExperienceTimelineComponentStyles = theme => {
 
                     },
                     "& .mobile-view": {
-                        display: "none"
+                        display: "none",
+                        "& .date-description": {
+                            alignItems: "flex-end"
+                        }
                     }
                 }
             },
@@ -45,19 +48,19 @@ const ExperienceTimelineComponentStyles = theme => {
 }
 
 const ExperienceTimelineComponent = ({ classes }) => {
-    function DesktopView({ className, role }){
+    function DesktopView({ className, role, last }){
         return (
             <div className={`${className} flex row`}>
                 <DateComponent role={role} />
-                <IconLineComponent role={role} />
+                <IconLineComponent role={role} last={last} />
                 <DescriptionComponent className={`grow`} role={role} />
             </div>
         )
     }
-    function MobileView({ className, role }){
+    function MobileView({ className, role, last }){
         return (
             <div className={`${className} flex row`}>
-                <IconLineComponent role={role} />
+                <IconLineComponent role={role} last={last} />
                 <div className={`date-description flex column grow`}>
                     <DateComponent role={role} />
                     <DescriptionComponent role={role} />
@@ -76,8 +79,8 @@ const ExperienceTimelineComponent = ({ classes }) => {
                 {ROLES.map((role, index) => {
                     return (
                         <div className={`job-row`} key={`job-${index}`} >
-                            <DesktopView className={`desktop-view`} role={role} />
-                            <MobileView className={`mobile-view`} role={role} />
+                            <DesktopView className={`desktop-view`} role={role} last={index + 1 === ROLES.length} />
+                            <MobileView className={`mobile-view`} role={role} last={index + 1 === ROLES.length} />
                         </div>
                     );
                 })}

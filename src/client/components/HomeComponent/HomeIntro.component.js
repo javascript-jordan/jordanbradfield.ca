@@ -8,6 +8,7 @@ import JordanHeadshot from "../../images/home/jordan-headshot-low.png";
 import { route } from "../../services/routingService";
 import { lazyLoadImage } from "../../services/imageLazyLoadService";
 import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
+import ImageBackdropComponent from "../Widgets/ImageBackdrop.component";
 
 const HomeIntroComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
@@ -61,16 +62,7 @@ const HomeIntroComponentStyles = theme => {
                 "&.mobile-img": {
                     display: "none",
                     margin: "auto",
-                    marginTop: sectionMarginTop,
-                    backgroundColor: "#ffffff",
-                    borderRadius: "50%",
-                    boxShadow: theme.shadows[8],
-                    padding: theme.spacing(2),
-                    overflow: "hidden",
-                    "& img": {
-                        backgroundColor: "#e0e0e0",
-                        borderRadius: "50%"
-                    }
+                    marginTop: sectionMarginTop
                 }
             },
             "& .overview": {
@@ -228,16 +220,15 @@ const HomeIntroComponent = ({ classes }) => {
         )
     }
 
-    function Picture({ className, type, src, onLoad }){
+    function Picture({ className, type, src, onLoad, mobile }){
         var imageProps = {
             src,
             onLoad: onLoad || (()=>null),
             ref: {mobile: mobileImageRef, desktop: desktopImageRef}[type]
-        }
-        console.log(imageProps)
+        }, image = <img {...imageProps} height="auto" />;
         return (
             <div className={`${className} picture-section`}>
-                <img {...imageProps} height="auto" />
+                {mobile ? <ImageBackdropComponent>{image}</ImageBackdropComponent> : image}
             </div>
         );
     }
@@ -266,7 +257,7 @@ const HomeIntroComponent = ({ classes }) => {
                     </div>
                 </div>
                 {/* Only on mobile */}
-                <Picture className={`mobile-img`} type="mobile" src={JordanHeadshot} />
+                <Picture className={`mobile-img`} type="mobile" src={JordanHeadshot} mobile={true} />
                 <Overview />
                 <ActionButtons />
             </div>
