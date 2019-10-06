@@ -27,8 +27,18 @@ const HomeIntroComponentStyles = theme => {
                         flexWrap: "wrap",
                         "& .word": {
                             color: "#323232",
-                            marginBottom: "-5px",
                             textTransform: "capitalize",
+                            "&:not(.small)": {
+                                letterSpacing: 6
+                            },
+                            "&.small": {
+                                "& h1":{
+                                    fontSize: "4rem"
+                                },
+                                "& sup": {
+                                    fontSize: "2.5rem"
+                                }
+                            },
                             "& sup": {
                                 color: theme.palette.primary.main,
                                 fontSize: "3.5rem",
@@ -41,7 +51,7 @@ const HomeIntroComponentStyles = theme => {
                                     animation: "$spin 300ms ease forwards"
                                 }
                             },
-                            "&:not(:last-child)": {
+                            "&:first-child.small": {
                                 marginRight: theme.spacing(2)
                             }
                         }
@@ -78,8 +88,18 @@ const HomeIntroComponentStyles = theme => {
             [theme.breakpoints.down("1100")]: {
                 "&.root": {
                     "& .verbiage-section .slogan": {
-                        "& .row .word h1": {
-                            fontSize: "4.5rem"
+                        "& .row .word": {
+                            "&.small": {
+                                "& h1": {
+                                    fontSize: "3.5rem"
+                                },
+                                "& sup": {
+                                    fontSize: "1.5rem"
+                                }
+                            },
+                            "& h1": {
+                                fontSize: "4.5rem"
+                            }
                         },
                         "& .row .word sup": {
                             fontSize: "2rem"
@@ -109,6 +129,9 @@ const HomeIntroComponentStyles = theme => {
             },
             [theme.breakpoints.down("xs")]: {
                 "&.root .verbiage-section .slogan .row .word": {
+                    "&.small h1": {
+                        fontSize: "2.5rem"
+                    },
                     "& h1": {
                         fontSize: "3rem"
                     },
@@ -233,9 +256,9 @@ const HomeIntroComponent = ({ classes }) => {
         );
     }
 
-    function Word({ text }){
+    function Word({ text, small }){
         return (
-            <div className={`word flex align-vertical-center`}>
+            <div className={`word flex align-vertical-center ${small ? "small" : ""}`}>
                 <Typography variant="h1">
                     {text}
                 </Typography>
@@ -248,9 +271,9 @@ const HomeIntroComponent = ({ classes }) => {
         <div className={`${classes.root} root flex row align-vertical-start align-horizontal-center`}>
             <div className={`verbiage-section`}>
                 <div className={`slogan`}>
-                    <div className={`row flex align-horizontal-center`}>
-                        <Word text={slogan[0]} />
-                        <Word text={slogan[1]} />
+                    <div className={`row flex align-horizontal-center align-vertical-center`}>
+                        <Word text={slogan[0]} small={true} />
+                        <Word text={slogan[1]} small={true} />
                     </div>
                     <div className={`row flex align-horizontal-center`}>
                         <Word text={slogan[2]} />
