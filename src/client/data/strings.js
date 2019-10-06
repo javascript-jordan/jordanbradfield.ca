@@ -40,6 +40,7 @@ export const en = {
                     start: "2017-05-01",
                     end: "2017-07-11",
                     role: "Wellness Leader",
+                    icon: "fitness",
                     description: `
                         Working at the YMCA was a great opportunity for myself. I was able to work in an Industry I was passionate about at the time. I had the ability to help others achieve their goals and live a healthier life. I was given opportunities to develope workout plans based on a clients needs and help them execute the daily exercises in the gym. I was also able to work on my leadership by leading a couple fitness classes as well. This job was a gateway to learning what a consultant was all about and how to keep clients happy.
                     `
