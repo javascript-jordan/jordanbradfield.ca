@@ -26,7 +26,8 @@ const ExperienceTimelineComponentStyles = theme => {
                     "& .mobile-view": {
                         display: "none",
                         "& .date-description": {
-                            alignItems: "flex-end"
+                            alignItems: "flex-end",
+                            height: "fit-content"
                         }
                     }
                 }

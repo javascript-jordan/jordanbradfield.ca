@@ -1,6 +1,8 @@
 import config from "../../config";
 
-export const isMobile = () => window.innerWidth < config.constants.mobileBreakpoint;
+export const getScreenWidth = () => window.innerWidth;
+
+export const isMobile = () => getScreenWidth() < config.constants.mobileBreakpoint;
 
 export const subscribeToWindowSizeChange = callback => {
     window.addEventListener("resize", callback);

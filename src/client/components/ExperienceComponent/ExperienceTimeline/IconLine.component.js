@@ -23,7 +23,6 @@ const IconLineComponentStyles = theme => {
             "& .line": {
                 "& div": {
                     borderRight: "2px dashed black",
-                    height: "100%",
                     transform: "translateX(-1px)",
                     width: 2
                 }
@@ -45,8 +44,8 @@ const IconLineComponent = ({ classes, className, role, last }) => {
                     <Icon className={`icon`} />
                 </ImageBackdropComponent>
             </div>
-            <div className={`line center grow ${last ? "hide" : ""}`}>
-                <div></div>
+            <div className={`line center grow flex column ${last ? "hide" : ""}`}>
+                <div className={`grow`}></div>
             </div>
         </div>
     );
