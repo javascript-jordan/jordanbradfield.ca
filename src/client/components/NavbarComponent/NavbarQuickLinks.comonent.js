@@ -62,10 +62,12 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
         view.addEventListener("scroll", onScroll);
         //bind to window size change
         subscribeToWindowSizeChange(onWindowSizeChange);
+        //listen for route changes to show navbar if user was scrolled
+        document.addEventListener("routeChangeEvent", onRouteChange);
         return () => {
             view.removeEventListener("scroll", onScroll);
-            //ditch size change listener
             unSubscribeToWindowSizeChange(onWindowSizeChange);
+            document.removeEventListener("routeChangeEvent", onRouteChange);
         }
     }, []);
 
@@ -81,6 +83,10 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
 
     function onWindowSizeChange(){
         setState(state => ({...state, mobile: isMobile()}));
+    }
+
+    function onRouteChange(){
+        setState(state => ({...state, hidden: false}));
     }
 
     function BlockQuote(){
