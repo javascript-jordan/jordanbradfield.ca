@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { withStyles } from "@material-ui/styles";
 import { TheatersOutlined } from "@material-ui/icons";
 import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
+import { strings } from "../../services/stringService";
 
 const CarouselComponentStyles = theme => {
     return {
@@ -10,13 +11,14 @@ const CarouselComponentStyles = theme => {
                 width: "100%",
                 overflow: "hidden",
                 "& .carousel": {
-                    transition: "transform 750ms ease-in-out",
+                    transition: "transform 250ms ease-in-out",
                     transform: "translateX(0)"
                 }
             },
             "& .controls-container": {
                 width: "100%",
                 overflowX: "auto",
+                marginTop: theme.spacing(1.5),
                 "& .control-wrapper": {
                     cursor: "pointer",
                     "& .control": {
@@ -34,9 +36,6 @@ const CarouselComponentStyles = theme => {
                         "& .control": {
                             backgroundColor: theme.palette.primary.main
                         }
-                    },
-                    "&:not(:last-child)": {
-                        marginRight: theme.spacing(1)
                     }
                 }
             }
@@ -69,9 +68,14 @@ const CarouselComponent = ({ classes, children }) => {
                 element.style.width = carouselWrapper.clientWidth;
             });
         }
-        resizeCarousel();
-        resizeCarouselItems();
-        hideNonactiveItems(active, carouselItems);
+        setActive(active => {
+            resizeCarousel();
+            resizeCarouselItems();
+            translateWrapper(0);
+            hideNonactiveItems(0, carouselItems);
+            return 0;
+        });
+        
     }
 
     function hideNonactiveItems(activeItem, items){
@@ -93,6 +97,10 @@ const CarouselComponent = ({ classes, children }) => {
         return carouselRef.current;
     }
 
+    function getChildren(){
+        return Array.isArray(children) ? children : [children];
+    }
+
     function goToSlide(slideNumber){
         if(slideNumber === active) return;
         return setActiveItem(slideNumber);
@@ -102,8 +110,8 @@ const CarouselComponent = ({ classes, children }) => {
         let carouselWrapper = getCarouselWrapper(),
             carouselItems = getCarouselItems(),
             carousel = getCarousel();
-            //translate carousel itme into view
-        carousel.style.transform = `translateX(-${activeItem * carouselWrapper.clientWidth}px)`;
+        //translate carousel itme into view
+        translateWrapper(activeItem * carouselWrapper.clientWidth);
         //make sure a screen reader doesn't read out the res
         hideNonactiveItems(activeItem, carouselItems);
         //set new active item
@@ -114,17 +122,21 @@ const CarouselComponent = ({ classes, children }) => {
         buildCarousel();
     }
 
+    function translateWrapper(distance){
+        getCarousel().style.transform = `translateX(-${distance}px)`;
+    }
+
     return (
-        <div className={`${classes.root}`}>
+        <div aria-label={strings.aria.carousel.name} className={`${classes.root}`}>
             <div ref={carouseWrapperRef} className={`carousel-wrapper`}>
                 <div ref={carouselRef} className={`carousel flex row align-vertical-start`}>
                     {children}
                 </div>
             </div>
-            <div className={`controls-container flex row align-vertical-center align-horizontal-center`}>
-                {children.map((node, index) => {
+            <div aria-label={strings.aria.carousel.controls} className={`controls-container flex row align-vertical-center align-horizontal-center`}>
+                {getChildren().map((node, index) => {
                     return (
-                        <div className={`control-wrapper`} key={`control-${index}`} onClick={() => goToSlide(index)}>
+                        <div aria-hidden={index === active} aria-label={strings.aria.carousel[index < active ? "previous" : "next"]} className={`control-wrapper`} key={`control-${index}`} onClick={() => goToSlide(index)}>
                             <span className={`control background-white ${active === index ? "active" : ""}`}></span>
                         </div>
                     );

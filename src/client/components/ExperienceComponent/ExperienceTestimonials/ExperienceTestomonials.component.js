@@ -1,11 +1,20 @@
 import React, { useEffect, useRef } from "react";
-import { withStyles } from "@material-ui/core";
+import { Typography, withStyles } from "@material-ui/core";
 import CarouselComponent from "../../Widgets/Carousel.component";
+import TestomonialComponent from "./Testomonial.component";
+import { strings } from "../../../services/stringService";
+import config from "../../../../config";
 
 const ExperienceTestomonialsComponentStyles = theme => {
     return {
         root: {
-            
+            "& .title": {
+                margin: `${theme.spacing(8)} 0 ${theme.spacing(2)} 0`
+            },
+            "& .testomonials": {
+                maxWidth: 1000,
+                margin: "auto",
+            }
         }
     }
 }
@@ -13,17 +22,18 @@ const ExperienceTestomonialsComponentStyles = theme => {
 const ExperienceTestomonialsComponent = ({ classes }) => {
     return (
         <div className={`${classes.root}`}>
-            <CarouselComponent>
-                <div className={`item-1`}>
-                    Item 1
-                </div>
-                <div className={`item-2`}>
-                    Item 2
-                </div>
-                <div className={`item-3`}>
-                    Item 3
-                </div>
-            </CarouselComponent>
+            <div className={`title`}>
+                <Typography className={`page-title`} color="textPrimary" variant="h6">
+                    {strings.experience.testomonials.title}
+                </Typography>
+            </div>
+            <div className={`testomonials`}>
+                <CarouselComponent>
+                    {strings.experience.testomonials.reviews.map((testomonial, index) => {
+                        return <TestomonialComponent testomonial={testomonial} key={`testomonial-${index}`} />
+                    })}
+                </CarouselComponent>
+            </div>
         </div>
     );
 }

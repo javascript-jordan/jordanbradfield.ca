@@ -2,6 +2,15 @@ import { extractDateComparrison } from "../../utils/util";
 import constants from "./constants";
 
 export const en = {
+    aria: {
+        carousel: {
+            name: "Carousel",
+            controls: "Carousel Controls",
+            next: "Next",
+            previous: "Previous",
+            item: "Carousel Item"
+        }
+    },
     experience: {
         timeline: {
             title: `${Math.floor(extractDateComparrison(constants.dates.INDUSTRY_START_DATE, new Date()).years)} years experience`,
@@ -34,6 +43,26 @@ export const en = {
                     description: `
                         Working at the YMCA was a great opportunity for myself. I was able to work in an Industry I was passionate about at the time. I had the ability to help others achieve their goals and live a healthier life. I was given opportunities to develope workout plans based on a clients needs and help them execute the daily exercises in the gym. I was also able to work on my leadership by leading a couple fitness classes as well. This job was a gateway to learning what a consultant was all about and how to keep clients happy.
                     `
+                }
+            ]
+        },
+        testomonials: {
+            title: "Testomonials",
+            reviews: [
+                {
+                    from: "Colleague",
+                    review: "Jordan's determination, motivation and enthusiasm when dealing with new issues and requirements makes it great to work with him. Jordan is always strategic and takes a positive approach when new challenges arise.",
+                    gender: "male"
+                },
+                {
+                    from: "Colleague",
+                    review: "Jordan is an awesome developer with amazing skills. He is always learning new technology and staying up to date on latest industry trends and standards. His motivation carries throughout the team.",
+                    gender: "female"
+                },
+                {
+                    from: "Colleague",
+                    review: "Jordan has been great to work with on many aspects including developing new features or tracking new issues and pain points in current design. He also renders professionalism in the workplace.",
+                    gender: "male"
                 }
             ]
         }
