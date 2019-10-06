@@ -1,15 +1,17 @@
 import React from "react";
 import { withStyles, Typography } from "@material-ui/core";
 import ImageBackdrop from "../../Widgets/ImageBackdrop.component";
-import AvatarMale from "../../../images/experience/avatar-male.png";
-import AvatarWoman from "../../../images/experience/avatar-woman.jpg";
+import Avatar from "../../../images/experience/avatar.png";
 
 const TestomonialComponentStyles = theme => {
     return {
         root: {
             marginTop: theme.spacing(3),
             "& .image-container": {
-                width: "fit-content"
+                width: "fit-content",
+                "& img": {
+                    padding: theme.spacing(0.5)
+                }
             },
             "& .graphic-container": {
                 margin: `${theme.spacing(2.5)} 0 ${theme.spacing(2.5)} 0`,
@@ -45,12 +47,11 @@ const TestomonialComponentStyles = theme => {
 }
 
 const TestomonialComponent = ({ classes, testomonial }) => {
-    let img = {male: AvatarMale, female: AvatarWoman}[testomonial.gender];
     return (
         <div className={`${classes.root} flex column align-vertical-center`}>
             <div aria-hidden="true" className={`image-container`}>
                 <ImageBackdrop padding={1}>
-                    <img height="80" src={img} />
+                    <img height="70" src={Avatar} />
                 </ImageBackdrop>
             </div>
             <div className={`graphic-container`}>
