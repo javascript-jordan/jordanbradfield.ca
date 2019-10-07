@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles, Typography, Paper } from "@material-ui/core";
 import { xhr } from "../../../utils/util";
 import config from "../../../config";
+import SkillsGraphsComponent from "./SkillsGraphs/SkillsGraphs.component";
 
 const SkillsComponentStyles = theme => ({
     root: {
@@ -22,7 +23,7 @@ class SkillsComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <Typography color="textPrimary">Skills</Typography>
+                <SkillsGraphsComponent />
             </div>
         )
     }
