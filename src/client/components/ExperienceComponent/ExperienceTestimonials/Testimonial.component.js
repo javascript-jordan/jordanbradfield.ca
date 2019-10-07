@@ -3,7 +3,7 @@ import { withStyles, Typography } from "@material-ui/core";
 import ImageBackdrop from "../../Widgets/ImageBackdrop.component";
 import Avatar from "../../../images/experience/avatar.png";
 
-const TestomonialComponentStyles = theme => {
+const TestimonialComponentStyles = theme => {
     return {
         root: {
             marginTop: theme.spacing(3),
@@ -34,7 +34,7 @@ const TestomonialComponentStyles = theme => {
                     }
                 }
             },
-            "& .testomonial-container": {
+            "& .testimonial-container": {
                 fontStyle: "italic"
             },
             "& .from-container": {
@@ -46,7 +46,7 @@ const TestomonialComponentStyles = theme => {
     }
 }
 
-const TestomonialComponent = ({ classes, testomonial }) => {
+const TestimonialComponent = ({ classes, testimonial }) => {
     return (
         <div className={`${classes.root} flex column align-vertical-center`}>
             <div aria-hidden="true" className={`image-container`}>
@@ -57,18 +57,18 @@ const TestomonialComponent = ({ classes, testomonial }) => {
             <div className={`graphic-container`}>
                 <div className={`line`}></div>
             </div>
-            <div className={`testomonial-container`}>
+            <div className={`testimonial-container`}>
                 <Typography color="textPrimary" className={`center`} variant="h6">
-                    &#34;{testomonial.review}&#34;
+                    &#34;{testimonial.review}&#34;
                 </Typography>
             </div>
             <div className={`from-container`}>
                 <Typography variant="overline" color="textSecondary">
-                    {testomonial.from}
+                    {testimonial.from}
                 </Typography>
             </div>
         </div>
     );
 }
 
-export default withStyles(TestomonialComponentStyles)(TestomonialComponent);
+export default withStyles(TestimonialComponentStyles)(TestimonialComponent);
