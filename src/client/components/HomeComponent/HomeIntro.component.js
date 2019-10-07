@@ -26,17 +26,18 @@ const HomeIntroComponentStyles = theme => {
                     "& .row": {
                         flexWrap: "wrap",
                         "& .word": {
-                            color: "#323232",
+                            color: "#232323",
                             textTransform: "capitalize",
                             "&:not(.small)": {
-                                letterSpacing: 6
+                                // letterSpacing: 6
                             },
                             "&.small": {
                                 "& h1":{
                                     fontSize: "4rem"
                                 },
                                 "& sup": {
-                                    fontSize: "2.5rem"
+                                    fontSize: "2.5rem",
+                                    marginLeft: theme.spacing(0.5)
                                 }
                             },
                             "& sup": {

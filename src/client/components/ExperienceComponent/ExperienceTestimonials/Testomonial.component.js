@@ -10,7 +10,7 @@ const TestomonialComponentStyles = theme => {
             "& .image-container": {
                 width: "fit-content",
                 "& img": {
-                    padding: theme.spacing(0.5)
+                    padding: theme.spacing(2.5)
                 }
             },
             "& .graphic-container": {
@@ -50,8 +50,8 @@ const TestomonialComponent = ({ classes, testomonial }) => {
     return (
         <div className={`${classes.root} flex column align-vertical-center`}>
             <div aria-hidden="true" className={`image-container`}>
-                <ImageBackdrop padding={1}>
-                    <img height="70" src={Avatar} />
+                <ImageBackdrop padding={0.5}>
+                    <img height="45" src={Avatar} />
                 </ImageBackdrop>
             </div>
             <div className={`graphic-container`}>
