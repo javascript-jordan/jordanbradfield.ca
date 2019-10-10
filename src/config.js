@@ -31,8 +31,7 @@ module.exports = {
     photos: {
         home: {
             jordanHeadshotHigh: serverBase + "/images/home/jordan-headshot-hq.png",
-            jordanTransparentMedium: serverBase + "/images/home/jordan-transparent-sq.png",
-            jordanTransparentHigh: serverBase + "/images/home/jordan-transparent-hq.png"
+            jordanTransparentMedium: serverBase + "/images/home/jordan-transparent-mq.png"
         }
     },
     xhr: {
