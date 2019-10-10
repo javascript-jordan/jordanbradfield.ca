@@ -161,8 +161,7 @@ const HomeIntroComponent = ({ classes }) => {
 
     let slogan = strings.home.intro.slogan,
         desktopImageSrcArray = [
-            config.photos.home.jordanTransparentMedium,
-            config.photos.home.jordanTransparentHigh
+            config.photos.home.jordanTransparentMedium
         ], 
         mobileImageSrcArray = [
             config.photos.home.jordanHeadshotHigh
