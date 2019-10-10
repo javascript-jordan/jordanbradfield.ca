@@ -47,8 +47,8 @@ export const en = {
                 }
             ]
         },
-        testomonials: {
-            title: "Testomonials",
+        testimonials: {
+            title: "Testimonials",
             reviews: [
                 {
                     from: "Colleague",
