@@ -22,8 +22,12 @@ if(isMaster){
     SERVER.use(cors());
     //apply routes
     SERVER.use("/api", routes);
+    //serve static images
+    SERVER.use("/images", (req, res) => {
+        res.sendFile(join(__dirname, "images", req.path));
+    });
     //aware express of the build directory
-    if(constants.isProduction) SERVER.use(express.static(join(__dirname, "public")));
+    SERVER.use(express.static(join(__dirname, "public")));
     //apply base route to server application when user lands on domain
     SERVER.use("/", (req, res) => {
         if(constants.isProduction){
