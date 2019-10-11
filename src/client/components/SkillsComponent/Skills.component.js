@@ -3,6 +3,7 @@ import { withStyles, Typography, Paper } from "@material-ui/core";
 import { xhr } from "../../../utils/util";
 import config from "../../../config";
 import SkillsGraphsComponent from "./SkillsGraphs/SkillsGraphs.component";
+import { strings } from "../../services/stringService";
 
 const SkillsComponentStyles = theme => ({
     root: {
@@ -23,6 +24,9 @@ class SkillsComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
+                <Typography className={`page-title page-title-spacing`} variant="h6">
+                    {strings.skills.title}
+                </Typography>
                 <SkillsGraphsComponent />
             </div>
         )

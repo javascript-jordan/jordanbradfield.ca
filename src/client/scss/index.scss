@@ -14,6 +14,9 @@
 .color-white {
     color: #ffffff;
 }
+.component-spacing {
+    margin: 1em 0;
+}
 .fade {
     opacity: 0.7;
 }
@@ -25,6 +28,14 @@
     font-weight: bolder!important;
     font-size: 140%!important;
     text-transform: uppercase;
+}
+.page-sub-title {
+    @extend .page-title;
+    font-weight: 600!important;
+    font-size: 120%!important;
+}
+.page-title-spacing {
+    margin: 1.5em 0!important;
 }
 button.white-button {
     background-color: #ffffff;

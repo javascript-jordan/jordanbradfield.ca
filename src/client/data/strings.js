@@ -102,5 +102,16 @@ export const en = {
             mail: "Email",
             twitter: "Twitter Feed"
         }
+    },
+    skills: {
+        title: "skills Repository",
+        graphs: {
+            technical: {
+                title: "Technical Skills"
+            },
+            knowledge: {
+                title: "Knowledge"
+            }
+        }
     }
 }

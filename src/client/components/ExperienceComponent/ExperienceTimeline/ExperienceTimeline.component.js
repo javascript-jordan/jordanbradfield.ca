@@ -13,11 +13,7 @@ const ExperienceTimelineComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
     return {
         root: {
-            "& .timeline-title": {
-                marginTop: sectionMarginTop
-            },
             "& .timeline": {
-                marginTop: sectionMarginTop,
                 "& .job-row": {
                     marginBottom: theme.spacing(2),
                     "& .desktop-view": {
@@ -72,7 +68,7 @@ const ExperienceTimelineComponent = ({ classes }) => {
     return (
         <div className={`${classes.root} root`}>
             <div className={`timeline-title`}>
-                <Typography className={`page-title`} color="textPrimary" variant="h6">
+                <Typography className={`page-title page-title-spacing`} color="textPrimary" variant="h6">
                     {strings.experience.timeline.title}
                 </Typography>
             </div>

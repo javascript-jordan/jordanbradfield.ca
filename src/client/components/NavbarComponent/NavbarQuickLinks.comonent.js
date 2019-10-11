@@ -26,6 +26,9 @@ const NavbarQuickLinksComponentStyles = theme => ({
             }
         },
         "& .links-container": {
+            "& .mobile-icon": {
+                padding: theme.spacing(0.75)
+            },
             "& img": {
                 cursor: "pointer",
                 marginRight: theme.spacing(2),
@@ -116,7 +119,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
                 {links.map((link, index) => {
                     if(link.icon){
                         return (
-                            <IconButton onClick={link.click} key={`mobile-icon-${link.name}`}>
+                            <IconButton className={`mobile-icon`} onClick={link.click} key={`mobile-icon-${link.name}`}>
                                 <link.icon className={`color-white`} aria-label={link.name} />
                             </IconButton>
                         );
