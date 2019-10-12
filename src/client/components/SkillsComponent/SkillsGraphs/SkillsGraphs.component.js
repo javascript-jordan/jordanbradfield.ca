@@ -10,14 +10,20 @@ const SkillsGraphsComponentStyles = theme => {
             "&>*": {
                 paddingBottom: theme.spacing(2),
                 maxWidth: "50%",
-                overflow: "visible hidden"
+                overflow: "visible hidden",
+                "&:first-child": {
+                    paddingRight: "10%"
+                }
             },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "&.root": {
                     flexDirection: "column",
                     "&>*": {
                         maxWidth: "100%",
-                        overflow: "visible"
+                        overflow: "visible",
+                        "&:first-child": {
+                            paddingRight: 0
+                        }
                     }
                 }
             }

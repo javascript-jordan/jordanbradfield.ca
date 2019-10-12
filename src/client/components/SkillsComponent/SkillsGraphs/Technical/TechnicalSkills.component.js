@@ -8,9 +8,10 @@ import config from "../../../../../config";
 const TechnicalSkillsComponentStyles = theme => {
     return {
         root: {
-            paddingRight: theme.spacing(3.5),
-            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
-                paddingRight: 0
+            "& .skills-list": {
+                "&>*:not(:last-child)": {
+                    marginBottom: theme.spacing(3)
+                }
             }
         }
     }
