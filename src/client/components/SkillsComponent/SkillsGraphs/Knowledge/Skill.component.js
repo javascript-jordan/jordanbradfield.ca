@@ -11,11 +11,17 @@ const SkillComponentStyles = theme => {
             minHeight: "2rem",
             transition: "opacity 1s ease",
             "& .icon": {
-                marginRight: theme.spacing(1)
+                marginRight: theme.spacing(1),
+                transition: "transform 100ms ease"
             },
             "& .text>*": {
                 fontSize: "90%",
                 textTransform: "uppercase"
+            },
+            "&:hover": {
+                "& .icon": {
+                    transform: "translateX(8px)"
+                }
             }
         }
     }
@@ -38,7 +44,7 @@ const SkillComponent = ({ classes, className, key, index, item }) => {
     }
 
     return (
-        <div className={`${classes.root} ${className || ""} flex row align-vertical-center`} key={key} ref={self}>
+        <div className={`${classes.root} ${className || ""} flex row align-vertical-start cursor-crosshair`} key={key} ref={self}>
             <div className={`icon`}>
                 <ArrowForward color="primary">
 

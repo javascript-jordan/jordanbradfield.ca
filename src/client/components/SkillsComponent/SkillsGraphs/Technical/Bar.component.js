@@ -25,7 +25,16 @@ const BarComponentStyles = theme => {
                 "& .skill-value": {
                     boxShadow: theme.shadows[4],
                     padding: `${theme.spacing(0.25)} ${theme.spacing(1)}`,
-                    transform: "translateX(-50%)"
+                    height: theme.spacing(3),
+                    width: theme.spacing(3),
+                    transform: "translateX(-50%)",
+                    transition: "all 100ms ease"
+                }
+            },
+            "&:hover": {
+                "& .skill-bar-container .skill-value": {
+                    padding: theme.spacing(1),
+                    borderRadius: "50%"
                 }
             }
         }
@@ -49,7 +58,7 @@ const BarComponent = ({ classes, className, key, skill, index }) => {
     }
     
     return (
-        <div className={`${classes.root} ${className || ""}`} ref={self} key={key}>
+        <div className={`${classes.root} ${className || ""} cursor-crosshair`} ref={self} key={key}>
             <div className={`skill-name`}>
                 <Typography color="textSecondary" variant="overline">
                     {skill.name}
@@ -59,7 +68,7 @@ const BarComponent = ({ classes, className, key, skill, index }) => {
                 <div className={`skill-bar skill-bar-${index}`}>
 
                 </div>
-                <div className={`skill-value background-white`}>
+                <div className={`skill-value background-white flex row align-vertical-center`}>
                     <Typography color="textSecondary" variant="overline">
                         {skill.value}%
                     </Typography>

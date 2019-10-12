@@ -270,7 +270,7 @@ const HomeIntroComponent = ({ classes }) => {
     return (
         <div className={`${classes.root} root flex row align-vertical-start align-horizontal-center`}>
             <div className={`verbiage-section`}>
-                <div className={`slogan`}>
+                <div className={`slogan cursor-crosshair`}>
                     <div className={`row flex align-horizontal-center align-vertical-center`}>
                         <Word text={slogan[0]} small={true} />
                         <Word text={slogan[1]} small={true} />
