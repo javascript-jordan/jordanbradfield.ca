@@ -107,10 +107,48 @@ export const en = {
         title: "skills Repository",
         graphs: {
             technical: {
-                title: "Technical Skills"
+                title: "Technical Skills",
+                list: [
+                    {
+                        name: "Javascript",
+                        value: 95
+                    },
+                    {
+                        name: "HTML/CSS",
+                        value: 88
+                    },
+                    {
+                        name: "Angular",
+                        value: 80
+                    },
+                    {
+                        name: "React",
+                        value: 85
+                    },
+                    {
+                        name: "AngularJS",
+                        value: 97
+                    }
+                ]
             },
             knowledge: {
-                title: "Knowledge"
+                title: "Knowledge",
+                list: [
+                    "Material Design",
+                    "Accessibility",
+                    "CSS Preprocessors (LESS, SCSS)",
+                    "Source Control (GIT, SVN)",
+                    "Build Tools (Webpack, Grunt)",
+                    "Package Managers (NPM)",
+                    "Responsive Design (Flexbox)",
+                    "Animations (Keyframes, JS)",
+                    "REST API's",
+                    "AJAX Requests",
+                    "ECMA Script 6+",
+                    "Agile Methodology",
+                    "Hybrid Mobile",
+                    "DevOps (CI, CD)"
+                ]
             }
         }
     }

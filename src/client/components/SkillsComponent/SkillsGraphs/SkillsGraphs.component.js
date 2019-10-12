@@ -8,11 +8,17 @@ const SkillsGraphsComponentStyles = theme => {
     return {
         root: {
             "&>*": {
-                marginBottom: theme.spacing(2)
+                paddingBottom: theme.spacing(2),
+                maxWidth: "50%",
+                overflow: "visible hidden"
             },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "&.root": {
-                    flexDirection: "column"
+                    flexDirection: "column",
+                    "&>*": {
+                        maxWidth: "100%",
+                        overflow: "visible"
+                    }
                 }
             }
         }
