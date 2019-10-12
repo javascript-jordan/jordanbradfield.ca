@@ -4,6 +4,7 @@ import { xhr } from "../../../utils/util";
 import config from "../../../config";
 import SkillsGraphsComponent from "./SkillsGraphs/SkillsGraphs.component";
 import { strings } from "../../services/stringService";
+import SkillsChartsComponent from "./SkillsCharts/SkillsCharts.component";
 
 const SkillsComponentStyles = theme => ({
     root: {
@@ -28,6 +29,7 @@ class SkillsComponent extends React.Component {
                     {strings.skills.title}
                 </Typography>
                 <SkillsGraphsComponent />
+                <SkillsChartsComponent />
             </div>
         )
     }

@@ -150,6 +150,23 @@ export const en = {
                     "DevOps (CI, CD)"
                 ]
             }
+        },
+        charts: {
+            title: "Behavioral Tendencies",
+            list: [
+                {
+                    name: "Attitude",
+                    value: 92
+                },
+                {
+                    name: "Communication",
+                    value: 90
+                },
+                {
+                    name: "TIme Management",
+                    value: 85
+                }
+            ]
         }
     }
 }
