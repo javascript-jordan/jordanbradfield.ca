@@ -14,6 +14,7 @@ const BarComponentStyles = theme => {
             },
             "& .skill-bar-container": {
                 backgroundColor: "rgba(0,0,0,0.1)",
+                boxShadow: theme.shadows[1],
                 height: theme.spacing(1),
                 width: "100%",
                 "& .skill-bar": {

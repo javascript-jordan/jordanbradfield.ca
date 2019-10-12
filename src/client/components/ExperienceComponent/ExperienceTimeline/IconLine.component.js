@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { withStyles } from "@material-ui/styles";
 import { AcUnit, Code, Business, FitnessCenter } from "@material-ui/icons";
 import ImageBackdropComponent from "../../Widgets/ImageBackdrop.component";
@@ -22,6 +22,8 @@ const IconLineComponentStyles = theme => {
                 }
             },
             "& .line": {
+                flexGrow: 0,
+                transition: "flex-grow 500ms ease",
                 "& div": {
                     borderRight: "2px dashed black",
                     transform: "translateX(-1px)",
@@ -36,16 +38,30 @@ const IconLineComponentStyles = theme => {
     }
 }
 
-const IconLineComponent = ({ classes, className, role, last }) => {
-    let Icon = ICON_MAP[role.icon] || ICON_MAP.business;
+const IconLineComponent = ({ classes, className, delay, role, last }) => {
+    let Icon = ICON_MAP[role.icon] || ICON_MAP.business,
+        self = useRef();
+
+    useEffect(componentDidMount, []);
+
+    function componentDidMount(){
+        growLine();
+    }
+
+    function growLine(){
+        setTimeout(() => {
+            self.current.querySelector(".line").style.flexGrow = 1;
+        }, delay);
+    }
+
     return (
-        <div aria-hidden="true" className={`${className || ""} ${classes.root} flex column align-vertical-center`}>
+        <div aria-hidden="true" className={`${className || ""} ${classes.root} flex column align-vertical-center`} ref={self}>
             <div className={`icon-container`}>
                 <ImageBackdropComponent padding={0.5}>
                     <Icon className={`icon`} />
                 </ImageBackdropComponent>
             </div>
-            <div className={`line center grow flex column ${last ? "hide" : ""}`}>
+            <div className={`line center flex column ${last ? "hide" : ""}`}>
                 <div className={`grow`}></div>
             </div>
         </div>
