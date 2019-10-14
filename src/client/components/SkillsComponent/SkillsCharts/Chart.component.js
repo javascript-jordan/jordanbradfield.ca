@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import { withStyles, withTheme } from "@material-ui/styles";
+import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../../services/responsiveService";
 import config from "../../../../config";
 
 const ChartComponentStyles = theme => {
@@ -47,7 +48,7 @@ const ChartComponentStyles = theme => {
                 }
             },
             "& .skill-name": {
-                margin: "auto",
+                margin: "auto 0",
                 marginLeft: theme.spacing(2),
                 wordBreak: "break-all",
                 "& .name>*, .level>*": {
@@ -79,6 +80,10 @@ const ChartComponent = ({ classes, className, chart, delay, key, theme }) => {
                 rotateCircles();
             }, 500);
         }, delay);
+        subscribeToWindowSizeChange(onWindowSizeChange);
+        return () => {
+            unSubscribeToWindowSizeChange(onWindowSizeChange);
+        }
     }
 
     function buildCircle(){
@@ -125,8 +130,12 @@ const ChartComponent = ({ classes, className, chart, delay, key, theme }) => {
         full.style.transform = `rotate(${percent}deg)`;
     }
 
+    function onWindowSizeChange(){
+        buildCircle();
+    }
+
     return (
-        <div className={`${classes.root} ${className || ""} flex row align-horizontal-center align-vertical-start`} key={key} ref={self}>
+        <div className={`${classes.root} ${className || ""} flex row align-horizontal-start align-vertical-start`} key={key} ref={self}>
             <div className={`circle-container create-circle`}>
                 <div className={`circle`}>
                     <div className={`mask full rotation-transition create-circle`}>
