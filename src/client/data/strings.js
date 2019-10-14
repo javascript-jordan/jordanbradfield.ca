@@ -156,14 +156,17 @@ export const en = {
             list: [
                 {
                     name: "Attitude",
+                    level: "Fantastic",
                     value: 92
                 },
                 {
                     name: "Communication",
+                    level: "Strong",
                     value: 90
                 },
                 {
-                    name: "TIme Management",
+                    name: "Time Management",
+                    level: "Spectatular",
                     value: 85
                 }
             ]

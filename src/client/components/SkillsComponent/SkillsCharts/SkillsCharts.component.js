@@ -27,7 +27,7 @@ const SkillsChartsComponent = ({ classes, className }) => {
             </div>
             <div className={`charts-container flex row`}>
                 {strings.skills.charts.list.map((chart, index) => {
-                    return <ChartComponent className={`grow shrink no-basis`} chart={chart} key={`chart-${index}`}></ChartComponent>;
+                    return <ChartComponent className={`grow shrink no-basis`} chart={chart} delay={1000 + (index * 100)} key={`chart-${index}`}></ChartComponent>;
                 })}
             </div>
         </div>
