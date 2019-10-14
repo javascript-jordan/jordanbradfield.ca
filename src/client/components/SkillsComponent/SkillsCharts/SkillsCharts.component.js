@@ -10,7 +10,10 @@ const SkillsChartsComponentStyles = theme => {
         root: {
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "& .charts-container": {
-                    flexDirection: "column"
+                    flexDirection: "column",
+                    "&>*": {
+                        flexBasis: "auto!important"
+                    }
                 }
             }
         }
