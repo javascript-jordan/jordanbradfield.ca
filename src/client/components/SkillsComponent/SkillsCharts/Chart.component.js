@@ -9,6 +9,7 @@ const ChartComponentStyles = theme => {
         root: {
             opacity: "0",
             transition: "opacity 500ms ease",
+            marginBottom: theme.spacing(2),
             padding: theme.spacing(1),
             "& .create-circle": {
                 borderRadius: "50%",
@@ -19,7 +20,7 @@ const ChartComponentStyles = theme => {
             },
             "& .circle-container": {
                 backgroundColor: "rgba(0,0,0,0.1)",
-                flexBasis: "50%",
+                width: "180px",
                 marginRight: theme.spacing(1),
                 position: "relative",
                 "& .mask": {
@@ -57,9 +58,9 @@ const ChartComponentStyles = theme => {
                     lineHeight: "1.5"
                 }
             },
-            [theme.breakpoints.down("xs")]: {
+            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "& .circle-container": {
-                    flexBasis: "140px"
+                    flexBasis: "160px"
                 }
             }
         }
@@ -157,7 +158,7 @@ const ChartComponent = ({ classes, className, chart, delay, key, theme }) => {
                     </div>
                 </div>
             </div>
-            <div className={`skill-name flex column`}>
+            <div className={`skill-name flex column grow`}>
                 <div className={`name`}>
                     <Typography variant="subtitle2">
                         {chart.name}

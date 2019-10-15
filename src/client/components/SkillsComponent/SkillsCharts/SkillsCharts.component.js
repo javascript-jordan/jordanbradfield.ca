@@ -8,6 +8,12 @@ import config from "../../../../config";
 const SkillsChartsComponentStyles = theme => {
     return {
         root: {
+            "& .charts-container": {
+                flexWrap: "wrap",
+                "&>*": {
+                    minWidth: "30%"
+                }
+            },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "& .charts-container": {
                     flexDirection: "column",
@@ -28,9 +34,9 @@ const SkillsChartsComponent = ({ classes, className }) => {
                     {strings.skills.charts.title}
                 </Typography>
             </div>
-            <div className={`charts-container flex row`}>
+            <div className={`charts-container flex row align-horizontal-evenly`}>
                 {strings.skills.charts.list.map((chart, index) => {
-                    return <ChartComponent className={`grow shrink no-basis`} chart={chart} delay={1000 + (index * 100)} key={`chart-${index}`}></ChartComponent>;
+                    return <ChartComponent className={``} chart={chart} delay={1000 + (index * 100)} key={`chart-${index}`}></ChartComponent>;
                 })}
             </div>
         </div>
