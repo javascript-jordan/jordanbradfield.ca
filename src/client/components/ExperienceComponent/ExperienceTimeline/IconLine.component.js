@@ -1,13 +1,14 @@
 import React, { useEffect, useRef } from "react";
 import { withStyles } from "@material-ui/styles";
-import { AcUnit, Code, Business, FitnessCenter } from "@material-ui/icons";
+import { AcUnit, Code, Business, FitnessCenter, ShoppingBasket } from "@material-ui/icons";
 import ImageBackdropComponent from "../../Widgets/ImageBackdrop.component";
 import config from "../../../../config";
 
 const ICON_MAP = {
     code: Code,
     business: Business,
-    fitness: FitnessCenter
+    fitness: FitnessCenter,
+    shopping: ShoppingBasket
 }
 
 const IconLineComponentStyles = theme => {

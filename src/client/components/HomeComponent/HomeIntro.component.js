@@ -52,8 +52,8 @@ const HomeIntroComponentStyles = theme => {
                                     animation: "$spin 300ms ease forwards"
                                 }
                             },
-                            "&:first-child.small": {
-                                marginRight: theme.spacing(2)
+                            "&:last-child.small": {
+                                margin: `0 ${theme.spacing(2)}`
                             }
                         }
                     }

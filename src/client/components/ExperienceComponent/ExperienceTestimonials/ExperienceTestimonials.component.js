@@ -7,7 +7,14 @@ import config from "../../../../config";
 
 const ExperienceTestimonialsComponentStyles = theme => {
     return {
+        "@keyframes fadeIn": {
+            from: {opacity: 0},
+            to: {opacity: 1}
+        },
         root: {
+            animation: "$fadeIn 1s linear forwards",
+            animationDelay: 1000,
+            opacity: 0,
             "& .title": {
                 margin: `${theme.spacing(8)} 0 ${theme.spacing(2)} 0`
             },

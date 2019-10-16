@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/styles";
 import { Typography, Button } from "@material-ui/core";
 import DateComponent from "./Date.component";
@@ -8,7 +8,7 @@ import IconLineComponent from "./IconLine.component";
 import DescriptionComponent from "./Description.component";
 
 const ROLES = strings.experience.timeline.roles;
-
+console.log(ROLES)
 const ExperienceTimelineComponentStyles = theme => {
     return {
         "@keyframes fadeIn": {
@@ -33,6 +33,11 @@ const ExperienceTimelineComponentStyles = theme => {
                     }
                 }
             },
+            "& .see-more-button": {
+                animation: "FadeInAnimation 750ms linear 1s forwards",
+                marginTop: theme.spacing(4),
+                opacity: 0
+            },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "&.root .timeline": {
                     "& .job-row": {
@@ -50,6 +55,9 @@ const ExperienceTimelineComponentStyles = theme => {
 }
 
 const ExperienceTimelineComponent = ({ classes }) => {
+    
+    let [state, setState] = useState({all: ROLES.length <= 3, roles: [...ROLES].slice(0, 3)});
+
     function DesktopView({ className, delay, role, last }){
         return (
             <div className={`${className} flex row`}>
@@ -59,6 +67,7 @@ const ExperienceTimelineComponent = ({ classes }) => {
             </div>
         )
     }
+
     function MobileView({ className, delay, role, last }){
         return (
             <div className={`${className} flex row`}>
@@ -70,6 +79,29 @@ const ExperienceTimelineComponent = ({ classes }) => {
             </div>
         );
     }
+
+    function SeeMoreButton(){
+        if(!state.all){
+            return (
+                <div className={`see-more-button flex row align-horizontal-center`}>
+                    <Button color="primary" variant="outlined" onClick={() => onSeeMoreClick()}>
+                        See More
+                    </Button>
+                </div>
+            );
+        }
+        return null;
+    }
+
+    function onSeeMoreClick(){
+        setState(() => {
+            return {
+                all: true,
+                roles: [...ROLES]
+            }
+        });
+    }
+
     return (
         <div className={`${classes.root} root`}>
             <div className={`timeline-title`}>
@@ -78,16 +110,17 @@ const ExperienceTimelineComponent = ({ classes }) => {
                 </Typography>
             </div>
             <div className={`timeline`}>
-                {ROLES.map((role, index) => {
+                {state.roles.map((role, index) => {
                     let delay = 100 * index;
                     return (
                         <div className={`job-row`} key={`job-${index}`} style={{animationDelay: `${delay}ms`}}>
-                            <DesktopView className={`desktop-view`} delay={delay + 750} role={role} last={index + 1 === ROLES.length} />
-                            <MobileView className={`mobile-view`} delay={delay + 750} role={role} last={index + 1 === ROLES.length} />
+                            <DesktopView className={`desktop-view`} delay={delay + 750} role={role} last={index + 1 === state.roles.length} />
+                            <MobileView className={`mobile-view`} delay={delay + 750} role={role} last={index + 1 === state.roles.length} />
                         </div>
                     );
                 })}
             </div>
+            <SeeMoreButton />
         </div>
     );
 }

@@ -42,7 +42,27 @@ export const en = {
                     role: "Wellness Leader",
                     icon: "fitness",
                     description: `
+                        I had some down time after finishing school in 2017 before I started my job a few months later. Luckily the YMCA I had worked at before was looking for resources and was able to have me back to help out part time. I took this opportunity to help others in the gym with their fitness goals and mentor them on how to properly work out and diet.
+                    `
+                },
+                {
+                    company: "YMCA",
+                    start: "2015-05-15",
+                    end: "2015-08-24",
+                    role: "Wellness Leader",
+                    icon: "fitness",
+                    description: `
                         Working at the YMCA was a great opportunity for myself. I was able to work in an Industry I was passionate about at the time. I had the ability to help others achieve their goals and live a healthier life. I was given opportunities to develope workout plans based on a clients needs and help them execute the daily exercises in the gym. I was also able to work on my leadership by leading a couple fitness classes as well. This job was a gateway to learning what a consultant was all about and how to keep clients happy.
+                    `
+                },
+                {
+                    company: "Lawtons Drugs",
+                    start: "2012-07-20",
+                    end: "2015-08-21",
+                    role: "Customer Service",
+                    icon: "shopping",
+                    description: `
+                        Working at lawtons was my first job as a teenager and I started when I was just 15. This was a great learning opportunity for myself and really gave me the skills and confidence needed to interact and deal with clients/customers. I developed a proper work ethic and was one of the friendlist/hardest worker at the time.
                     `
                 }
             ]
@@ -166,7 +186,7 @@ export const en = {
                 },
                 {
                     name: "Time Management",
-                    level: "Spectatular",
+                    level: "Spectacular",
                     value: 85
                 }
             ]

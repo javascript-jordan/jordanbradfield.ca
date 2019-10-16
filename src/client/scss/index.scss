@@ -1,5 +1,6 @@
 @import "./flex.scss";
 @import "./theme.scss";
+@import "./animations.scss";
 
 /* width */
 ::-webkit-scrollbar {
@@ -26,6 +27,12 @@
 }
 .background-white {
     background-color: #ffffff;
+}
+.background-light-grey {
+    background-color: $light-grey-background;
+}
+.background-dark-grey {
+    background-color: $dark-grey-background;
 }
 .center {
     text-align: center;
