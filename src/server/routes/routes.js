@@ -1,7 +1,11 @@
 import { Router } from "express";
+import { join } from "path";
+import config from "../../config";
 
 const ROUTER = Router();
 
-ROUTER.get("/hi", (req,res) => res.send({data: "hello"}));
+ROUTER.get(config.api.endpoints.downloads.resume, (req,res) => {
+    res.download(join(__dirname, "../downloads/resume.pdf"));
+});
 
 export default ROUTER;

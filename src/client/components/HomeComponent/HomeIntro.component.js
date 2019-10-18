@@ -226,7 +226,7 @@ const HomeIntroComponent = ({ classes }) => {
                 <Button onClick={route.bind(null, "/contact")} className={`white-button`} variant="contained">
                     {strings.home.intro.buttons.contact}
                 </Button>
-                <Button color="primary" variant="contained">
+                <Button color="primary" download href="http://localhost:3000/api/downloads/resume" variant="contained">
                     {strings.home.intro.buttons.resume}
                 </Button>
             </div>

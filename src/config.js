@@ -15,7 +15,12 @@ var serverBase = isProduction ? "http://jordanbradfield.herokuapp.com" : "http:/
 module.exports = {
     api: {
         base: serverBase,
-        context: "/api"
+        context: "/api",
+        endpoints: {
+            downloads: {
+                resume: "/downloads/resume"
+            }
+        }
     },
     constants: {
         email: "jordan.p.bradfield@gmail.com",
