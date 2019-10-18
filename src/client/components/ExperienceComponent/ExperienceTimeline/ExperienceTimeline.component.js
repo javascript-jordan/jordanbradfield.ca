@@ -8,7 +8,7 @@ import IconLineComponent from "./IconLine.component";
 import DescriptionComponent from "./Description.component";
 
 const ROLES = strings.experience.timeline.roles;
-console.log(ROLES)
+
 const ExperienceTimelineComponentStyles = theme => {
     return {
         "@keyframes fadeIn": {
@@ -18,9 +18,11 @@ const ExperienceTimelineComponentStyles = theme => {
         root: {
             "& .timeline": {
                 "& .job-row": {
-                    animation: "$fadeIn 750ms linear forwards",
+                    "&:not(.all)": {
+                        animation: "$fadeIn 750ms linear forwards",
+                        opacity: 0
+                    },
                     marginBottom: theme.spacing(2),
-                    opacity: 0,
                     "& .desktop-view": {
 
                     },
@@ -62,7 +64,7 @@ const ExperienceTimelineComponent = ({ classes }) => {
         return (
             <div className={`${className} flex row`}>
                 <DateComponent role={role} />
-                <IconLineComponent delay={delay} role={role} last={last} />
+                <IconLineComponent all={state.all} delay={delay} role={role} last={last} />
                 <DescriptionComponent className={`grow`} role={role} />
             </div>
         )
@@ -71,7 +73,7 @@ const ExperienceTimelineComponent = ({ classes }) => {
     function MobileView({ className, delay, role, last }){
         return (
             <div className={`${className} flex row`}>
-                <IconLineComponent delay={delay} role={role} last={last} />
+                <IconLineComponent all={state.all} delay={delay} role={role} last={last} />
                 <div className={`date-description flex column grow`}>
                     <DateComponent role={role} />
                     <DescriptionComponent role={role} />
@@ -113,7 +115,7 @@ const ExperienceTimelineComponent = ({ classes }) => {
                 {state.roles.map((role, index) => {
                     let delay = 100 * index;
                     return (
-                        <div className={`job-row`} key={`job-${index}`} style={{animationDelay: `${delay}ms`}}>
+                        <div className={`job-row ${state.all ? "all" : ""}`} key={`job-${index}`} style={{animationDelay: `${delay}ms`}}>
                             <DesktopView className={`desktop-view`} delay={delay + 750} role={role} last={index + 1 === state.roles.length} />
                             <MobileView className={`mobile-view`} delay={delay + 750} role={role} last={index + 1 === state.roles.length} />
                         </div>

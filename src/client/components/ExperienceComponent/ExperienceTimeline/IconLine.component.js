@@ -23,8 +23,10 @@ const IconLineComponentStyles = theme => {
                 }
             },
             "& .line": {
-                flexGrow: 0,
-                transition: "flex-grow 500ms ease",
+                "&:not(.all)": {
+                    flexGrow: 0,
+                    transition: "flex-grow 500ms ease",
+                },
                 "& div": {
                     borderRight: "2px dashed black",
                     transform: "translateX(-1px)",
@@ -39,7 +41,7 @@ const IconLineComponentStyles = theme => {
     }
 }
 
-const IconLineComponent = ({ classes, className, delay, role, last }) => {
+const IconLineComponent = ({ all, classes, className, delay, role, last }) => {
     let Icon = ICON_MAP[role.icon] || ICON_MAP.business,
         self = useRef();
 
@@ -50,9 +52,8 @@ const IconLineComponent = ({ classes, className, delay, role, last }) => {
     }
 
     function growLine(){
-        setTimeout(() => {
-            self.current.querySelector(".line").style.flexGrow = 1;
-        }, delay);
+        let callback = () => self.current.querySelector(".line").style.flexGrow = 1;
+        return all ? callback() : setTimeout(callback, delay);
     }
 
     return (
@@ -62,7 +63,7 @@ const IconLineComponent = ({ classes, className, delay, role, last }) => {
                     <Icon className={`icon`} />
                 </ImageBackdropComponent>
             </div>
-            <div className={`line center flex column ${last ? "hide" : ""}`}>
+            <div className={`line center flex column ${last ? "hide" : ""} ${all ? "all grow" : ""}`}>
                 <div className={`grow`}></div>
             </div>
         </div>
