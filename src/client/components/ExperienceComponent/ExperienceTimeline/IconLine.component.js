@@ -48,11 +48,18 @@ const IconLineComponent = ({ all, classes, className, delay, role, last }) => {
     useEffect(componentDidMount, []);
 
     function componentDidMount(){
-        growLine();
+        let timeout = growLine();
+        return () => {
+            if(timeout) clearTimeout(timeout);
+        }
     }
 
     function growLine(){
-        let callback = () => self.current.querySelector(".line").style.flexGrow = 1;
+        let callback = () => {
+            try {
+                self.current.querySelector(".line").style.flexGrow = 1;
+            } catch (error) { }
+        }
         return all ? callback() : setTimeout(callback, delay);
     }
 

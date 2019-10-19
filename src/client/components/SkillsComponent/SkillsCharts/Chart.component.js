@@ -74,16 +74,18 @@ const ChartComponent = ({ classes, className, chart, delay, key, theme }) => {
     useEffect(componentDidMount, []);
 
     function componentDidMount(){
+        let lastTimeout; //to cancel timeout on destroy
         buildCircle();
-        setTimeout(() => {
+        lastTimeout = setTimeout(() => {
             self.current.style.opacity = "1";
-            setTimeout(() => {
+            lastTimeout = setTimeout(() => {
                 rotateCircles();
             }, 500);
         }, delay);
         subscribeToWindowSizeChange(onWindowSizeChange);
         return () => {
             unSubscribeToWindowSizeChange(onWindowSizeChange);
+            clearTimeout(lastTimeout);
         }
     }
 

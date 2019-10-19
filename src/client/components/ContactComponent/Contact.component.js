@@ -1,13 +1,21 @@
 import React from "react";
 import { withStyles, Typography, Paper } from "@material-ui/core";
-import { xhr } from "../../../utils/util";
-import config from "../../../config";
 import ContactAddressComponent from "./ContactAddress.component";
 import ContactFormComponent from "./ContactForm.component";
+import { strings } from "../../services/stringService";
+import { xhr } from "../../../utils/util";
+import config from "../../../config";
 
 const ContactComponentStyles = theme => ({
     root: {
-        
+        "& .main-section": {
+            "& .contact-address": {
+                flexBasis: "35%"
+            },
+            "& .contact-address": {
+                flexBasis: "65%"
+            }
+        }
     }
 });
 
@@ -24,12 +32,12 @@ class ContactComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <div className={`page-title`}>
-                    
-                </div>
+                <Typography className={`page-title page-title-spacing`} variant="h6">
+                    {strings.contact.title}
+                </Typography>
                 <div className={`main-section flex row align-vertical-center align-horizontal-center`}>
-                    <ContactAddressComponent />
-                    <ContactFormComponent />
+                    <ContactAddressComponent className={`contact-address`} />
+                    <ContactFormComponent className={`contact-form`} />
                 </div>
             </div>
         )

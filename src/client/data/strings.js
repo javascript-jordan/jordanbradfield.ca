@@ -11,6 +11,9 @@ export const en = {
             item: "Carousel Item"
         }
     },
+    contact: {
+        title: "Contact Me"
+    },
     experience: {
         timeline: {
             title: `${Math.floor(extractDateComparrison(constants.dates.INDUSTRY_START_DATE, new Date()).years)} years experience`,

@@ -49,11 +49,14 @@ const BarComponent = ({ classes, className, key, skill, index }) => {
     useEffect(componentDidMount, []);
 
     function componentDidMount(){
-        setSkillBarWidth();
+        let timeout = setSkillBarWidth();
+        return () => {
+            clearTimeout(timeout);
+        }
     }
 
     function setSkillBarWidth(){
-        setTimeout(() => {
+        return setTimeout(() => {
             self.current.querySelector(`.skill-bar-${index}`).style.width = `${skill.value}%`;
         }, index * 100);
     }

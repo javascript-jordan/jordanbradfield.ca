@@ -34,11 +34,14 @@ const SkillComponent = ({ classes, className, key, index, item }) => {
     useEffect(componentdidMount, []);
 
     function componentdidMount(){
-        setOpacity();
+        let timeout = setOpacity();
+        return () => {
+            clearTimeout(timeout);
+        }
     }
 
     function setOpacity(){
-        setTimeout(() => {
+        return setTimeout(() => {
             self.current.style.opacity = "1";
         }, index * 100);
     }
