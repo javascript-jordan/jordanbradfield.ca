@@ -12,7 +12,37 @@ export const en = {
         }
     },
     contact: {
-        title: "Contact Me"
+        address: {
+            title: "Contact Address",
+            email: "Email: jordan.p.bradfield@gmail.com",
+            street: "Address: Halifax, Nova Scotia, Canada",
+            website: "Website: www.jordanbradfield.ca",
+            links: {
+                name: "Links",
+                github: "Github Link",
+                linkedin: "Linkedin Link",
+                twitter: "Twitter Link"
+            }
+        },
+        form: {
+            title: "Contact Form",
+            button: "Send",
+            fields: {
+                name: {
+                    label: "Name",
+                    placeholder: "Ex. John Doe"
+                },
+                email: {
+                    label: "Email",
+                    placeholder: "Ex. johndoe@gmail.com"
+                },
+                message: {
+                    label: "Message",
+                    placeholder: "Ex. Let's grab a coffee"
+                }
+            }
+        },
+        title: "Get in touch with me"
     },
     experience: {
         timeline: {

@@ -32,9 +32,10 @@ const NavbarQuickLinksComponentStyles = theme => ({
             "& img": {
                 cursor: "pointer",
                 marginRight: theme.spacing(2),
-                transition: "opacity 250ms ease",
+                transition: "all 250ms ease",
                 "-webkit-backface-visibility": "hidden",
                 "&:hover": {
+                    filter: "drop-shadow(2px 4px 6px rgba(0,0,0,0.5))",
                     opacity: "0.7"
                 }
             }

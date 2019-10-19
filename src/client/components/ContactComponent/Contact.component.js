@@ -9,11 +9,25 @@ import config from "../../../config";
 const ContactComponentStyles = theme => ({
     root: {
         "& .main-section": {
+            overflowX: "hidden",
             "& .contact-address": {
-                flexBasis: "35%"
+                animation: "SlideInFromLeftAnimation 250ms linear forwards",
+                flexBasis: "40%"
             },
-            "& .contact-address": {
-                flexBasis: "65%"
+            "& .contact-form": {
+                animation: "SlideInFromRightAnimation 250ms linear forwards",
+                flexBasis: "60%"
+            }
+        },
+        [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
+            "&.root .main-section": {
+                flexDirection: "column-reverse",
+                alignItems: "flex-start",
+                "& > div": {
+                    animation: "FadeInAnimation 1s linear forwards",
+                    flexBasis: "auto",
+                    width: "100%"
+                }
             }
         }
     }
@@ -31,13 +45,13 @@ class ContactComponent extends React.Component {
         let { classes } = this.props;
 
         return (
-            <div className={`${classes.root}`}>
+            <div className={`${classes.root} root`}>
                 <Typography className={`page-title page-title-spacing`} variant="h6">
                     {strings.contact.title}
                 </Typography>
-                <div className={`main-section flex row align-vertical-center align-horizontal-center`}>
-                    <ContactAddressComponent className={`contact-address`} />
-                    <ContactFormComponent className={`contact-form`} />
+                <div className={`main-section flex row align-vertical-start`}>
+                    <ContactAddressComponent className={`contact-address grow`} />
+                    <ContactFormComponent className={`contact-form grow`} />
                 </div>
             </div>
         )
