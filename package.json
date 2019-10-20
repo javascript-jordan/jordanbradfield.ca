@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm test && npm run buildClient && npm run buildServer && cp src/config.js dist/config.js && mkdir dist/server/public && cp -r dist/client/* dist/server/public/",
     "buildClient": "rm -rf dist/client && npx webpack --mode=production",
-    "buildServer": "rm -rf dist/server && npx babel src/server --out-dir dist/server --copy-files",
+    "buildServer": "rm -rf dist/server && rm -rf dist/utils && npx babel src/server --out-dir dist/server --copy-files && npx babel src/utils --out-dir dist/utils",
     "clientDev": "webpack-dev-server",
     "commit": "./scripts/commit.sh",
     "dev": "source ./scripts/setEnv.sh && npx concurrently \"npm run clientDev\" \"npm run serverDev\"",
