@@ -44,6 +44,9 @@ export const en = {
         },
         title: "Get in touch with me"
     },
+    errors: {
+        required: "This field is required"
+    },
     experience: {
         timeline: {
             title: `${Math.floor(extractDateComparrison(constants.dates.INDUSTRY_START_DATE, new Date()).years)} years experience`,
