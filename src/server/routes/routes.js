@@ -9,7 +9,6 @@ const ROUTER = Router(),
     middleware = [addIpAddressToHeaders];
 
 ROUTER.post(config.api.endpoints.contact.email, ...middleware, extractAddressToHeaders, (req, res) => {
-    console.log(req.body)
     let body = {
             ...req.body.data,
             fromAddress: convertToLocation(req.headers.location)
