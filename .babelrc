@@ -7,6 +7,5 @@
                     "node": "10"
                 }
             }
-        ], "@babel/preset-react"],
-    "ignore": ["**/*.spec.js"]
+        ], "@babel/preset-react"]
 }
