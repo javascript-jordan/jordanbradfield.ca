@@ -14,7 +14,7 @@ module.exports = {
         historyApiFallback: true,
         hot: true
     },
-    entry: join(CLIENT_SRC, "index.js"),
+    entry: ["@babel/polyfill", join(CLIENT_SRC, "index.js")],
     output: {
         path: CLIENT_DIST,
         filename: "index.bundle.js"

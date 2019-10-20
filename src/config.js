@@ -17,6 +17,9 @@ module.exports = {
         base: serverBase,
         context: "/api",
         endpoints: {
+            contact: {
+                email: "/contact/email"
+            },
             downloads: {
                 resume: "/downloads/resume"
             }
@@ -45,12 +48,20 @@ module.exports = {
             jordanTransparentMedium: serverBase + "/images/home/jordan-transparent-mq.png"
         }
     },
+    regex: {
+        email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    },
     xhr: {
         bases: {
-            jordan: "http://jordanbradfield.ca",
+            api: serverBase + "/api",
             testing: "https://jsonplaceholder.typicode.com"
         },
         endpoints: {
+            email: {
+                base: "api",
+                method: "post",
+                path: "/contact/email"
+            },
             testing: {
                 base: "testing",
                 method: "get",

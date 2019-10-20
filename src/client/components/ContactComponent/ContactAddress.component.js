@@ -14,7 +14,7 @@ import GmailBlackIcon from "../../images/contact/gmail-black.svg";
 import GmailWhiteIcon from "../../images/contact/gmail-white.svg";
 
 const ContactAddressComponentStyles = theme => {
-    let margin = theme.spacing(6);
+    let margin = theme.spacing(8);
     return {
         root: {
             "& .address-items": {
@@ -58,6 +58,11 @@ const ContactAddressComponentStyles = theme => {
                     "&:not(:last-child)": {
                         marginRight: theme.spacing(2)
                     }
+                }
+            },
+            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
+                "& .address-items, .link-items": {
+                    marginTop: theme.spacing(4)
                 }
             }
         }

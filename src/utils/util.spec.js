@@ -1,4 +1,4 @@
-import { convertToString, convertToObject, xhr, extractDateComparrison } from "./util";
+import { convertToString, convertToObject, convertToLocation, xhr, extractDateComparrison, parseTemplateString } from "./util";
 
 import config from "../config";
 
@@ -31,6 +31,11 @@ describe("util.js", () => {
             expect(convertToObject(null)).toBe(null);
         });
     });
+    describe("convertLocationToString()", () => {
+        test("it should return a location string: Halifax, Nova Scotia, Canada", () => {
+            expect(convertToLocation({country: "Canada", regionName: "Nova Scotia", city: "Halifax", isp: "Fido"})).toBe("Halifax, Nova Scotia, Canada - Fido");
+        });
+    });
     describe("extractDateComparrison()", () => {
         let startDate = new Date("2017-09-30"), endDate = new Date("2019-09-29");
         test("it should return an object", () => {
@@ -38,6 +43,11 @@ describe("util.js", () => {
         });
         test("it should return a valid date comparrison object", () => {
             expect(extractDateComparrison(startDate, endDate).days).toBe(729);
+        });
+    });
+    describe("parseTemplateString()", () => {
+        test("it should return an interpolated string: 'Hello Jordan'", () => {
+            expect(parseTemplateString("Hello <%=name=>", {name: "Jordan"})).toBe("Hello Jordan");
         });
     });
     describe("xhr()", () => {

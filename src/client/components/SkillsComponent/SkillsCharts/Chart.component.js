@@ -44,8 +44,12 @@ const ChartComponentStyles = theme => {
                         borderRadius: "50%",
                         boxShadow: theme.shadows[4],
                         width: theme.spacing(8),
-                        height: theme.spacing(8)
+                        height: theme.spacing(8),
+                        transition: "transform 250ms ease"
                     }
+                },
+                "&:hover .inside-circle .text": {
+                    transform: "scale(1.3)"
                 }
             },
             "& .skill-name": {
@@ -139,7 +143,7 @@ const ChartComponent = ({ classes, className, chart, delay, key, theme }) => {
 
     return (
         <div className={`${classes.root} ${className || ""} flex row align-horizontal-start align-vertical-start`} key={key} ref={self}>
-            <div className={`circle-container create-circle`}>
+            <div className={`circle-container create-circle cursor-crosshair`}>
                 <div className={`circle`}>
                     <div className={`mask full rotation-transition create-circle`}>
                         <div className={`fill rotation-transition create-circle`}>

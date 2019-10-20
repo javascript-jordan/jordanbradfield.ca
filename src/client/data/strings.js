@@ -45,7 +45,10 @@ export const en = {
         title: "Get in touch with me"
     },
     errors: {
-        required: "This field is required"
+        typeMismatch: {
+            email: "Please enter a valid email address"
+        },
+        valueMissing: "This field is required"
     },
     experience: {
         timeline: {

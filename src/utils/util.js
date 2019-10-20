@@ -21,6 +21,12 @@ export const convertToObject = string => {
     }
 }
 
+export const convertToLocation = (location = {}) => {
+    let { city, country, regionName, isp } = location;
+    //return string with address and isp
+    return `${city || "Unknown City"}, ${regionName || "Unknown Region"}, ${country || "Unknow Country"} - ${isp || "Unknown ISP"}`;
+}
+
 export const extractDateComparrison = (startDate, endDate) => {
     let result = {
         years: 0,
@@ -45,6 +51,15 @@ export const extractDateComparrison = (startDate, endDate) => {
     result["years"] = result.weeks / 52;
     //spit out the result
     return result;
+}
+
+export const parseTemplateString = (string, data) => {
+    let parsed = string;
+    //loop through each key and replace it with it's cooresponding data
+    Object.keys(data).forEach((key) => {
+        parsed = parsed.replace(new RegExp(`<%=${key}=>`, "g"), data[key]);
+    });
+    return parsed;
 }
 
 export const xhr = (configuration, queryOrData) => new Promise(async (resolve, reject) => {
