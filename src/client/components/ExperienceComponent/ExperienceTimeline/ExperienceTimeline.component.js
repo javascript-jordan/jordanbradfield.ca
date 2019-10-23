@@ -12,14 +12,14 @@ const ROLES = strings.experience.timeline.roles;
 const ExperienceTimelineComponentStyles = theme => {
     return {
         "@keyframes fadeIn": {
-            from: {opacity: "0", transform: "translateY(100vh)"},
+            from: {opacity: "0.5", transform: "translateY(100vh)"},
             to: {opacity: "1", transform: "translateY(0%)"}
         },
         root: {
             "& .timeline": {
                 "& .job-row": {
                     "&:not(.all)": {
-                        animation: "$fadeIn 750ms linear forwards",
+                        animation: "$fadeIn 350ms linear forwards",
                         opacity: 0
                     },
                     marginBottom: theme.spacing(2),
@@ -116,8 +116,8 @@ const ExperienceTimelineComponent = ({ classes }) => {
                     let delay = 100 * index;
                     return (
                         <div className={`job-row ${state.all ? "all" : ""}`} key={`job-${index}`} style={{animationDelay: `${delay}ms`}}>
-                            <DesktopView className={`desktop-view`} delay={delay + 750} role={role} last={index + 1 === state.roles.length} />
-                            <MobileView className={`mobile-view`} delay={delay + 750} role={role} last={index + 1 === state.roles.length} />
+                            <DesktopView className={`desktop-view`} delay={delay + 500} role={role} last={index + 1 === state.roles.length} />
+                            <MobileView className={`mobile-view`} delay={delay + 500} role={role} last={index + 1 === state.roles.length} />
                         </div>
                     );
                 })}

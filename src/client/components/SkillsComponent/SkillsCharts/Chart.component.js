@@ -16,7 +16,7 @@ const ChartComponentStyles = theme => {
                 position: "absolute"
             },
             "& .rotation-transition": {
-                transition: "transform 1s ease-in-out"
+                transition: "transform 0.5s ease-in-out"
             },
             "& .circle-container": {
                 backgroundColor: "rgba(0,0,0,0.1)",
@@ -84,7 +84,7 @@ const ChartComponent = ({ classes, className, chart, delay, key, theme }) => {
             self.current.style.opacity = "1";
             lastTimeout = setTimeout(() => {
                 rotateCircles();
-            }, 500);
+            }, 250);
         }, delay);
         subscribeToWindowSizeChange(onWindowSizeChange);
         return () => {

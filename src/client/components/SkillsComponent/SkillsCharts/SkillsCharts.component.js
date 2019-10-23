@@ -36,7 +36,7 @@ const SkillsChartsComponent = ({ classes, className }) => {
             </div>
             <div className={`charts-container flex row align-horizontal-evenly`}>
                 {strings.skills.charts.list.map((chart, index) => {
-                    return <ChartComponent className={``} chart={chart} delay={1000 + (index * 100)} key={`chart-${index}`}></ChartComponent>;
+                    return <ChartComponent className={``} chart={chart} delay={500 + (index * 100)} key={`chart-${index}`}></ChartComponent>;
                 })}
             </div>
         </div>

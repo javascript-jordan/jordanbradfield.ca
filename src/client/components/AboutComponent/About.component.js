@@ -22,7 +22,7 @@ class AboutComponent extends React.Component {
 
         return (
             <div className={`${classes.root}`}>
-                <Typography color="textPrimary">About</Typography>
+                <Typography className={`page-title page-title-spacing`} color="textPrimary" variant="h6">About</Typography>
             </div>
         )
     }

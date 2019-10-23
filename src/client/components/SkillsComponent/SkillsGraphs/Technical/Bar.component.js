@@ -20,7 +20,7 @@ const BarComponentStyles = theme => {
                 "& .skill-bar": {
                     backgroundColor: theme.palette.primary.main,
                     height: "100%",
-                    transition: "width 0.75s ease-in-out",
+                    transition: "width 0.5s ease-in-out",
                     width: 0
                 },
                 "& .skill-value": {

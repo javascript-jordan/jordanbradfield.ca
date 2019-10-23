@@ -9,7 +9,7 @@ const SkillComponentStyles = theme => {
             opacity: 0,
             marginBottom: theme.spacing(1),
             minHeight: "2rem",
-            transition: "opacity 1s ease",
+            transition: "opacity 0.5s ease",
             "& .icon": {
                 marginRight: theme.spacing(1),
                 transition: "transform 100ms ease"

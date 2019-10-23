@@ -25,7 +25,7 @@ const IconLineComponentStyles = theme => {
             "& .line": {
                 "&:not(.all)": {
                     flexGrow: 0,
-                    transition: "flex-grow 500ms ease",
+                    transition: "flex-grow 250ms ease",
                 },
                 "& div": {
                     borderRight: "2px dashed black",
