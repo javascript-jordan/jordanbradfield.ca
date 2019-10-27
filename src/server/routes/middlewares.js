@@ -13,7 +13,7 @@ export const extractAddressToHeaders = async (req, res, next) => {
     let ip = req.header("ip");
     if(ip){
         try {
-            req.headers.location = (await get(`http://ip-api.com/json/${ip}`)).data;
+            req.headers.location = await get(`http://ip-api.com/json/${ip}`);
         } catch (error) {
             console.error(`Error getting location with ip: ${ip} with error: ${convertToString(error)}`);
         }

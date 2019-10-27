@@ -57,7 +57,7 @@ const ChartComponentStyles = theme => {
                 marginLeft: theme.spacing(2),
                 wordBreak: "break-all",
                 "& .name>*, .level>*": {
-                    fontSize: "100%",
+                    fontSize: "90%",
                     textTransform: "uppercase",
                     lineHeight: "1.5"
                 }
