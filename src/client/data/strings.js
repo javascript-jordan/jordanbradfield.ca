@@ -40,7 +40,10 @@ export const en = {
                     key: "Website",
                     value: "https://jordanbradfield.ca"
                 }
-            ]
+            ],
+            hobbies: {
+                title: "My Hobbies"
+            }
         }
     },
     contact: {
