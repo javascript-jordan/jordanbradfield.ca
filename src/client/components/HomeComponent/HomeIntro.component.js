@@ -27,24 +27,23 @@ const HomeIntroComponentStyles = theme => {
                         flexWrap: "wrap",
                         "& .word": {
                             color: "#232323",
-                            textTransform: "capitalize",
-                            "&:not(.small)": {
-                                // letterSpacing: 6
+                            "& .text": {
+                                fontSize: "4rem",
+                                textTransform: "uppercase"
                             },
                             "&.small": {
-                                "& h1":{
-                                    fontSize: "4rem"
+                                "& .text":{
+                                    fontSize: "3rem"
                                 },
                                 "& sup": {
-                                    fontSize: "2.5rem",
-                                    marginLeft: theme.spacing(0.5)
+                                    fontSize: "3rem"
                                 }
                             },
                             "& sup": {
                                 color: theme.palette.primary.main,
                                 fontSize: "3.5rem",
                                 fontWeight: "bold",
-                                marginBottom: "10px",
+                                margin: `0 ${theme.spacing(0.5)} ${theme.spacing(1)} ${theme.spacing(0.5)}`,
                                 transform: "center center"
                             },
                             "&:hover": {
@@ -53,7 +52,7 @@ const HomeIntroComponentStyles = theme => {
                                 }
                             },
                             "&:last-child.small": {
-                                margin: `0 ${theme.spacing(2)}`
+                                marginLeft: theme.spacing(2)
                             }
                         }
                     }
@@ -91,19 +90,19 @@ const HomeIntroComponentStyles = theme => {
                     "& .verbiage-section .slogan": {
                         "& .row .word": {
                             "&.small": {
-                                "& h1": {
-                                    fontSize: "3.5rem"
+                                "& .text": {
+                                    fontSize: "3rem"
                                 },
                                 "& sup": {
-                                    fontSize: "1.5rem"
+                                    fontSize: "2rem"
                                 }
                             },
-                            "& h1": {
-                                fontSize: "4.5rem"
+                            "& .text": {
+                                fontSize: "3.5rem"
                             }
                         },
                         "& .row .word sup": {
-                            fontSize: "2rem"
+                            fontSize: "2.5rem"
                         }
                     }
                 }
@@ -130,18 +129,23 @@ const HomeIntroComponentStyles = theme => {
             },
             [theme.breakpoints.down("xs")]: {
                 "&.root .verbiage-section .slogan .row .word": {
-                    "&.small h1": {
+                    "&.small .text": {
+                        fontSize: "2rem"
+                    },
+                    "& .text": {
                         fontSize: "2.5rem"
                     },
-                    "& h1": {
-                        fontSize: "3rem"
-                    },
                     "& sup": {
-                        fontSize: "1.5rem"
+                        fontSize: "1.5rem!important"
                     }
                 },
                 "&.root .picture-section.mobile-img": {
                     width: "75%"
+                }
+            },
+            [theme.breakpoints.down(385)]: {
+                "&.root .verbiage-section .slogan :first-child :last-child.small": {
+                    marginLeft: "0!important"
                 }
             },
             [theme.breakpoints.up("lg")]: {
@@ -259,7 +263,7 @@ const HomeIntroComponent = ({ classes }) => {
     function Word({ text, small }){
         return (
             <div className={`word flex align-vertical-center ${small ? "small" : ""}`}>
-                <Typography variant="h1">
+                <Typography className={`text`} variant={small ? "h4" : "h3"}>
                     {text}
                 </Typography>
                 <sup>+</sup>
