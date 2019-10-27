@@ -11,13 +11,21 @@ import NavbarComponent from "./components/NavbarComponent/Navbar.component";
 //custom theme object
 import { createTheme } from "./services/themeService";
 //listen for hash changes
-import { init } from "./services/routingService";
+import { init as initRouting } from "./services/routingService";
+
+//initialize storage object
+import { init as initStorage } from "./services/storageService";
+
+//initialize storage object
+import { init as initAnalytics } from "./services/analyticsService";
 
 //global styles
 import styles from "./scss/index.scss";
 
 //setup for routing service
-init();
+initRouting();
+initStorage();
+initAnalytics();
 
 
 const App = () => (

@@ -17,6 +17,10 @@ module.exports = {
         base: serverBase,
         context: "/api",
         endpoints: {
+            analytics: {
+                additionalView: "/analytics/visit/additional",
+                firstView: "/analytics/visit/first",
+            },
             contact: {
                 email: "/contact/email"
             },
@@ -51,12 +55,32 @@ module.exports = {
     regex: {
         email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     },
+    storage: {
+        keys: {
+            lastVisit: {
+                name: "JB_LAST_VISIT"
+            },
+            visits: {
+                name: "JB_VISITS"
+            }
+        }
+    },
     xhr: {
         bases: {
             api: serverBase + "/api",
             testing: "https://jsonplaceholder.typicode.com"
         },
         endpoints: {
+            analyticsAdditionalVisit: {
+                base: "api",
+                method: "post",
+                path: "/analytics/visit/additional"
+            },
+            analyticsFirstVisit: {
+                base: "api",
+                method: "post",
+                path: "/analytics/visit/first"
+            },
             email: {
                 base: "api",
                 method: "post",

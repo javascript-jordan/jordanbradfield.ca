@@ -11,6 +11,9 @@ export const en = {
             item: "Carousel Item"
         }
     },
+    about: {
+        title: "More about me"
+    },
     contact: {
         address: {
             title: "Contact Address",

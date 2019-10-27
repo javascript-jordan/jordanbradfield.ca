@@ -15,6 +15,26 @@ OAUTH2_CLIENT.setCredentials({
 });
 
 export const MAIL_MAP = {
+    analyticsAdditionalVisit: {
+        subject: "Website Additional Visit",
+        html: `
+            <div>
+                <h1>Someone Returned</h1><br/>
+                <span>Someone from: <b><%=address=></b> has visited for the: <b><%=count=></b> time.</span><br/>
+                <span>Agent: <b><%=agent=></b></span><br/>
+            </div>
+        `
+    },
+    analyticsFirstVisit: {
+        subject: "Website First Visit",
+        html: `
+            <div>
+                <h1>Someone New Visited</h1><br/>
+                <span>Someone from: <b><%=address=></b> has visited for the first time.</span><br/>
+                <span>Agent: <b><%=agent=></b></span><br/>
+            </div>
+        `
+    },
     contact: {
         subject: "New Contact Email",
         html: `
