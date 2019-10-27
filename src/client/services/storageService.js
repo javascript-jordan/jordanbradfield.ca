@@ -25,7 +25,6 @@ export const retrieve = config => {
 
 export const save = (config, data) => {
     try {
-        console.log(typeof data !== "string" ? JSON.stringify(data) : data)
         store.setItem(config.name, data && typeof data !== "string" ? JSON.stringify(data) : data);
     } catch (error) { }
 }

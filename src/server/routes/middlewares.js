@@ -1,4 +1,4 @@
-import { xhr, convertToString } from "../../utils/util";
+import { convertToString } from "../../utils/util";
 import axios from "axios";
 
 export const addIpAddressToHeaders = (req, res, next) => {
@@ -13,7 +13,7 @@ export const extractAddressToHeaders = async (req, res, next) => {
     let ip = req.header("ip");
     if(ip){
         try {
-            req.headers.location = await get(`http://ip-api.com/json/${ip}`);
+            req.headers.location = (await axios.get(`http://ip-api.com/json/${ip}`)).data;
         } catch (error) {
             console.error(`Error getting location with ip: ${ip} with error: ${convertToString(error)}`);
         }
