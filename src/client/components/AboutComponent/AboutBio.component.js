@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
 import { Typography, Paper } from "@material-ui/core";
+import AboutHobbiesComponent from "./AboutHobbies.component";
 import { strings } from "../../services/stringService";
 import config from "../../../config";
 import SignatureImage from "../../images/about/signature.png";
@@ -81,14 +82,6 @@ const AboutBioComponentStyles = theme => {
     }
 }
 
-function Hobby(image){
-    return (
-        <div className={`hobby`}>
-
-        </div>
-    );
-}
-
 function InfoPoint({ point }){
     return (
         <div className={`info-point flex row`}>
@@ -144,6 +137,7 @@ const AboutBioComponent = ({ className, classes }) => {
                 <Typography className={`page-sub-title`} variant="h6">
                     {strings.about.bio.hobbies.title}
                 </Typography>
+                <AboutHobbiesComponent className={`hobbies`} />
             </div>
         </div>
     );

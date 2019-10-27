@@ -42,7 +42,13 @@ export const en = {
                 }
             ],
             hobbies: {
-                title: "My Hobbies"
+                title: "My Hobbies",
+                items: {
+                    code: "Coding",
+                    fitness: "Fitness",
+                    fishing: "Fishing",
+                    travel: "Traveling"
+                }
             }
         }
     },
