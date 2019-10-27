@@ -45,11 +45,11 @@ const ChartComponentStyles = theme => {
                         boxShadow: theme.shadows[4],
                         width: theme.spacing(8),
                         height: theme.spacing(8),
-                        transition: "transform 250ms ease"
+                        transition: "transform 100ms ease"
                     }
                 },
                 "&:hover .inside-circle .text": {
-                    transform: "scale(1.3)"
+                    transform: "scale(2.2)"
                 }
             },
             "& .skill-name": {

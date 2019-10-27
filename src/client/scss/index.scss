@@ -66,6 +66,12 @@
 .page-title-spacing {
     margin: 1.5em 0!important;
 }
+.paper {
+    border-top: 3px solid $primary;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 8px;
+}
 button.white-button {
     background-color: #ffffff;
     color: #000000;

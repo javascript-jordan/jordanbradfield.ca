@@ -12,7 +12,36 @@ export const en = {
         }
     },
     about: {
-        title: "More about me"
+        title: "More about me",
+        bio: {
+            title: "Full Stack Developer",
+            description: `
+                I am a motivated and eager early professional with a passion for innovation and creation.
+                I specialize in Full Stack Javascript Development but have a technically diversified portfolio.
+                I have experience working on larger and smaller applications in all team sizes operating on agile principles.
+                On a non technical note I would say I have a great attitude and am an easy going person to work with.
+                I am a self learner and am able to pick up and run with new roles and assignments fairly seamlessly.
+                Feel free to contact me if you would like to connect.
+            `,
+            infoPoints: [
+                {
+                    key: "Date of Birth",
+                    value: "August 1996"
+                },
+                {
+                    key: "Email",
+                    value: "jordan.p.bradfield@gmail.com"
+                },
+                {
+                    key: "Address",
+                    value: "Halifax, Nova Scotia, Canada"
+                },
+                {
+                    key: "Website",
+                    value: "https://jordanbradfield.ca"
+                }
+            ]
+        }
     },
     contact: {
         address: {
