@@ -37,8 +37,7 @@ const ExperienceTimelineComponentStyles = theme => {
             },
             "& .see-more-button": {
                 animation: "FadeInAnimation 750ms linear 1s forwards",
-                marginTop: theme.spacing(4),
-                opacity: 0
+                marginTop: theme.spacing(4)
             },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "&.root .timeline": {
