@@ -5,6 +5,7 @@ import config from "../../../config";
 import { strings } from "../../services/stringService";
 import AboutImageComponent from "./AboutImage.component";
 import AboutBioComponent from "./AboutBio.component";
+import AboutGoalsComponent from "./AboutGoals.component";
 
 const AboutComponentStyles = theme => ({
     "@keyframes fade": {
@@ -48,6 +49,7 @@ class AboutComponent extends React.Component {
                     <AboutImageComponent className={`about-image`}></AboutImageComponent>
                     <AboutBioComponent className={`about-bio-component`}></AboutBioComponent>
                 </div>
+                <AboutGoalsComponent />
             </div>
         );
     }
