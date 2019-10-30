@@ -1,5 +1,13 @@
 import { extractDateComparrison } from "../../utils/util";
 import constants from "./constants";
+import GraduateImage from "../images/about/goals/graduate.svg";
+import GetHiredImage from "../images/about/goals/get-hired.svg";
+import FirstProjectImage from "../images/about/goals/first-project.svg";
+import MentorImage from "../images/about/goals/mentor.svg";
+import TeamLeadImage from "../images/about/goals/team-lead.svg";
+import ApplicationArchitectImage from "../images/about/goals/application-architect.svg";
+import SolutionsArchitectImage from "../images/about/goals/solutions-architect.svg";
+
 
 export const en = {
     aria: {
@@ -53,42 +61,50 @@ export const en = {
         },
         goals: {
             title: "Career Goals",
+            notAcquired: "In Progress",
             list: [
                 {
                     name: "IT Diploma",
                     aquired: "2017-07-19",
-                    description: "I acheived this goal with dedication to doing the best I could at every piece of work I submitted. I had an overachiever mindset and overall loved the   work I was doing. I would enjoy going to school each day with the intent of furthering my knowledge base and becoming an IT professional."
+                    description: "I acheived this goal with dedication to doing the best I could at every piece of work I submitted. I had an overachiever mindset and overall loved the   work I was doing. I would enjoy going to school each day with the intent of furthering my knowledge base and becoming an IT professional.",
+                    img: GraduateImage
                 },
                 {
                     name: "Entry level position",
                     aquired: "2017-07-20",
-                    description: "I acheived this goal by completing a very successful CO-OP at IBM in 2016. I performed at a top level each day during my CO-OP and later was offered\n                            an opportunity to come back the year later once I had finished my schooling. Even though I was offered the Job before finishing school I still wanted to work as hard as I could during my remaining time at school, which paid off and I graduated with Honors and a 98% average for my final year."
+                    description: "I acheived this goal by completing a very successful CO-OP at IBM in 2016. I performed at a top level each day during my CO-OP and later was offered\n                            an opportunity to come back the year later once I had finished my schooling. Even though I was offered the Job before finishing school I still wanted to work as hard as I could during my remaining time at school, which paid off and I graduated with Honors and a 98% average for my final year.",
+                    img: GetHiredImage
                 },
                 {
                     name: "First Project",
                     aquired: "2017-09-19",
-                    description: "Since I began at IBM in 2016 as a CO-OP I really wanted to be a a part of a big project that reached many users. It's nice to have the feeling that you've helped multiple people by making their lives easier/less stressful. I was able to achieve this by ramping up on skills I didn't have at the time and ended up playing a big role in further development of the project."
+                    description: "Since I began at IBM in 2016 as a CO-OP I really wanted to be a a part of a big project that reached many users. It's nice to have the feeling that you've helped multiple people by making their lives easier/less stressful. I was able to achieve this by ramping up on skills I didn't have at the time and ended up playing a big role in further development of the project.",
+                    img: FirstProjectImage
                 },
                 {
                     name: "Mentoring",
                     aquired: "2018-06-01",
-                    description: "Mentoring has been something I have always wanted to do. I love helping other people that have walked a similar path as myself. I was able to achieve this by providing advice and guidance to early professionals still in school and in the workplace. I wish I had a mentor going through school and I'm glad to be able to fill a position that I wanted."
+                    description: "Mentoring has been something I have always wanted to do. I love helping other people that have walked a similar path as myself. I was able to achieve this by providing advice and guidance to early professionals still in school and in the workplace. I wish I had a mentor going through school and I'm glad to be able to fill a position that I wanted.",
+                    img: MentorImage
                 },
                 {
-                    name: "Team Lead"
+                    name: "Team Lead",
+                    img: TeamLeadImage
                 },
                 {
-                    name: "Application Architect"
+                    name: "Application Architect",
+                    img: ApplicationArchitectImage
                 },
                 {
-                    name: "Solution Architect"
+                    name: "Solution Architect",
+                    img: SolutionsArchitectImage
                 },
-                {
-                    name: "Distinguished Engineer"
-                },
-                {
-                    name: "IBM Fellow or Equivilant"
-                }
+                // {
+                //     name: "Distinguished Engineer"
+                // },
+                // {
+                //     name: "IBM Fellow or Equivilant"
+                // }
             ]
         }
     },
