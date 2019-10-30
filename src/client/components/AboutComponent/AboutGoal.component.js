@@ -2,6 +2,7 @@ import React from "react";
 import { withStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import { strings } from "../../services/stringService";
+import config from "../../../config";
 
 const AboutGoalComponentStyles = theme => {
     return {
@@ -34,7 +35,10 @@ const AboutGoalComponentStyles = theme => {
                 borderTopRightRadius: "5px",
                 padding: theme.spacing(1),
                 paddingLeft: theme.spacing(3),
-                transform: "translateX(-8px)"
+                transform: "translateX(-8px)",
+                "& .date": {
+                    paddingLeft: theme.spacing(1)
+                }
             },
             "&.not-acquired": {
                 "& .circle-container": {
@@ -50,6 +54,13 @@ const AboutGoalComponentStyles = theme => {
                     backgroundColor: "rgb(197, 197, 197)",
                     "& .title, .date": {
                         color: "rgba(0, 0, 0, 0.26)"
+                    }
+                }
+            },
+            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
+                "&.root .goal-description-container": {
+                    "& .title>*, .date>*": {
+                        fontSize: "80%"
                     }
                 }
             }
