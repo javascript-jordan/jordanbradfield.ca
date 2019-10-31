@@ -47,9 +47,6 @@ const ChartComponentStyles = theme => {
                         height: theme.spacing(8),
                         transition: "transform 100ms ease"
                     }
-                },
-                "&:hover .inside-circle .text": {
-                    transform: "scale(2.2)"
                 }
             },
             "& .skill-name": {

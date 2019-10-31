@@ -12,6 +12,8 @@ export const init = () => {
     //listen for hash changes
     window.onhashchange = function(event){
         //dispatch the event
-        document.dispatchEvent(routeChangeEvent)
+        document.dispatchEvent(routeChangeEvent);
+        //scroll the view to top
+        this.document.querySelector("#view").scrollTop = 0;
     }
 }

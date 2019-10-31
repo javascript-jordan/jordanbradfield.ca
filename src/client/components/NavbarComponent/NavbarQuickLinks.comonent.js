@@ -21,9 +21,8 @@ const NavbarQuickLinksComponentStyles = theme => ({
             padding: 0
         },
         "& .slogan-container": {
-            "& .left-quote": {
-                transform: "rotate(180deg)"
-            }
+            textTransform: "uppercase",
+            opacity: "0.8"
         },
         "& .links-container": {
             "& .mobile-icon": {
@@ -95,11 +94,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
 
     function BlockQuote(){
         return (
-            <>
-                <FormatQuote className={`left-quote`} />
-                <Typography component="i" color="inherit" variant="subtitle2">{strings.navbar.slogan}</Typography>
-                <FormatQuote className={`right-quote`} />
-            </>
+            <Typography color="inherit" variant="subtitle2">{strings.navbar.slogan}</Typography>
         );
     }
 
