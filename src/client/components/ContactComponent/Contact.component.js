@@ -24,7 +24,6 @@ const ContactComponentStyles = theme => ({
                 flexDirection: "column-reverse",
                 alignItems: "flex-start",
                 "& > div": {
-                    animation: "FadeInAnimation 1s linear forwards",
                     flexBasis: "auto",
                     width: "100%"
                 }
