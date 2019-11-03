@@ -44,7 +44,7 @@ class ContactComponent extends React.Component {
         let { classes } = this.props;
 
         return (
-            <div className={`${classes.root} root`}>
+            <div className={`${classes.root} root set-max-width`}>
                 <Typography className={`page-title page-title-spacing`} variant="h6">
                     {strings.contact.title}
                 </Typography>

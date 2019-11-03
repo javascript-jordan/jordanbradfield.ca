@@ -43,7 +43,7 @@ class AboutComponent extends React.Component {
         let { classes } = this.props;
 
         return (
-            <div className={`${classes.root} root`}>
+            <div className={`${classes.root} root set-max-width`}>
                 <Typography className={`page-title page-title-spacing`} color="textPrimary" variant="h6">{strings.about.title}</Typography>
                 <div className={`about-overview-container flex row align-vertical-start align-horizontal-space-between`}>
                     <AboutImageComponent className={`about-image`}></AboutImageComponent>

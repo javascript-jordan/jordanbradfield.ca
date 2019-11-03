@@ -24,7 +24,7 @@ class SkillsComponent extends React.Component {
         let { classes } = this.props;
 
         return (
-            <div className={`${classes.root}`}>
+            <div className={`${classes.root} set-max-width`}>
                 <Typography className={`page-title page-title-spacing`} variant="h6">
                     {strings.skills.title}
                 </Typography>

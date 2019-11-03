@@ -9,7 +9,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #e0e0e0; 
+    background: rgba(0,0,0,0.15); 
 }
 
 /* Handle */
@@ -91,7 +91,7 @@ html, body {
 }
 
 body {
-    background-color: #e0e0e0;
+    background-color: rgba(0,0,0,0.15);
     margin: 0;
 }
 
@@ -104,13 +104,19 @@ body {
         @extend .grow;
         & > :first-child {
             margin: 8px;
-            @media only screen and (min-width: 1200px){
-                margin: 8px auto;
-                max-width: 1200px;
-            }
-            @media only screen and (min-width: 1600px){
-                max-width: 80%;
-            }
         }
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .set-max-width {
+        margin: 8px auto!important;
+        max-width: 1200px;
+    }
+}
+@media only screen and (min-width: 1600px){
+    .set-max-width {
+        max-width: 80%;
+        margin: 8px auto!important;
     }
 }

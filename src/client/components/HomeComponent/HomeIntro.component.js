@@ -18,7 +18,7 @@ const HomeIntroComponentStyles = theme => {
             "to": {transform: "rotateZ(360deg)"}
         },
         root: {
-            marginTop: sectionMarginTop,
+            marginTop: `${sectionMarginTop}px!important`,
             "& .verbiage-section": {
                 flexGrow: "1",
                 maxWidth: "60%",
@@ -217,7 +217,7 @@ const HomeIntroComponent = ({ classes }) => {
             }else{
                 flexBasisStyleToAdd = newImgWidth;
             }
-            requestAnimationFrame(() => parent.style.flexBasis = `${flexBasisStyleToAdd}px`);
+            requestAnimationFrame(() => parent.style.flexBasis = `${flexBasisStyleToAdd + 1}px`);
         }else{
             requestAnimationFrame(() => parent.style.width = "70%");
         }

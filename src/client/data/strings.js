@@ -7,6 +7,7 @@ import MentorImage from "../images/about/goals/mentor.svg";
 import TeamLeadImage from "../images/about/goals/team-lead.svg";
 import ApplicationArchitectImage from "../images/about/goals/application-architect.svg";
 import SolutionsArchitectImage from "../images/about/goals/solutions-architect.svg";
+import ApiImage from "../images/home/ApiImage.svg";
 
 
 export const en = {
@@ -238,6 +239,22 @@ export const en = {
                 contact: "Contact me",
                 resume: "Download CV"
             }
+        },
+        marketing: {
+            items: [
+                {
+                    title: "Web Development",
+                    image: FirstProjectImage
+                },
+                {
+                    title: "Hybrid Mobile",
+                    image: ApplicationArchitectImage
+                },
+                {
+                    title: "Api Development",
+                    image: ApiImage
+                }
+            ]
         }
     },
     navbar: {

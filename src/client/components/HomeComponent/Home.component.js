@@ -3,6 +3,7 @@ import { withStyles, Typography, Paper } from "@material-ui/core";
 import { xhr } from "../../../utils/util";
 import config from "../../../config";
 import HomeIntroComponent from "./HomeIntro.component";
+import HomeMarketingComponent from "./HomeMarketing.component";
 
 const HomeComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
@@ -29,16 +30,13 @@ class HomeComponent extends React.Component {
         this.imageRef = React.createRef();
     }
 
-    componentDidMount(){
-        
-    }
-
     render(){
         let { classes } = this.props;
 
         return (
             <div className={`${classes.root}`}>
                 <HomeIntroComponent />
+                <HomeMarketingComponent />
             </div>
         );
     }

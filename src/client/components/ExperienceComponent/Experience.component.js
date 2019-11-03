@@ -22,7 +22,7 @@ class ExperienceComponent extends React.Component {
         let { classes } = this.props;
 
         return (
-            <div className={`${classes.root}`}>
+            <div className={`${classes.root} set-max-width`}>
                 <ExperienceTimelineComponent />
                 <ExperienceTestimonialsComponent />
             </div>
