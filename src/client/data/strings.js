@@ -244,15 +244,28 @@ export const en = {
             items: [
                 {
                     title: "Web Development",
-                    image: FirstProjectImage
+                    image: FirstProjectImage,
+                    description: `
+                        Over the past ${Math.floor(extractDateComparrison(constants.dates.INDUSTRY_START_DATE, new Date()).years)}+ years I have gained extensive
+                        knowledge on the subject of Web Development. I understand and can implement concepts like Responsive Layouts, Accessibility, Animations, Conditional Rendering,
+                        Component Based Architecture, Advanced Styling, etc.
+                    `
                 },
                 {
-                    title: "Hybrid Mobile",
-                    image: ApplicationArchitectImage
+                    title: "Hybrid Development",
+                    image: ApplicationArchitectImage,
+                    description: `
+                        I started gaining exposure to Hybrid App Development in late 2017. Since then I have become pretty fluent in extending a single code base to run 
+                        on multiple platforms. I've used the Cordova Framework to build out my Native Apps powered by AngularJS, Angular and React.
+                    `
                 },
                 {
                     title: "Api Development",
-                    image: ApiImage
+                    image: ApiImage,
+                    description: `
+                        I have a good understanding of how REST API's work and the supported HTTP Methods. Most of my experience with building API's has been with ExpressJS.
+                        I've also integrated with third party API's like Facebook and Instagram to implement SSO functionality in my Applications.
+                    `
                 }
             ]
         }

@@ -21,8 +21,7 @@ const NavbarQuickLinksComponentStyles = theme => ({
             padding: 0
         },
         "& .slogan-container": {
-            textTransform: "uppercase",
-            opacity: "0.8"
+            textTransform: "uppercase"
         },
         "& .links-container": {
             "& .mobile-icon": {

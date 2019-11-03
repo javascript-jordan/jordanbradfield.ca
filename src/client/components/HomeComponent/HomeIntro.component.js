@@ -124,6 +124,9 @@ const HomeIntroComponentStyles = theme => {
                         "&.mobile-img": {
                             display: "block"
                         }
+                    },
+                    "& .action-buttons": {
+                        marginBottom: theme.spacing(2)
                     }
                 }
             },

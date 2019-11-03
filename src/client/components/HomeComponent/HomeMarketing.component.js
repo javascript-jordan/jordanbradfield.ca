@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles, Paper, Typography } from "@material-ui/core";
 import { strings } from "../../services/stringService";
+import config from "../../../config";
 
 const HomeMarketingComponentStyles = theme => {
     return {
@@ -8,7 +9,7 @@ const HomeMarketingComponentStyles = theme => {
             backgroundColor: "#efefef",
             flexFlow: "row wrap",
             margin: `0 -${theme.spacing(1)}`,
-            padding: `${theme.spacing(1)}px ${theme.spacing(2)}`,
+            padding: `${theme.spacing(3)}px ${theme.spacing(2)}`,
             paddingTop: theme.spacing(8),
             "& .marketing-item": {
                 textAlign: "left",
@@ -36,7 +37,21 @@ const HomeMarketingComponentStyles = theme => {
                     },
                     "& .title": {
                         textTransform: "uppercase",
-                        marginTop: theme.spacing(1)
+                        marginTop: theme.spacing(2)
+                    },
+                    "& .description": {
+                        padding: `${theme.spacing(2)} 0`
+                    }
+                }
+            },
+            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
+                "&.root": {
+                    flexDirection: "column",
+                    "& .marketing-item": {
+                        width: "100%",
+                        "&:not(:last-child)": {
+                            marginBottom: theme.spacing(9)
+                        }
                     }
                 }
             }
@@ -50,7 +65,7 @@ const HomeMarketingComponent = ({ className, classes }) => {
         <div className={`${classes.root} ${className || ""} root flex row align-vertical-start align-horizontal-center`}>
             {marketing.items.map((item, index) => {
                 return (
-                    <div className={`marketing-item grow`} key={`marketing-${index}`}>
+                    <div className={`marketing-item grow shrink no-basis`} key={`marketing-${index}`}>
                         <Paper className={`paper`}>
                             <div className={`image-container`}>
                                 <div className={`image-wrapper`}>
@@ -60,6 +75,11 @@ const HomeMarketingComponent = ({ className, classes }) => {
                             <div className={`title`}>
                                 <Typography color="textSecondary" variant="subtitle1">
                                     {item.title}
+                                </Typography>
+                            </div>
+                            <div className={`description`}>
+                                <Typography color="textSecondary" component="p" variant="body2">
+                                    {item.description}
                                 </Typography>
                             </div>
                         </Paper>
