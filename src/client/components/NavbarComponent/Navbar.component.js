@@ -8,6 +8,7 @@ import NavbarQuickLinksComonent from "./NavbarQuickLinks.comonent";
 import NavbarSideDrawerComponent from "./NavbarSideDrawer.component";
 import config from "../../../config";
 import { isMobile, subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
+import { trackEvent } from "../../services/analyticsService";
 
 const NavbarComponentStyles = theme => ({
     root: {
@@ -88,6 +89,7 @@ class NavbarComponent extends React.Component {
     }
 
     onNavItemClick(item){
+        trackEvent({...config.analytics.events.button, action: `${item.name}NavItemClick`})
         this.setState({drawerOpen: false}, () => route(item.path));
     }
 

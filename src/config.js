@@ -13,6 +13,24 @@ var isProduction = (function(){
 var serverBase = isProduction ? "http://jordanbradfield.herokuapp.com" : "http://localhost:3000";
 
 module.exports = {
+    analytics: {
+        containers: {
+            dev: {
+                id: "UA-151408083-2"
+            },
+            prod: {
+                id: "UA-151408083-1"
+            }
+        },
+        events: {
+            button: {
+                category: "ButtonClick"
+            },
+            link: {
+                category: "LinkClick"
+            }
+        }
+    },
     api: {
         base: serverBase,
         context: "/api",

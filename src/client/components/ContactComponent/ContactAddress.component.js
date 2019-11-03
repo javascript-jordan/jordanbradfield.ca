@@ -12,6 +12,7 @@ import TwitterBlackIcon from "../../images/contact/twitter-black.svg";
 import TwitterWhiteIcon from "../../images/contact/twitter-white.svg";
 import GmailBlackIcon from "../../images/contact/gmail-black.svg";
 import GmailWhiteIcon from "../../images/contact/gmail-white.svg";
+import { trackEvent } from "../../services/analyticsService";
 
 const ContactAddressComponentStyles = theme => {
     let margin = theme.spacing(8);
@@ -107,7 +108,8 @@ const ContactAddressComponent = ({ classes, className }) => {
     }
 
     function onImageClick(link){
-        window.open(encodeURI(link), "_blank");
+        trackEvent({...config.analytics.events.link, action: `Contact${link.name.replace(/ /g, "")}`});
+        window.open(encodeURI(link.link), "_blank");
     }
 
     function AddressItem({ Icon, text }){
@@ -130,7 +132,7 @@ const ContactAddressComponent = ({ classes, className }) => {
         return (
             <div className={`link-item background-white`} 
                 role="listitem" 
-                onClick={() => onImageClick(link.link)}
+                onClick={() => onImageClick(link)}
                 onMouseEnter={() => onImageMouseOver(klass, link.white)} 
                 onMouseLeave={() => onImageMouseLeave(klass, link.black)}>
                 <img alt={link.name} 

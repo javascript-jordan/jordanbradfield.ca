@@ -9,6 +9,7 @@ import { route } from "../../services/routingService";
 import { lazyLoadImage } from "../../services/imageLazyLoadService";
 import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 import ImageBackdropComponent from "../Widgets/ImageBackdrop.component";
+import { trackEvent } from "../../services/analyticsService";
 
 const HomeIntroComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
@@ -191,6 +192,15 @@ const HomeIntroComponent = ({ classes }) => {
         }[type].current;
     }
 
+    function onContactButtonClick(){
+        trackEvent({...config.analytics.events.button, action: "ContactMe"});
+        route("/contact");
+    }
+
+    function onDownloadButtonClick(){
+        trackEvent({...config.analytics.events.button, action: "DownloadResume"});
+    }
+
     function onImageLoad(){
         resizeDesktopImage();
     }
@@ -230,10 +240,10 @@ const HomeIntroComponent = ({ classes }) => {
     function ActionButtons(){
         return (
             <div className={`action-buttons flex align-horizontal-center`}>
-                <Button onClick={route.bind(null, "/contact")} className={`white-button`} variant="contained">
+                <Button onClick={onContactButtonClick} className={`white-button`} variant="contained">
                     {strings.home.intro.buttons.contact}
                 </Button>
-                <Button color="primary" download href={config.api.base + config.api.context + config.api.endpoints.downloads.resume} variant="contained">
+                <Button color="primary" download href={config.api.base + config.api.context + config.api.endpoints.downloads.resume} onClick={onDownloadButtonClick} variant="contained">
                     {strings.home.intro.buttons.resume}
                 </Button>
             </div>

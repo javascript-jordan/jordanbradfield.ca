@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
 import { withStyles } from "@material-ui/styles";
-import { TheatersOutlined } from "@material-ui/icons";
 import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 import { strings } from "../../services/stringService";
+import { trackEvent } from "../../services/analyticsService";
+import config from "../../../config";
 
 const CarouselComponentStyles = theme => {
     return {
@@ -43,7 +44,7 @@ const CarouselComponentStyles = theme => {
     }
 }
 
-const CarouselComponent = ({ classes, children }) => {
+const CarouselComponent = ({ classes, children, tracking }) => {
     let [active, setActive] = useState(0),
         carouseWrapperRef = useRef(),
         carouselRef = useRef();
@@ -103,6 +104,7 @@ const CarouselComponent = ({ classes, children }) => {
 
     function goToSlide(slideNumber){
         if(slideNumber === active) return;
+        trackEvent({...config.analytics.events.button, action: `${tracking}Slide${slideNumber + 1}`});
         return setActiveItem(slideNumber);
     }
 

@@ -35,7 +35,7 @@ const ExperienceTestimonialsComponent = ({ classes }) => {
                 </Typography>
             </div>
             <div className={`testimonials`}>
-                <CarouselComponent>
+                <CarouselComponent tracking="ExperienceTestimonial">
                     {strings.experience.testimonials.reviews.map((testimonial, index) => {
                         return <TestimonialComponent testimonial={testimonial} key={`testimonial-${index}`} />
                     })}

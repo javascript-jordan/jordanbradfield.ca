@@ -4,6 +4,7 @@ import { strings } from "../../services/stringService";
 import { Typography, TextField, Button, FormHelperText, CircularProgress } from "@material-ui/core";
 import config from "../../../config";
 import { xhr } from "../../../utils/util";
+import { trackEvent } from "../../services/analyticsService";
 
 const ContactFormComponentStyles = theme => {
     return {
@@ -66,6 +67,7 @@ const ContactFormComponent = ({ classes, className }) => {
             }
             setLoading(true);
             xhr(config.xhr.endpoints.email, email).finally(() => {
+                trackEvent({...config.analytics.events.button, action: "ContactSendEmail"});
                 setForm(initialForm);
                 setLoading(false);
             });

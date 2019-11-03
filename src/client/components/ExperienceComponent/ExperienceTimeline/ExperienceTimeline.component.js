@@ -6,6 +6,7 @@ import { strings } from "../../../services/stringService";
 import config from "../../../../config";
 import IconLineComponent from "./IconLine.component";
 import DescriptionComponent from "./Description.component";
+import { trackEvent } from "../../../services/analyticsService";
 
 const ROLES = strings.experience.timeline.roles;
 
@@ -101,6 +102,7 @@ const ExperienceTimelineComponent = ({ classes }) => {
                 roles: [...ROLES]
             }
         });
+        trackEvent({...config.analytics.events.button, action: "ExperienceSeeMore"});
     }
 
     return (
