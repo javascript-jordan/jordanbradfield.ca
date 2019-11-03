@@ -241,6 +241,11 @@ export const en = {
             }
         },
         marketing: {
+            title: "What I do",
+            description: `
+                I consider myself to be a Full Stack Consultant. Rather than focusing on a single area or domain in an application, I prefer to work on each functional 
+                area in the applications tech stack. I can also take on non technical roles focusing on the delivery of an application/service and successfully manage a team.
+            `,
             items: [
                 {
                     title: "Web Development",

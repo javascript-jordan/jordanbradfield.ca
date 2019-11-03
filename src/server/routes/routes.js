@@ -51,7 +51,7 @@ ROUTER.post(config.api.endpoints.contact.email, ...middleware, extractAddressToH
 });
 
 ROUTER.get(config.api.endpoints.downloads.resume, (req,res) => {
-    res.download(join(__dirname, "../downloads/resume.pdf"));
+    res.download(join(__dirname, "../downloads/JordanBradfieldResume.pdf"));
 });
 
 //wake up heroku dyno (remove when upgrade to hobby dyno)

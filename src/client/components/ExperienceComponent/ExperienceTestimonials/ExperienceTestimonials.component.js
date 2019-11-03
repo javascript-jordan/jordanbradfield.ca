@@ -12,7 +12,7 @@ const ExperienceTestimonialsComponentStyles = theme => {
             to: {opacity: 1}
         },
         root: {
-            animation: "$fadeIn 1s linear forwards",
+            animation: "$fadeIn 0.5s linear forwards",
             animationDelay: 1000,
             opacity: 0,
             "& .title": {

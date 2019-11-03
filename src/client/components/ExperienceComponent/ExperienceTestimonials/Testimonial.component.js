@@ -35,7 +35,10 @@ const TestimonialComponentStyles = theme => {
                 }
             },
             "& .testimonial-container": {
-                fontStyle: "italic"
+                fontStyle: "italic",
+                "&>*": {
+                    fontSize: "1rem"
+                }
             },
             "& .from-container": {
                 "&>*": {
@@ -58,7 +61,7 @@ const TestimonialComponent = ({ classes, testimonial }) => {
                 <div className={`line`}></div>
             </div>
             <div className={`testimonial-container`}>
-                <Typography color="textPrimary" className={`center`} variant="h6">
+                <Typography color="textSecondary" className={`center`} variant="h6">
                     &#34;{testimonial.review}&#34;
                 </Typography>
             </div>
