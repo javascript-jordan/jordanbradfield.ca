@@ -6,7 +6,8 @@ import { parseTemplateString, convertToLocation } from "../../utils/util";
 import { addIpAddressToHeaders, extractAddressToHeaders } from "./middlewares";
 
 const ROUTER = Router(),
-    middleware = [addIpAddressToHeaders];
+    middleware = [addIpAddressToHeaders],
+    success = {success: true};
 
 ROUTER.post(config.api.endpoints.analytics.additionalView, ...middleware, extractAddressToHeaders, (req, res) => {
     let emailParameters = {
@@ -19,7 +20,7 @@ ROUTER.post(config.api.endpoints.analytics.additionalView, ...middleware, extrac
         null,
         parseTemplateString(MAIL_MAP.analyticsAdditionalVisit.html, emailParameters)
     ];
-    sendMail.apply(null, emailArgs).then(() => res.send({success: true})).catch(error => res.status(500).send(error));
+    sendMail.apply(null, emailArgs).then(() => res.send(success)).catch(error => res.status(500).send(error));
 });
 
 ROUTER.post(config.api.endpoints.analytics.firstView, ...middleware, extractAddressToHeaders, (req, res) => {
@@ -32,7 +33,7 @@ ROUTER.post(config.api.endpoints.analytics.firstView, ...middleware, extractAddr
         null,
         parseTemplateString(MAIL_MAP.analyticsFirstVisit.html, emailParameters)
     ];
-    sendMail.apply(null, emailArgs).then(() => res.send({success: true})).catch(error => res.status(500).send(error));
+    sendMail.apply(null, emailArgs).then(() => res.send(success)).catch(error => res.status(500).send(error));
 });
 
 ROUTER.post(config.api.endpoints.contact.email, ...middleware, extractAddressToHeaders, (req, res) => {
@@ -46,11 +47,14 @@ ROUTER.post(config.api.endpoints.contact.email, ...middleware, extractAddressToH
             null,
             parseTemplateString(MAIL_MAP.contact.html, body)
         ];
-    sendMail.apply(null, emailArgs).then(() => res.send({success: true})).catch(error => res.status(500).send(error));
+    sendMail.apply(null, emailArgs).then(() => res.send(success)).catch(error => res.status(500).send(error));
 });
 
 ROUTER.get(config.api.endpoints.downloads.resume, (req,res) => {
     res.download(join(__dirname, "../downloads/resume.pdf"));
 });
+
+//wake up heroku dyno (remove when upgrade to hobby dyno)
+ROUTER.get(config.api.endpoints.misc.wake, (req,res) => res.send(success));
 
 export default ROUTER;

@@ -62,6 +62,11 @@ export const parseTemplateString = (string, data) => {
     return parsed;
 }
 
+export const wakeHerokuDyno = () => {
+    //fire a call to wake up dyno, ignore response, its best effort
+    xhr(config.xhr.endpoints.wake).catch(()=>null);
+}
+
 export const xhr = (configuration, queryOrData) => new Promise(async (resolve, reject) => {
     let availableMethods = ["get", "post", "put", "delete", "patch", "head"];
     //check to see if the configuration object is valid

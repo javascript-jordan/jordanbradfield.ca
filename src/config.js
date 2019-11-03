@@ -26,6 +26,9 @@ module.exports = {
             },
             downloads: {
                 resume: "/downloads/resume"
+            },
+            misc: {
+                wake: "/misc/wake"
             }
         }
     },
@@ -90,6 +93,11 @@ module.exports = {
                 base: "testing",
                 method: "get",
                 path: "/users"
+            },
+            wake: {
+                base: "api",
+                method: "get",
+                path: "/misc/wake"
             }
         }
     }

@@ -18,6 +18,7 @@ const HomeMarketingComponentStyles = theme => {
                     border: "none",
                     borderRadius: "2px",
                     padding: `0 ${theme.spacing(2)}`,
+                    height: 200,
                     "& .image-container": {
                         height: theme.spacing(4),
                         "& .image-wrapper": {
@@ -44,15 +45,33 @@ const HomeMarketingComponentStyles = theme => {
                     }
                 }
             },
+            [theme.breakpoints.down(1500)]: {
+                "&.root .marketing-item .paper": {
+                    height: 275
+                }
+            },
+            [theme.breakpoints.down("sm")]: {
+                "&.root .marketing-item .paper": {
+                    height: 315
+                }
+            },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "&.root": {
                     flexDirection: "column",
                     "& .marketing-item": {
                         width: "100%",
+                        "& .paper": {
+                            height: 220
+                        },
                         "&:not(:last-child)": {
                             marginBottom: theme.spacing(9)
                         }
                     }
+                }
+            },
+            [theme.breakpoints.down(430)]: {
+                "&.root .marketing-item .paper": {
+                    height: 270
                 }
             }
         }
@@ -66,21 +85,23 @@ const HomeMarketingComponent = ({ className, classes }) => {
             {marketing.items.map((item, index) => {
                 return (
                     <div className={`marketing-item grow shrink no-basis`} key={`marketing-${index}`}>
-                        <Paper className={`paper`}>
+                        <Paper className={`paper flex column align-horizontal-evenly`}>
                             <div className={`image-container`}>
                                 <div className={`image-wrapper`}>
                                     <img src={item.image} />
                                 </div>
                             </div>
-                            <div className={`title`}>
-                                <Typography color="textSecondary" variant="subtitle1">
-                                    {item.title}
-                                </Typography>
-                            </div>
-                            <div className={`description`}>
-                                <Typography color="textSecondary" component="p" variant="body2">
-                                    {item.description}
-                                </Typography>
+                            <div className={`title-description flex column`}>
+                                <div className={`title`}>
+                                    <Typography color="textSecondary" variant="subtitle1">
+                                        {item.title}
+                                    </Typography>
+                                </div>
+                                <div className={`description grow flex row align-vertical-center`}>
+                                    <Typography color="textSecondary" component="p" variant="body2">
+                                        {item.description}
+                                    </Typography>
+                                </div>
                             </div>
                         </Paper>
                     </div>
