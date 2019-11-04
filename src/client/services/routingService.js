@@ -12,7 +12,7 @@ function scrollViewToTop(){
 }
 
 function setTitle(){
-    window.document.title = "Jordan Bradfield - " + strings.navbar.items.find(item => item.path === getRoute()).name;
+    window.document.title = ("Jordan Bradfield - " + (strings.navbar.items.find(item => item.path === getRoute()).name));
 }
 
 function track(){
