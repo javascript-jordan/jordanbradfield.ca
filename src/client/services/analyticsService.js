@@ -22,7 +22,7 @@ export const init = () => {
             let newNumberVisits = ++numberVisits;
             save(config.storage.keys.visits, typeof numberVisits === "number" ? newNumberVisits : 1);
             save(config.storage.keys.lastVisit, Date.now());
-            xhr(config.xhr.endpoints.analyticsAdditionalVisit, {agent: window.navigator.userAgent, count: visits});
+            xhr(config.xhr.endpoints.analyticsAdditionalVisit, {agent: window.navigator.userAgent, count: newNumberVisits});
         }
     }else{
         //new visitor send new visitor email
