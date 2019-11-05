@@ -12,7 +12,11 @@ function scrollViewToTop(){
 }
 
 function setTitle(){
-    window.document.title = ("Jordan Bradfield - " + (strings.navbar.items.find(item => item.path === getRoute()).name));
+    try {
+        window.document.title = ("Jordan Bradfield - " + (strings.navbar.items.find(item => item.path === getRoute()).name))
+    } catch(error){
+        window.document.title = "Jordan Bradfield";
+    }
 }
 
 function track(){
