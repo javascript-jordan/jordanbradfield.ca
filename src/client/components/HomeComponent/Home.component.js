@@ -4,6 +4,7 @@ import { xhr } from "../../../utils/util";
 import config from "../../../config";
 import HomeIntroComponent from "./HomeIntro.component";
 import HomeMarketingComponent from "./HomeMarketing.component";
+import HomeMoreLinksComponent from "./HomeMoreLinks.component";
 
 const HomeComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
@@ -37,6 +38,7 @@ class HomeComponent extends React.Component {
             <div className={`${classes.root}`}>
                 <HomeIntroComponent />
                 <HomeMarketingComponent />
+                <HomeMoreLinksComponent />
             </div>
         );
     }

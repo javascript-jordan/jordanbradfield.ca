@@ -273,6 +273,27 @@ export const en = {
                     `
                 }
             ]
+        },
+        links: {
+            title: "Keep Exploring",
+            description: `
+                I have documented a lot of my experience and skills that I've picked up since entering the IT industry. Feel free to check out the below links and have a look at the other domains
+                on this website. While I am currently happily employed I do like to make new connections, so feel free to contact/connect with me.
+            `,
+            items: [
+                {
+                    name: "Experience"
+                },
+                {
+                    name: "Skills"
+                },
+                {
+                    name: "About"
+                },
+                {
+                    name: "Contact"
+                }
+            ]
         }
     },
     navbar: {
