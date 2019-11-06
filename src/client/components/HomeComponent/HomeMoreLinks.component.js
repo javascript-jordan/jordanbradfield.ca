@@ -14,6 +14,7 @@ const HomeMoreLinksComponentStyles = theme => {
                 margin: "auto"
             },
             "& .links": {
+                flexFlow: "row wrap",
                 marginTop: theme.spacing(5),
                 "& .link": {
                     padding: `0 ${theme.spacing(1)}`,
@@ -28,6 +29,14 @@ const HomeMoreLinksComponentStyles = theme => {
                                 textTransform: "uppercase"
                             }
                         }
+                    }
+                }
+            },
+            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
+                "&.root .links": {
+                    "& .link": {
+                        marginBottom: theme.spacing(2),
+                        minWidth: 150
                     }
                 }
             }
