@@ -20,6 +20,8 @@ const HomeMarketingComponentStyles = theme => {
             },
             "& .marketing-list": {
                 flexFlow: "row wrap",
+                maxWidth: "75%",
+                margin: "auto",
                 padding: `${theme.spacing(9)}px ${theme.spacing(2)}`,
                 paddingBottom: theme.spacing(8),
                 "& .marketing-item": {
@@ -60,12 +62,12 @@ const HomeMarketingComponentStyles = theme => {
             },
             [theme.breakpoints.down(1500)]: {
                 "&.root .marketing-list .marketing-item .paper": {
-                    height: 275
+                    height: 300
                 }
             },
             [theme.breakpoints.down("sm")]: {
                 "&.root .marketing-list .marketing-item .paper": {
-                    height: 315
+                    height: 360
                 }
             },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
@@ -75,6 +77,7 @@ const HomeMarketingComponentStyles = theme => {
                     },
                     "& .marketing-list": {
                         flexDirection: "column",
+                        maxWidth: "100%",
                         "& .marketing-item": {
                             width: "100%",
                             "& .paper": {

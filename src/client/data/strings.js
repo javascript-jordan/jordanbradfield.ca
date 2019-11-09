@@ -8,6 +8,10 @@ import TeamLeadImage from "../images/about/goals/team-lead.svg";
 import ApplicationArchitectImage from "../images/about/goals/application-architect.svg";
 import SolutionsArchitectImage from "../images/about/goals/solutions-architect.svg";
 import ApiImage from "../images/home/ApiImage.svg";
+import ExperienceImage from "../images/home/moreLinks/experience.svg";
+import SkillsImage from "../images/home/moreLinks/skills.svg";
+import ContactImage from "../images/home/moreLinks/contact.svg";
+import AboutImage from "../images/home/moreLinks/about.svg";
 
 
 export const en = {
@@ -282,18 +286,39 @@ export const en = {
             `,
             items: [
                 {
-                    name: "Experience"
+                    name: "Experience",
+                    description: `
+                        I have had the opportunity to wear many different hats and fufill many different roles in my career. I've taken on many challenges and growth opportunities which has helped shapped my career to where it is today.
+                    `,
+                    img: ExperienceImage,
+                    link: "/experience"
                 },
                 {
-                    name: "Skills"
+                    name: "Skills",
+                    description: `
+                        I'm a firm believer in keeping ym skills up to date. I am constantly learning new things and broadening my knowledge in all areas of IT so I can provide Full Stack Solutions using the latest technology available.
+                    `,
+                    img: SkillsImage,
+                    link: "/skills"
                 },
                 {
-                    name: "About"
+                    name: "About",
+                    description: `
+                        I would say I have a great personality and am easy to get along with. I render high positivity and motivation in the workplace. My attitude and energy really helps drive the innovative work I produce day to day.
+                    `,
+                    img: AboutImage,
+                    link: "/about"
                 },
                 {
-                    name: "Contact"
+                    name: "Contact",
+                    description: `
+                        I've had the pleasure of meeting and connecting with some of the finest in the industry. I love meeting new people and hearing about cool new opportunities. Please feel free to reach out to me via Email or LinkedIn.
+                    `,
+                    img: ContactImage,
+                    link: "/contact"
                 }
-            ]
+            ],
+            seeMore: "See More"
         }
     },
     navbar: {
