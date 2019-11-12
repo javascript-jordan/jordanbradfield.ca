@@ -29,7 +29,7 @@ const NavbarSideDrawerStyles = theme => ({
                 },
                 [theme.breakpoints.down(350)]: {
                     "& .image img": {
-                        height: "50"
+                        height: "60"
                     },
                     "& .name-title .name.color-white": {
                         fontSize: "1em"

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm test && npm run buildClient && npm run buildServer && cp src/config.js dist/config.js && mkdir dist/server/public && cp -r dist/client/* dist/server/public/",
-    "buildClient": "rm -rf dist/client && npx webpack --mode=production",
+    "buildClient": "rm -rf dist/client && npx webpack --mode=production && node tools/minifier.js",
     "buildServer": "rm -rf dist/server && rm -rf dist/utils && npx babel src/server --out-dir dist/server --copy-files && npx babel src/utils --out-dir dist/utils --ignore \"**/*.spec.js\"",
     "clientDev": "webpack-dev-server",
     "commit": "./scripts/commit.sh",
