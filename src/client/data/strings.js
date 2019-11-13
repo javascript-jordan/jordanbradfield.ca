@@ -334,10 +334,10 @@ export const en = {
         menu: "Open Menu",
         slogan: "The professional you need with the skills you want",
         links: {
-            github: "Github Repository",
-            linkedin: "Linkedin Profile",
+            github: "Github",
+            linkedin: "Linkedin",
             mail: "Email",
-            twitter: "Twitter Feed"
+            twitter: "Twitter"
         }
     },
     skills: {

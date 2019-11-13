@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createRef, useRef } from "react";
-import { AppBar, Typography, withStyles, useMediaQuery, useTheme, IconButton } from "@material-ui/core";
-import { FormatQuote, Mail } from "@material-ui/icons";
+import { AppBar, Typography, withStyles, useMediaQuery, useTheme, IconButton, Menu, MenuItem, Popover } from "@material-ui/core";
+import { FormatQuote, Mail, MoreVert } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
 import GithubImage from "../../images/navbar/github.png";
 import LinkedinImage from "../../images/navbar/linkedin.png";
@@ -24,17 +24,15 @@ const NavbarQuickLinksComponentStyles = theme => ({
             textTransform: "uppercase"
         },
         "& .links-container": {
-            "& .mobile-icon": {
-                padding: theme.spacing(0.75)
+            "& .single-link": {
+
             },
-            "& img": {
-                cursor: "pointer",
-                marginRight: theme.spacing(2),
-                transition: "all 250ms ease",
-                "-webkit-backface-visibility": "hidden",
-                "&:hover": {
-                    filter: "drop-shadow(2px 4px 6px rgba(0,0,0,0.5))",
-                    opacity: "0.7"
+            "& .multiple-links": {
+                "& button.icon-button": {
+                    color: "#ffffff",
+                    "&:hover": {
+                        backgroundColor: "rgba(255,255,255,0.2)"
+                    }
                 }
             }
         }
@@ -43,20 +41,21 @@ const NavbarQuickLinksComponentStyles = theme => ({
 
 const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
 
-    let [state, setState] = useState({ mobile: isMobile(), hidden: false });
+    let [state, setState] = useState({ anchorElement: null, mobile: isMobile(), hidden: false });
 
-    let links = state.mobile ? [
-        {click: onEmailIconClick, icon: Mail, name: strings.navbar.links.mail}
-    ] : [
+    let open = Boolean(state.anchorElement);
+
+    let links = [
+        {click: onEmailIconClick, icon: Mail, name: strings.navbar.links.mail},
         {src: GithubImage, name: strings.navbar.links.github},
         {src: LinkedinImage, name: strings.navbar.links.linkedin},
-        {src: TwitterImage, name: strings.navbar.links.twitter},
-    ];
+        {src: TwitterImage, name: strings.navbar.links.twitter}
+    ]
 
     let self = useRef(null);
 
     let view = null;
-
+    console.log(state)
     useEffect(() => {
         //get active view
         view = document.querySelector("#view");
@@ -75,6 +74,19 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
 
     function onEmailIconClick(){
         window.open(`mailto:${config.constants.email}`, "_blank");
+    }
+
+    function onLinkClick(link){
+        console.log(link)
+        // window.PerformanceMark(link.src)
+    }
+
+    function onMenuClick(event){
+        setState(state => ({...state, anchorElement: event.currentTarget}));
+    }
+
+    function onMenuClose(){
+        setState(state => ({...state, anchorElement: null}));
     }
 
     function onScroll(){
@@ -105,13 +117,50 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
         );
     }
 
+    function Links(){
+        try {
+            console.log(state.anchorElement.getBoundingClientRect())
+        } catch (error) {
+            
+        }
+        return (
+            <div className={`multiple-links`}>
+                <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" className={`icon-button`} onClick={onMenuClick}>
+                    <MoreVert />
+                </IconButton>
+                <Popover
+                    anchorEl={state.anchorElement}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                    anchorPosition={{ top: 55, right: 55, left: 500 }}
+                    getContentAnchorEl={null}
+                    // color="t"
+                    // keepMounted
+                    open={open}
+                    onClose={onMenuClose}
+                    PaperProps={{
+                        style: {
+                            maxHeight: 500,
+                            width: 200
+                        }
+                    }}>
+                    {links.map(link => (
+                        <MenuItem key={`link-${link.name}`} onClick={onLinkClick.bind(null, link)}>
+                            {link.name}
+                        </MenuItem>
+                    ))}
+                </Popover>
+            </div>
+        );
+    }
+
     return (
         <AppBar ref={self} color="primary" className={`${className} ${classes.root} ${state.hidden ? "hidden" : ""} flex row align-vertical-center align-horizontal-space-between`} position="relative">
             <div className={`slogan-container flex row align-vertical-center`}>
                 {state.mobile ? <Name /> : <BlockQuote />}
             </div>
             <div className={`links-container flex row align-vertical-center`}>
-                {links.map((link, index) => {
+                <Links />
+                {/* {links.map((link, index) => {
                     if(link.icon){
                         return (
                             <IconButton className={`mobile-icon`} onClick={link.click} key={`mobile-icon-${link.name}`}>
@@ -122,7 +171,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
                     return (
                         <img alt={link.name} key={`quick-link-${index}`} height="30" width="auto" role="link" src={link.src} />
                     );
-                })}
+                })} */}
             </div>
         </AppBar>
     );
