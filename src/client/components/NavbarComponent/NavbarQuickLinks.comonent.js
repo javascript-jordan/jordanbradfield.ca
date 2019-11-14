@@ -1,6 +1,6 @@
 import React, { useEffect, useState, createRef, useRef } from "react";
-import { AppBar, Typography, withStyles, useMediaQuery, useTheme, IconButton, Menu, MenuItem, Popover } from "@material-ui/core";
-import { FormatQuote, Mail, MoreVert } from "@material-ui/icons";
+import { AppBar, Typography, withStyles, IconButton, Menu, MenuItem } from "@material-ui/core";
+import { Mail, MoreVert, CloudDownload } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
 import config from "../../../config";
 import { isMobile, subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
@@ -21,15 +21,11 @@ const NavbarQuickLinksComponentStyles = theme => ({
             textTransform: "uppercase"
         },
         "& .links-container": {
-            "& .single-link": {
-
-            },
-            "& .multiple-links": {
-                "& button.icon-button": {
-                    color: "#ffffff",
-                    "&:hover": {
-                        backgroundColor: "rgba(255,255,255,0.2)"
-                    }
+            "& button.icon-button": {
+                color: "#ffffff",
+                padding: theme.spacing(1),
+                "&:hover": {
+                    backgroundColor: "rgba(255,255,255,0.2)!important"
                 }
             }
         }
@@ -124,7 +120,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
                 <IconButton aria-label="more" aria-controls="long-menu" aria-haspopup="true" className={`icon-button`} onClick={onMenuClick}>
                     <MoreVert />
                 </IconButton>
-                <Popover
+                <Menu
                     anchorEl={state.anchorElement}
                     anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                     getContentAnchorEl={null}
@@ -144,7 +140,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
                             </Typography>
                         </MenuItem>
                     ))}
-                </Popover>
+                </Menu>
             </div>
         );
     }
@@ -155,19 +151,12 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
                 {state.mobile ? <Name /> : <BlockQuote />}
             </div>
             <div className={`links-container flex row align-vertical-center`}>
+                <a download href={config.api.base + config.api.context + config.api.endpoints.downloads.resume}>
+                    <IconButton className={`icon-button`}>
+                        <CloudDownload className={`color-white`} />
+                    </IconButton>
+                </a>
                 <Links />
-                {/* {links.map((link, index) => {
-                    if(link.icon){
-                        return (
-                            <IconButton className={`mobile-icon`} onClick={link.click} key={`mobile-icon-${link.name}`}>
-                                <link.icon className={`color-white`} aria-label={link.name} />
-                            </IconButton>
-                        );
-                    }
-                    return (
-                        <img alt={link.name} key={`quick-link-${index}`} height="30" width="auto" role="link" src={link.src} />
-                    );
-                })} */}
             </div>
         </AppBar>
     );
