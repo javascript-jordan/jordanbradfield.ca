@@ -63,7 +63,7 @@ module.exports = {
     },
     links: {
         github: "https://github.com/javascript-jordan",
-        gmail: "mailto:jordan.p.bradfield@gmail.com?subject=Found your from jordanbradfield.ca",
+        gmail: "mailto:jordan.p.bradfield@gmail.com?subject=Found you from jordanbradfield.ca",
         linkedin: "https://www.linkedin.com/in/jordan-bradfield-9333a1119/",
         twitter: "https://twitter.com/JordanBradfiel4"
     },

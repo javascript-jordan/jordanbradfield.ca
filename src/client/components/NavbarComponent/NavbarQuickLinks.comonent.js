@@ -2,9 +2,6 @@ import React, { useEffect, useState, createRef, useRef } from "react";
 import { AppBar, Typography, withStyles, useMediaQuery, useTheme, IconButton, Menu, MenuItem, Popover } from "@material-ui/core";
 import { FormatQuote, Mail, MoreVert } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
-import GithubImage from "../../images/navbar/github.png";
-import LinkedinImage from "../../images/navbar/linkedin.png";
-import TwitterImage from "../../images/navbar/twitter.jpg";
 import config from "../../../config";
 import { isMobile, subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 
@@ -49,16 +46,16 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
     let open = Boolean(state.anchorElement);
 
     let links = [
-        {click: onEmailIconClick, icon: Mail, name: strings.navbar.links.mail},
-        {src: GithubImage, name: strings.navbar.links.github},
-        {src: LinkedinImage, name: strings.navbar.links.linkedin},
-        {src: TwitterImage, name: strings.navbar.links.twitter}
+        {src: config.links.gmail, icon: Mail, name: strings.navbar.links.mail},
+        {src: config.links.github, name: strings.navbar.links.github},
+        {src: config.links.linkedin, name: strings.navbar.links.linkedin},
+        {src: config.links.twitter, name: strings.navbar.links.twitter}
     ]
 
     let self = useRef(null);
 
     let view = null;
-    console.log(state)
+
     useEffect(() => {
         //get active view
         view = document.querySelector("#view");
@@ -75,13 +72,9 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
         }
     }, []);
 
-    function onEmailIconClick(){
-        window.open(`mailto:${config.constants.email}`, "_blank");
-    }
-
     function onLinkClick(link){
-        console.log(link)
-        // window.PerformanceMark(link.src)
+        onMenuClose();
+        window.open(link.src, "_blank");
     }
 
     function onMenuClick(event){
