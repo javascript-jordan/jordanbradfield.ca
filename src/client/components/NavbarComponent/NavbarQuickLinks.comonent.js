@@ -36,6 +36,9 @@ const NavbarQuickLinksComponentStyles = theme => ({
                 }
             }
         }
+    },
+    menuItem: {
+        textTransform: "uppercase"
     }
 });
 
@@ -82,7 +85,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
     }
 
     function onMenuClick(event){
-        setState(state => ({...state, anchorElement: event.currentTarget}));
+        setState(state => ({...state, anchorElement: document.querySelector(".links-container")}));
     }
 
     function onMenuClose(){
@@ -130,22 +133,22 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
                 </IconButton>
                 <Popover
                     anchorEl={state.anchorElement}
-                    anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                    anchorPosition={{ top: 55, right: 55, left: 500 }}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
                     getContentAnchorEl={null}
-                    // color="t"
-                    // keepMounted
                     open={open}
                     onClose={onMenuClose}
                     PaperProps={{
                         style: {
                             maxHeight: 500,
-                            width: 200
+                            minWidth: 110,
+                            transform: "translateX(-15px)"
                         }
                     }}>
                     {links.map(link => (
-                        <MenuItem key={`link-${link.name}`} onClick={onLinkClick.bind(null, link)}>
-                            {link.name}
+                        <MenuItem className={`${classes.menuItem}`} key={`link-${link.name}`} onClick={onLinkClick.bind(null, link)}>
+                            <Typography color="textSecondary" variant="subtitle2">
+                                {link.name}
+                            </Typography>
                         </MenuItem>
                     ))}
                 </Popover>
