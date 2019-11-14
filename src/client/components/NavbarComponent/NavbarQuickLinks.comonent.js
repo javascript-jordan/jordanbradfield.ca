@@ -21,6 +21,9 @@ const NavbarQuickLinksComponentStyles = theme => ({
             textTransform: "uppercase"
         },
         "& .links-container": {
+            "&>:first-child": {
+                marginRight: theme.spacing(1)
+            },
             "& button.icon-button": {
                 color: "#ffffff",
                 padding: theme.spacing(1),
