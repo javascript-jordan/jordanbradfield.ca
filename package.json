@@ -1,6 +1,6 @@
 {
   "name": "jordanbradfield.ca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official source code for jordanbradfield.ca",
   "main": "index.js",
   "scripts": {

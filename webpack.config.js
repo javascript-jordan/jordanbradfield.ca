@@ -45,6 +45,7 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
+                exclude: /node_modules/,
                 use: [
                     {
                         loader: "file-loader",
@@ -53,6 +54,11 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.ico$/,
+                exclude: /node_modules/,
+                loader: "file-loader?name=[name].[ext]"
             }
         ]
     },

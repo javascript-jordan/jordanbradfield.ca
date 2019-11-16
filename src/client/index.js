@@ -22,6 +22,9 @@ import { init as initAnalytics } from "./services/analyticsService";
 //global styles
 import styles from "./scss/index.scss";
 
+//load favicon
+import favicon from "./favicon.ico";
+
 initRouteChangeDection();
 initStorageObject();
 initAnalytics();
