@@ -147,9 +147,14 @@ const HomeIntroComponentStyles = theme => {
                     width: "75%"
                 }
             },
-            [theme.breakpoints.down(385)]: {
-                "&.root .verbiage-section .slogan :first-child :last-child.small": {
-                    marginLeft: "0!important"
+            [theme.breakpoints.down(400)]: {
+                "&.root .verbiage-section .slogan": {
+                    "& .row:first-child .word.small h4": {
+                        fontSize: "1.7rem"
+                    },
+                    "& :first-child :last-child.small": {
+                        marginLeft: "0!important"
+                    }
                 }
             },
             [theme.breakpoints.up("lg")]: {

@@ -4,7 +4,6 @@ import { Typography, Paper } from "@material-ui/core";
 import AboutHobbiesComponent from "./AboutHobbies.component";
 import { strings } from "../../services/stringService";
 import config from "../../../config";
-import SignatureImage from "../../images/about/signature.png";
 
 const AboutBioComponentStyles = theme => {
     return {
@@ -13,16 +12,16 @@ const AboutBioComponentStyles = theme => {
             "& .description": {
                 margin: `${theme.spacing(3)} 0`
             },
-            "& .signature-container": {
+            "& .mission-statement-container": {
                 margin: `${theme.spacing(3)} 0`,
-                "& .signature-image": {
-                    "& img": {
-                        width: "30%",
-                        maxWidth: "75%",
-                        marginLeft: "5%"
+                "& .mission-statement-text": {
+                    padding: `0 ${theme.spacing(3)}`,
+                    paddingRight: theme.spacing(1),
+                    "& h6": {
+                        fontStyle: "italic"
                     }
                 },
-                "& .signature-line": {
+                "& .mission-statement-line": {
                     "& .dot": {
                         backgroundColor: theme.palette.primary.main,
                         borderRadius: "50%",
@@ -58,25 +57,6 @@ const AboutBioComponentStyles = theme => {
                 "& .page-sub-title": {
                     margin: `${theme.spacing(3)} 0`
                 }
-            },
-            [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
-                "&.root .signature-container": {
-                    "& .signature-image": {
-                        "& img": {
-                            width: "50%",
-                            marginLeft: theme.spacing(2)
-                        }
-                    }
-                }
-            },
-            [theme.breakpoints.down("xs")]: {
-                "&.root .signature-container": {
-                    "& .signature-image": {
-                        "& img": {
-                            width: "80%"
-                        }
-                    }
-                }
             }
         }
     }
@@ -95,13 +75,15 @@ function InfoPoint({ point }){
     );
 }
 
-function Signature(){
+function MissionStatement(){
     return (
-        <div className={`signature-container`}>
-            <div className={`signature-image`}>
-                <img src={SignatureImage} />
+        <div className={`mission-statement-container`}>
+            <div className={`mission-statement-text`}>
+                <Typography color="textSecondary" variant="subtitle2">
+                    {strings.about.bio.mission}
+                </Typography>
             </div>
-            <div className={`signature-line flex row align-vertical-center`}>
+            <div className={`mission-statement-line flex row align-vertical-center`}>
                 <div className={`dot flex row align-vertical-center align-horizontal-center`}>
                     <span className={`fill background-white`}></span>
                 </div>
@@ -127,7 +109,7 @@ const AboutBioComponent = ({ className, classes }) => {
                     </Typography>
                 </Paper>
             </div>
-            <Signature />
+            <MissionStatement />
             <div className={`info-list`}>
                 {strings.about.bio.infoPoints.map((point, index) => {
                     return <InfoPoint key={`info-point-${index}`} point={point} />;

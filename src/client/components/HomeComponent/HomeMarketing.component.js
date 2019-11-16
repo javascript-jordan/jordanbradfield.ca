@@ -6,7 +6,7 @@ import config from "../../../config";
 const HomeMarketingComponentStyles = theme => {
     return {
         root: {
-            backgroundColor: "#efefef",
+            backgroundColor: "#e0e0e0",
             margin: `0 -${theme.spacing(1)}`,
             "& .main-title": {
                 padding: theme.spacing(2),

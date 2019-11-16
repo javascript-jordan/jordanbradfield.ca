@@ -10,6 +10,7 @@
     "clientDev": "webpack-dev-server",
     "commit": "./scripts/commit.sh",
     "dev": ". ./scripts/setEnv.sh && npx concurrently \"npm run clientDev\" \"npm run serverDev\"",
+    "deploy": "npm run build && chmod 775 ./scripts/deploy.sh && ./scripts/deploy.sh",
     "serverDev": "nodemon --exec babel-node src/server/server.js --watch src/server",
     "start": "export NODE_ENV=production && node dist/server/server.js",
     "test": "jest --verbose"

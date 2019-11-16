@@ -12,15 +12,19 @@ const ROLES = strings.experience.timeline.roles;
 
 const ExperienceTimelineComponentStyles = theme => {
     return {
-        "@keyframes fadeIn": {
+        "@keyframes slideFadeIn": {
             from: {opacity: "0.5", transform: "translateY(100vh)"},
             to: {opacity: "1", transform: "translateY(0%)"}
+        },
+        "@keyframes fadeIn": {
+            from: {opacity: "0"},
+            to: {opacity: "1"}
         },
         root: {
             "& .timeline": {
                 "& .job-row": {
                     "&:not(.all)": {
-                        animation: "$fadeIn 350ms linear forwards",
+                        animation: "$slideFadeIn 350ms linear forwards",
                         opacity: 0
                     },
                     marginBottom: theme.spacing(2),
@@ -37,8 +41,9 @@ const ExperienceTimelineComponentStyles = theme => {
                 }
             },
             "& .see-more-button": {
-                animation: "FadeInAnimation 750ms linear 1s forwards",
-                marginTop: theme.spacing(4)
+                animation: "$fadeIn 750ms linear 1s forwards",
+                marginTop: theme.spacing(4),
+                opacity: 0
             },
             [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
                 "&.root .timeline": {

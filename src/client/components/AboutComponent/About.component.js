@@ -17,8 +17,26 @@ const AboutComponentStyles = theme => ({
     root: {
         animation: "$fade 0.75s ease-out forwards",
         opacity: 0,
+        "& .about-image": {
+            flexBasis: "40%"
+        },
         "& .about-bio-component": {
             maxWidth: 800
+        },
+        [theme.breakpoints.up("md")]: {
+            "& .about-overview-container .about-image": {
+                flexBasis: "20%"
+            }
+        },
+        [theme.breakpoints.up(config.constants.mobileBreakpoint * 2)]: {
+            "& .about-overview-container .about-image": {
+                flexBasis: "15%"
+            }
+        },
+        [theme.breakpoints.up(2000)]: {
+            "& .about-overview-container .about-image": {
+                flexBasis: "250px"
+            }
         },
         [theme.breakpoints.down(config.constants.mobileBreakpoint)]: {
             "&.root .about-overview-container .about-image": {
@@ -45,7 +63,7 @@ class AboutComponent extends React.Component {
         return (
             <div className={`${classes.root} root set-max-width`}>
                 <Typography className={`page-title page-title-spacing`} color="textPrimary" variant="h6">{strings.about.title}</Typography>
-                <div className={`about-overview-container flex row align-vertical-start align-horizontal-space-between`}>
+                <div className={`about-overview-container flex row align-vertical-start align-horizontal-space-around`}>
                     <AboutImageComponent className={`about-image`}></AboutImageComponent>
                     <AboutBioComponent className={`about-bio-component`}></AboutBioComponent>
                 </div>

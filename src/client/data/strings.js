@@ -36,6 +36,9 @@ export const en = {
                 I am a self learner and am able to pick up and run with new roles and assignments fairly seamlessly.
                 Feel free to contact me if you would like to connect.
             `,
+            mission: `
+                "My mission is to help my clients revolutionize their businesses by utilizing the latest technologies and services to acheive a modernized ecosystem across all of their domains and applications."
+            `,
             infoPoints: [
                 {
                     key: "Date of Birth",

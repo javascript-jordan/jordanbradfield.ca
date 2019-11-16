@@ -18,6 +18,9 @@
     &.align-horizontal-evenly {
         justify-content: space-evenly;
     }
+    &.align-horizontal-space-around {
+        justify-content: space-around;
+    }
     &.align-horizontal-end {
         justify-content: flex-end;
     }

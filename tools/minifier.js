@@ -1,7 +1,7 @@
 const { join, extname } = require("path");
 const { readdirSync, readFileSync, writeFileSync } = require("fs");
 
-const DIST = join(__dirname, "../dist/client");
+const DIST = join(__dirname, "../dist/client/images");
 
 const FILES = readdirSync(DIST);
 
