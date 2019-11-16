@@ -8,6 +8,8 @@ git push origin master
 git tag "${version}"
 git push origin "${version}"
 cd ../javascript-jordan.github.io
+export GIT_MERGE_AUTOEDIT=no
+git pull origin master --no-edit
 rm -rfv !("CNAME"|"*git")
 git add .
 git commit -m "removing old assets"
