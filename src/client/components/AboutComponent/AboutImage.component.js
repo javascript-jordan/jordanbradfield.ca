@@ -1,6 +1,5 @@
 import React from "react";
 import { withStyles } from "@material-ui/styles";
-import JordanTransparentLow from "../../images/home/jordan-transparent-low.png";
 import JordanStandingTransparentLow from "../../images/about/jordan-standing.png";
 
 const AboutImageComponentStyles = theme => {

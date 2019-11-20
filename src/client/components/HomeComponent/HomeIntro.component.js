@@ -3,10 +3,9 @@ import { withStyles } from "@material-ui/styles";
 import { Typography, Button } from "@material-ui/core";
 import { strings } from "../../services/stringService";
 import config from "../../../config";
-import JordanTransparentLow from "../../images/home/jordan-transparent-low.png";
+import JordanTransparentLow from "../../images/home/jordan-transparent.png";
 import JordanHeadshot from "../../images/home/jordan-headshot-low.png";
 import { route } from "../../services/routingService";
-import { lazyLoadImage } from "../../services/imageLazyLoadService";
 import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 import ImageBackdropComponent from "../Widgets/ImageBackdrop.component";
 import { trackEvent } from "../../services/analyticsService";
@@ -65,10 +64,7 @@ const HomeIntroComponentStyles = theme => {
                     width: "100%"
                 },
                 "&.desktop-img": {
-                    display: "block",
-                    "& img": {
-                        opacity: "0"
-                    }
+                    display: "block"
                 },
                 "&.mobile-img": {
                     display: "none",
@@ -172,19 +168,10 @@ const HomeIntroComponent = ({ classes }) => {
     let desktopImageRef = React.useRef(),
         mobileImageRef = React.useRef();
 
-    let slogan = strings.home.intro.slogan,
-        desktopImageSrcArray = [
-            config.photos.home.jordanTransparentMedium
-        ], 
-        mobileImageSrcArray = [
-            config.photos.home.jordanHeadshotHigh
-        ];
+    let slogan = strings.home.intro.slogan;
 
     React.useEffect(() => {
         subscribeToWindowSizeChange(onWindowSizeChange);
-        //start loading higher quality images
-        lazyLoadImage(desktopImageSrcArray, getImage("desktop"));
-        lazyLoadImage(mobileImageSrcArray, getImage("mobile"));
         return () => {
             unSubscribeToWindowSizeChange(onWindowSizeChange);
         }

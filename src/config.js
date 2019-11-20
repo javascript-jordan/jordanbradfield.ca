@@ -92,19 +92,21 @@ module.exports = {
             testing: "https://jsonplaceholder.typicode.com"
         },
         endpoints: {
+            // TODO-P1: Make respective calls POST once Server is running SSL
+            // As currently https -> http protocol fails
             analyticsAdditionalVisit: {
                 base: "api",
-                method: "post",
+                method: "get",
                 path: "/analytics/visit/additional"
             },
             analyticsFirstVisit: {
                 base: "api",
-                method: "post",
+                method: "get",
                 path: "/analytics/visit/first"
             },
             email: {
                 base: "api",
-                method: "post",
+                method: "get",
                 path: "/contact/email"
             },
             testing: {

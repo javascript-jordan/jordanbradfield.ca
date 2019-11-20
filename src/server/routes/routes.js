@@ -9,11 +9,11 @@ const ROUTER = Router(),
     middleware = [addIpAddressToHeaders],
     success = {success: true};
 
-ROUTER.post(config.api.endpoints.analytics.additionalView, ...middleware, extractAddressToHeaders, (req, res) => {
+ROUTER.get(config.api.endpoints.analytics.additionalView, ...middleware, extractAddressToHeaders, (req, res) => {
     let emailParameters = {
         address: convertToLocation(req.headers.location),
-        agent: req.body.data.agent,
-        count: req.body.data.count
+        agent: req.query.agent,
+        count: req.query.count
     }, emailArgs =[
         config.constants.email,
         MAIL_MAP.analyticsAdditionalVisit.subject,
@@ -23,10 +23,10 @@ ROUTER.post(config.api.endpoints.analytics.additionalView, ...middleware, extrac
     sendMail.apply(null, emailArgs).then(() => res.send(success)).catch(error => res.status(500).send(error));
 });
 
-ROUTER.post(config.api.endpoints.analytics.firstView, ...middleware, extractAddressToHeaders, (req, res) => {
+ROUTER.get(config.api.endpoints.analytics.firstView, ...middleware, extractAddressToHeaders, (req, res) => {
     let emailParameters = {
         address: convertToLocation(req.headers.location),
-        agent: req.body.data.agent
+        agent: req.query.agent
     }, emailArgs =[
         config.constants.email,
         MAIL_MAP.analyticsFirstVisit.subject,
@@ -36,9 +36,9 @@ ROUTER.post(config.api.endpoints.analytics.firstView, ...middleware, extractAddr
     sendMail.apply(null, emailArgs).then(() => res.send(success)).catch(error => res.status(500).send(error));
 });
 
-ROUTER.post(config.api.endpoints.contact.email, ...middleware, extractAddressToHeaders, (req, res) => {
+ROUTER.get(config.api.endpoints.contact.email, ...middleware, extractAddressToHeaders, (req, res) => {
     let body = {
-            ...req.body.data,
+            ...req.query,
             fromAddress: convertToLocation(req.headers.location)
         },
         emailArgs = [
