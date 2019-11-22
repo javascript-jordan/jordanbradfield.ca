@@ -4,6 +4,7 @@ import { Mail, MoreVert, CloudDownload } from "@material-ui/icons";
 import { strings } from "../../services/stringService";
 import config from "../../../config";
 import { isMobile, subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
+import JordanResume from "../../downloads/JordanBradfieldResume.pdf";
 
 const NavbarQuickLinksComponentStyles = theme => ({
     root: {
@@ -154,7 +155,7 @@ const NavbarQuickLinksComponent = ({ classes, className, onNavItemClick }) => {
                 {state.mobile ? <Name /> : <BlockQuote />}
             </div>
             <div className={`links-container flex row align-vertical-center`}>
-                <a download href={config.api.base + config.api.context + config.api.endpoints.downloads.resume}>
+                <a download href={JordanResume}>
                     <IconButton className={`icon-button`}>
                         <CloudDownload className={`color-white`} />
                     </IconButton>

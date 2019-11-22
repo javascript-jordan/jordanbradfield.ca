@@ -9,6 +9,7 @@ import { route } from "../../services/routingService";
 import { subscribeToWindowSizeChange, unSubscribeToWindowSizeChange } from "../../services/responsiveService";
 import ImageBackdropComponent from "../Widgets/ImageBackdrop.component";
 import { trackEvent } from "../../services/analyticsService";
+import JordanResume from "../../downloads/JordanBradfieldResume.pdf";
 
 const HomeIntroComponentStyles = theme => {
     let sectionMarginTop = theme.spacing(4);
@@ -235,7 +236,7 @@ const HomeIntroComponent = ({ classes }) => {
                 <Button onClick={onContactButtonClick} className={`white-button`} variant="contained">
                     {strings.home.intro.buttons.contact}
                 </Button>
-                <Button color="primary" download href={config.api.base + config.api.context + config.api.endpoints.downloads.resume} onClick={onDownloadButtonClick} variant="contained">
+                <Button color="primary" download href={JordanResume} onClick={onDownloadButtonClick} variant="contained">
                     {strings.home.intro.buttons.resume}
                 </Button>
             </div>

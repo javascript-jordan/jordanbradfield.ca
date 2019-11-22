@@ -50,10 +50,6 @@ ROUTER.get(config.api.endpoints.contact.email, ...middleware, extractAddressToHe
     sendMail.apply(null, emailArgs).then(() => res.send(success)).catch(error => res.status(500).send(error));
 });
 
-ROUTER.get(config.api.endpoints.downloads.resume, (req,res) => {
-    res.download(join(__dirname, "../downloads/JordanBradfieldResume.pdf"));
-});
-
 //wake up heroku dyno (remove when upgrade to hobby dyno)
 ROUTER.get(config.api.endpoints.misc.wake, (req,res) => res.send(success));
 

@@ -56,6 +56,19 @@ module.exports = {
                 ]
             },
             {
+                test: /\.(pdf)$/,
+                exclude: /node_modules/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            outputPath: "downloads",
+                            name: "[path][name].[ext]"
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.ico$/,
                 exclude: /node_modules/,
                 loader: "file-loader?name=[name].[ext]"
