@@ -6,6 +6,7 @@ import { strings } from "../../services/stringService";
 import AboutImageComponent from "./AboutImage.component";
 import AboutBioComponent from "./AboutBio.component";
 import AboutGoalsComponent from "./AboutGoals.component";
+import AboutUpdatesComponent from "./AboutUpdates.component";
 
 const AboutComponentStyles = theme => ({
     "@keyframes fade": {
@@ -22,6 +23,17 @@ const AboutComponentStyles = theme => ({
         },
         "& .about-bio-component": {
             maxWidth: 800
+        },
+        "& .goals-updates-container": {
+            "&>*": {
+                "&:first-child": {
+                    flex: "1 0 45%",
+                    paddingRight: theme.spacing(2)
+                },
+                "&:last-child": {
+                    flex: "1 0 45%"
+                }
+            }
         },
         [theme.breakpoints.up("md")]: {
             "& .about-overview-container .about-image": {
@@ -44,6 +56,13 @@ const AboutComponentStyles = theme => ({
             },
             "&.root .about-bio-component": {
                 paddingLeft: 0
+            },
+            "&.root .goals-updates-container": {
+                flexDirection: "column",
+                "&>*": {
+                    flex: "1 0 auto",
+                    paddingRight: 0
+                }
             }
         }
     }
@@ -67,7 +86,10 @@ class AboutComponent extends React.Component {
                     <AboutImageComponent className={`about-image`}></AboutImageComponent>
                     <AboutBioComponent className={`about-bio-component`}></AboutBioComponent>
                 </div>
-                <AboutGoalsComponent />
+                <div className={`goals-updates-container flex row align-vertical-top align-horizontal-center`}>
+                    <AboutGoalsComponent />
+                    <AboutUpdatesComponent />
+                </div>
             </div>
         );
     }

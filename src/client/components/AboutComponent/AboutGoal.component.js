@@ -13,8 +13,8 @@ const AboutGoalComponentStyles = theme => {
             "& .circle-container": {
                 borderRadius: "50%",
                 boxShadow: theme.shadows[4],
-                height: 80,
-                width: 80,
+                height: 60,
+                width: 60,
                 padding: theme.spacing(1),
                 zIndex: 2,
                 "& .inner-circle-container": {
@@ -35,7 +35,7 @@ const AboutGoalComponentStyles = theme => {
                 borderTopRightRadius: "5px",
                 padding: theme.spacing(1),
                 paddingLeft: theme.spacing(3),
-                transform: "translateX(-8px)",
+                transform: "translateX(-16px)",
                 "& .date": {
                     paddingLeft: theme.spacing(1)
                 }

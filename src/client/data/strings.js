@@ -97,10 +97,12 @@ export const en = {
                 },
                 {
                     name: "Team Lead",
+                    aquired: "2019-10-01",
                     img: TeamLeadImage
                 },
                 {
                     name: "Application Architect",
+                    aquired: "2019-12-01",
                     img: ApplicationArchitectImage
                 },
                 {
@@ -113,6 +115,31 @@ export const en = {
                 // {
                 //     name: "IBM Fellow or Equivilant"
                 // }
+            ]
+        },
+        updates: {
+            title: "Updates",
+            list: [
+                {
+                    date: "2019-11-15",
+                    description: `Super excited about the 4th iteration of my website. Just waiting until the next hot Library/Framework is released so I can start all over ..`
+                },
+                {
+                    date: "2019-11-20",
+                    description: `Starting down the AWS certification path. Enrolled in the AWS Cloud Essentials course offered by Amazon. My first goal is CCP.`
+                },
+                {
+                    date: "2019-12-07",
+                    description: `Just wrote my AWS CCP exam. Was actually quite challenging but I managed to pass with an 85%! Can't wait to start the next.`
+                },
+                {
+                    date: "2019-12-10",
+                    description: `Just enrolled in a 40 hour data science course focusing on AI/ML in Python and R. While I'm more of a Web/Mobile developer, I think it doesn't hurt to familiarize myself with other popular areas of IT.`
+                },
+                {
+                    date: "2019-12-29",
+                    description: `Enjoying Christmas break with family and friends. Still finding time to learn new material and progress through current online courses.`
+                }
             ]
         }
     },
@@ -299,7 +326,7 @@ export const en = {
                 {
                     name: "Skills",
                     description: `
-                        I'm a firm believer in keeping ym skills up to date. I am constantly learning new things and broadening my knowledge in all areas of IT so I can provide Full Stack Solutions using the latest technology available.
+                        I'm a firm believer in keeping my skills up to date. I am constantly learning new things and broadening my knowledge in all areas of IT so I can provide Full Stack Solutions using the latest technology available.
                     `,
                     img: SkillsImage,
                     link: "/skills"
