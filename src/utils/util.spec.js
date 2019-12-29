@@ -71,6 +71,6 @@ describe("util.js", () => {
         });
         test("it should resolve with data when requesting a valid api", async () => {
             expect(await xhr(config.xhr.endpoints.testing)).toHaveProperty("status", 200);
-        });
+        }, 30000);
     });
 });

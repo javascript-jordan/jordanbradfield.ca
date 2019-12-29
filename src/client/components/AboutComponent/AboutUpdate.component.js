@@ -10,6 +10,7 @@ const AboutUpdateComponentStyles = theme => {
                 marginBottom: theme.spacing(1),
                 "& .picture": {
                     backgroundColor: "#e0e0e0",
+                    boxShadow: theme.shadows[1],
                     marginRight: theme.spacing(1.5),
                     "& img": {
                         width: "40",
